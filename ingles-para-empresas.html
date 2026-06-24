@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inglés para Empresas en México – Resultados Medibles | S-Peak</title>
+  <meta name="description" content="Capacitación en inglés empresarial a la medida. Diagnóstico, programa personalizado y resultados medibles para su equipo directivo y operativo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #B51E40;
+      --red-dark: #8f1832;
+      --navy: #1A3C4D;
+      --white: #FFFFFF;
+      --off: #F5F7FA;
+      --ink: #111827;
+      --ink-2: #374151;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --yellow: #F5A623;
+      --font: 'Montserrat', -apple-system, sans-serif;
+      --max: 1160px;
+      
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font-family: inherit; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block; width: 24px; height: 2px; background: var(--red);
+    }
+
+    /* TIPOGRAFÍA MONTSERRAT — ESCALA DE PESOS */
+    h1 { font-weight: 800; }
+    h2 { font-weight: 700; }
+    h3 { font-weight: 700; }
+    p { font-weight: 400; }
+    .eyebrow { letter-spacing: 0.22em; }
+    .stat-num { font-weight: 800; }
+    .stat-label { font-weight: 500; }
+    .hero-sub { font-weight: 400; line-height: 1.7; }
+    .hero-tag { font-weight: 700; }
+    .trust-item { font-weight: 500; }
+    .logos-label { font-weight: 600; }
+    .logo-item { font-weight: 800; }
+    .step-title { font-weight: 700; }
+    .step-desc { font-weight: 400; }
+    .pillar-label { font-weight: 700; }
+    .pillar-sub { font-weight: 400; }
+    .area-name { font-weight: 700; }
+    .area-desc { font-weight: 400; }
+    .testi-quote { font-weight: 400; }
+    .author-name { font-weight: 700; }
+    .author-role { font-weight: 400; }
+    .faq-q { font-weight: 600; }
+    .faq-a { font-weight: 400; }
+    .nav-cta, .btn-red, .btn-white, .form-submit { font-weight: 700; letter-spacing: 0.03em; }
+    .footer-logo { font-weight: 800; }
+    .footer-links a { font-weight: 500; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 28px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo svg { height: 32px; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: var(--ink-2); }
+    .nav-links a:hover { color: var(--red); }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      padding: 11px 22px; border-radius: 0;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* HERO */
+    .hero { background: var(--off); padding: 80px 28px 72px; }
+    .hero-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 400px; gap: 72px; align-items: start;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FDF0F3; color: var(--red);
+      font-size: 11.5px; font-weight: 700;
+      padding: 6px 14px; border-radius: 0;
+      margin-bottom: 22px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-tag::before {
+      content: ''; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--red);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(34px, 4.2vw, 54px);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.03em; color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .hero h1 strong { color: var(--red); font-weight: 800; }
+    .hero-sub {
+      font-size: 17px; color: var(--ink-2);
+      line-height: 1.65; margin-bottom: 36px;
+      font-weight: 400; max-width: 500px;
+    }
+    .hero-stats {
+      display: flex; gap: 36px; margin-bottom: 36px;
+      padding-bottom: 36px; border-bottom: 1px solid var(--border);
+    }
+    .stat-num {
+      font-size: 30px; font-weight: 800;
+      color: var(--navy); letter-spacing: -0.03em; line-height: 1;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); font-weight: 500; margin-top: 4px; }
+    .hero-trust { display: flex; flex-direction: column; gap: 12px; }
+    .trust-item { display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-2); }
+    .trust-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--red); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-check svg { width: 11px; height: 11px; }
+
+    /* FORM */
+    .form-card {
+      background: var(--white); border-radius: 0;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.13);
+      overflow: hidden; position: sticky; top: 88px;
+    }
+    .form-header { background: var(--navy); padding: 28px 28px 24px; color: var(--white); }
+    .form-header h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+    .form-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .form-body { padding: 24px 28px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: 11.5px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group textarea {
+      border: 1.5px solid var(--border); border-radius: 0;
+      padding: 10px 12px; font-size: 14px; color: var(--ink);
+      background: var(--white); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,60,77,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; background: var(--red); color: var(--white);
+      border: none; padding: 15px; border-radius: 0;
+      font-size: 15px; font-weight: 800; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 4px;
+      letter-spacing: 0.01em;
+    }
+    .form-submit:hover { background: var(--red-dark); }
+    .form-submit:active { transform: scale(0.99); }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
+
+    /* LOGOS */
+    .logos {
+      padding: 28px; border-bottom: 1px solid var(--border);
+    }
+    .logos-label { text-align: center; font-size: 12px; color: var(--muted); margin-bottom: 18px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    .logos-strip {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .logo-item { font-size: 15px; font-weight: 800; color: #9CA3AF; letter-spacing: 0.1em; }
+
+    /* EVIDENCIA */
+    .evidencia { padding: 88px 28px; }
+    .evidencia-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .evidencia-left h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      line-height: 1.12; letter-spacing: -0.025em; color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .evidencia-left h2 em { font-style: normal; color: var(--red); }
+    .evidencia-left p { font-size: 16px; color: var(--ink-2); line-height: 1.72; margin-bottom: 28px; }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      padding: 14px 28px; border-radius: 0; font-weight: 700;
+      font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+    .pillars { display: flex; gap: 12px; }
+    .pillar {
+      flex: 1; background: var(--off); border-radius: 0;
+      padding: 22px 16px; text-align: center;
+      border: 1.5px solid transparent; transition: border-color 0.2s;
+    }
+    .pillar:hover { border-color: var(--red); }
+    .pillar-icon { font-size: 26px; margin-bottom: 10px; }
+    .pillar-label { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 5px; line-height: 1.3; }
+    .pillar-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* PROCESO - INFOGRÁFICA */
+    .proceso { background: var(--off); padding: 88px 28px; }
+    .proceso-header {
+      max-width: var(--max); margin: 0 auto 64px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end;
+    }
+    .proceso-header h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); line-height: 1.12;
+    }
+    .proceso-header p { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
+    .flow { max-width: var(--max); margin: 0 auto; position: relative; }
+    .flow-line {
+      position: absolute; top: 28px;
+      left: calc(10% + 28px); right: calc(10% + 28px);
+      height: 2px; background: var(--border); z-index: 0; border-radius: 0;
+    }
+    .flow-fill {
+      height: 100%; background: var(--red); width: 0%;
+      transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1); border-radius: 0;
+    }
+    .flow-steps { display: flex; justify-content: space-between; position: relative; z-index: 1; }
+    .flow-step { flex: 1; text-align: center; padding: 0 10px; }
+    .step-node {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--white); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 15px; font-weight: 800; color: var(--muted);
+      transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; z-index: 2;
+    }
+    .flow-step.lit .step-node {
+      background: var(--red); border-color: var(--red);
+      color: var(--white);
+      box-shadow: 0 0 0 8px rgba(181,30,64,0.12), 0 4px 16px rgba(181,30,64,0.3);
+    }
+    .step-title {
+      font-size: 13px; font-weight: 700; color: var(--navy);
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .step-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+    /* ÁREAS */
+    .areas { padding: 88px 28px; }
+    .areas-top { max-width: var(--max); margin: 0 auto 48px; text-align: center; }
+    .areas-top h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); margin-bottom: 14px;
+    }
+    .areas-top p { font-size: 16px; color: var(--ink-2); max-width: 540px; margin: 0 auto; line-height: 1.65; }
+    .areas-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+    }
+    .area-card {
+      background: var(--off); border-radius: 0; padding: 24px 20px;
+      border: 1.5px solid transparent; transition: all 0.25s; cursor: default;
+    }
+    .area-card:hover {
+      border-color: var(--red); background: var(--white);
+      transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.09);
+    }
+    .area-icon { font-size: 28px; margin-bottom: 12px; }
+    .area-name { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .area-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+
+    /* TESTIMONIOS */
+    .testimonials { background: var(--navy); padding: 88px 28px; }
+    .testi-top { max-width: var(--max); margin: 0 auto 48px; text-align: center; }
+    .testi-top h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--white); margin-bottom: 12px;
+    }
+    .testi-top p { font-size: 16px; color: rgba(255,255,255,0.55); }
+    .testi-grid {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0; padding: 28px 24px;
+    }
+    .testi-card.accent { background: var(--yellow); border-color: transparent; }
+    .stars { font-size: 14px; color: var(--yellow); margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-card.accent .stars { color: var(--navy); }
+    .testi-quote {
+      font-size: 14px; line-height: 1.72;
+      color: rgba(255,255,255,0.85); margin-bottom: 22px;
+    }
+    .testi-card.accent .testi-quote { color: var(--navy); }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .testi-card.accent .avatar { background: rgba(30,45,74,0.18); color: var(--navy); }
+    .author-name { font-size: 13px; font-weight: 700; color: var(--white); }
+    .testi-card.accent .author-name { color: var(--navy); }
+    .author-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .testi-card.accent .author-role { color: rgba(30,45,74,0.55); }
+
+    /* FAQ */
+    .faq { padding: 88px 28px; }
+    .faq-inner { max-width: 760px; margin: 0 auto; }
+    .faq-top { text-align: center; margin-bottom: 48px; }
+    .faq-top h2 {
+      font-size: clamp(28px, 3vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); margin-bottom: 10px;
+    }
+    .faq-top p { font-size: 16px; color: var(--muted); }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 20px 0; font-size: 15px; font-weight: 600; color: var(--ink);
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--red); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--off); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px; font-weight: 400;
+      transition: transform 0.3s, background 0.2s, color 0.2s; color: var(--muted);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg); background: var(--red); color: white;
+    }
+    .faq-a {
+      font-size: 14px; color: var(--ink-2); line-height: 1.75;
+      padding-bottom: 22px; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease; opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 300px; opacity: 1; }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--red); padding: 88px 28px;
+      text-align: center; color: var(--white);
+    }
+    .final-cta h2 {
+      font-size: clamp(30px, 4vw, 52px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 18px; color: rgba(255,255,255,0.8);
+      margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto;
+    }
+    .btn-white {
+      display: inline-block; background: var(--white); color: var(--red);
+      padding: 17px 40px; border-radius: 0; font-weight: 800;
+      font-size: 16px; cursor: pointer; border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 52px 28px; }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.02em; }
+    .footer-logo span { color: var(--red); }
+    .footer-links { display: flex; gap: 28px; font-size: 13px; color: rgba(255,255,255,0.5); }
+    .footer-links a:hover { color: white; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-card { position: static; }
+      .evidencia-inner { grid-template-columns: 1fr; gap: 44px; }
+      .proceso-header { grid-template-columns: 1fr; gap: 16px; }
+      .flow-steps { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .flow-step { display: flex; align-items: flex-start; gap: 16px; text-align: left; padding: 0; }
+      .step-node { margin: 0; flex-shrink: 0; }
+      .flow-line { display: none; }
+      .areas-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px; }
+      .hero-stats { gap: 24px; }
+      .pillars { flex-direction: column; }
+      .areas-grid { grid-template-columns: 1fr 1fr; }
+      .logos-strip { gap: 20px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <!-- Logo text fallback -->
+      <span style="font-size:22px;font-weight:800;color:#1E2D4A;letter-spacing:-0.03em;">s<span style="color:#C0392B;">·</span>peak</span>
+    </div>
+    <div class="nav-links">
+      <a href="https://s-peak.com/nosotros">Nosotros</a>
+      <a href="https://s-peak.com/blog">Blog</a>
+      <a href="https://s-peak.com/idioma/ingles-para-empresas/#beneficios">Beneficios</a>
+    </div>
+    <button class="nav-cta" onclick="scrollToForm()">Solicitar Información</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-tag">Inglés corporativo · México</div>
+      <h1>Sus colaboradores necesitan el inglés que <strong>su negocio exige.</strong></h1>
+      <p class="hero-sub">No ofrecemos clases genéricas. Diseñamos programas de inglés empresarial por puesto, con métricas de avance y evidencia verificable del retorno de cada sesión.</p>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">+40K</div>
+          <div class="stat-label">Horas impartidas</div>
+        </div>
+        <div>
+          <div class="stat-num">+500</div>
+          <div class="stat-label">Empresas atendidas</div>
+        </div>
+        <div>
+          <div class="stat-num">+30</div>
+          <div class="stat-label">Industrias</div>
+        </div>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item">
+          <div class="trust-check">
+            <svg viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5l4 4 6-8"/></svg>
+          </div>
+          Diagnóstico de nivel real antes de proponer nada
+        </div>
+        <div class="trust-item">
+          <div class="trust-check">
+            <svg viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5l4 4 6-8"/></svg>
+          </div>
+          Programas por área: ventas, dirección, operaciones y más
+        </div>
+        <div class="trust-item">
+          <div class="trust-check">
+            <svg viewBox="0 0 12 10" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 5l4 4 6-8"/></svg>
+          </div>
+          Reportes mensuales de avance y asistencia para RH
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-card" id="form-anchor">
+      <div class="form-header">
+        <h2>Hable con un Experto</h2>
+        <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
+      </div>
+      <div class="form-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre y Apellido *</label>
+            <input type="text" placeholder="María González">
+          </div>
+          <div class="form-group">
+            <label>Empresa *</label>
+            <input type="text" placeholder="Grupo Industrial SA">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Correo Electrónico *</label>
+            <input type="email" placeholder="maria@empresa.com">
+          </div>
+          <div class="form-group">
+            <label>Teléfono *</label>
+            <input type="tel" placeholder="+52 55 0000 0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Puesto que desempeña</label>
+          <input type="text" placeholder="Ej. Directora de Recursos Humanos">
+        </div>
+        <div class="form-group">
+          <label>Cuéntenos su necesidad</label>
+          <textarea placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
+        </div>
+        <button class="form-submit" type="button">Solicitar mi Cotización →</button>
+        <p class="form-note">Respuesta en menos de 24 horas · Asesoría sin compromiso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <p class="logos-label">+500 empresas confían en S-Peak</p>
+  <div class="logos-strip">
+    <span class="logo-item">GBM</span>
+    <span class="logo-item">NATURGY</span>
+    <span class="logo-item">L'ORÉAL</span>
+    <span class="logo-item">SANTANDER</span>
+    <span class="logo-item">CIO</span>
+  </div>
+</div>
+
+<!-- EVIDENCIA -->
+<section class="evidencia">
+  <div class="evidencia-inner">
+    <div class="evidencia-left reveal">
+      <div class="eyebrow">Nuestro enfoque</div>
+      <h2>No le entregamos asistencia.<br><em>Le entregamos evidencia.</em></h2>
+      <p>A la Dirección de Recursos Humanos le entregamos <strong>cuadros de mando</strong> que detallan el avance, la adopción y el impacto real del programa, para una decisión basada en datos y la optimización de su presupuesto.</p>
+      <button class="btn-red" onclick="scrollToForm()">Solicite una Cotización</button>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">📊</div>
+        <div class="pillar-label">Evidencias demostrables</div>
+        <div class="pillar-sub">Reportes de nivel y progreso por colaborador</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📈</div>
+        <div class="pillar-label">Métricas de avance</div>
+        <div class="pillar-sub">Asistencia, progresión y cumplimiento de objetivos</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📋</div>
+        <div class="pillar-label">Reportes de desempeño</div>
+        <div class="pillar-sub">Información accionable para toma de decisiones</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO INFOGRAFÍA -->
+<section class="proceso">
+  <div class="proceso-header reveal">
+    <div>
+      <div class="eyebrow">El método S-Peak</div>
+      <h2>5 razones por las que su equipo necesita hablar inglés</h2>
+    </div>
+    <p>México ocupa el puesto 87 de 116 en dominio del inglés. Esta brecha lingüística representa hoy la mayor desventaja competitiva nacional. Así es como S-Peak la cierra.</p>
+  </div>
+  <div class="flow">
+    <div class="flow-line">
+      <div class="flow-fill" id="flow-fill"></div>
+    </div>
+    <div class="flow-steps" id="flow-steps">
+      <div class="flow-step">
+        <div class="step-node">01</div>
+        <div>
+          <div class="step-title">Diagnóstico de nivel y del puesto</div>
+          <div class="step-desc">Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-node">02</div>
+        <div>
+          <div class="step-title">Programa de inglés a la medida</div>
+          <div class="step-desc">Diseñamos el programa ajustado al nivel, modalidad y horarios que no frenen el trabajo.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-node">03</div>
+        <div>
+          <div class="step-title">Práctica en situaciones reales</div>
+          <div class="step-desc">Cada sesión simula una junta, correo de negociación o llamada real. Inglés aplicado al trabajo.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-node">04</div>
+        <div>
+          <div class="step-title">Tarjeta de Resultados para RH</div>
+          <div class="step-desc">Reciba reportes con progreso, asistencia e impacto para optimizar la inversión de capacitación.</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="step-node">05</div>
+        <div>
+          <div class="step-title">Del diagnóstico a la evidencia</div>
+          <div class="step-desc">El Método S-Peak convierte cada sesión en datos medibles que respaldan su inversión.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÁREAS -->
+<section class="areas">
+  <div class="areas-top reveal">
+    <div class="eyebrow">Inglés de negocios</div>
+    <h2>Inglés de negocios para cada área de su empresa</h2>
+    <p>Cada departamento enfrenta retos muy distintos. Diseñamos el contenido según las necesidades reales del puesto.</p>
+  </div>
+  <div class="areas-grid">
+    <div class="area-card reveal">
+      <div class="area-icon">💼</div>
+      <div class="area-name">Ventas y Marketing</div>
+      <div class="area-desc">Pitches, negociación y cierre de contratos con clientes internacionales.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">💰</div>
+      <div class="area-name">Finanzas y Contabilidad</div>
+      <div class="area-desc">Balances, reportes financieros y juntas con auditores extranjeros.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">👥</div>
+      <div class="area-name">Recursos Humanos</div>
+      <div class="area-desc">Comunicación global, onboarding internacional y gestión del talento.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">🎧</div>
+      <div class="area-name">Atención a Clientes</div>
+      <div class="area-desc">Soporte y comunicación efectiva con clientes globales en inglés.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">⚖️</div>
+      <div class="area-name">Legal y Jurídico</div>
+      <div class="area-desc">Contratos, SLAs y comunicación legal con entidades internacionales.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">💻</div>
+      <div class="area-name">Tecnología e Ingeniería</div>
+      <div class="area-desc">Documentación técnica, sprints y coordinación con equipos globales.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">🏢</div>
+      <div class="area-name">Directivos</div>
+      <div class="area-desc">Presentaciones ante inversores, estrategia y liderazgo multicultural.</div>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-icon">🚚</div>
+      <div class="area-name">Operaciones y Logística</div>
+      <div class="area-desc">Coordinación con proveedores, manuales técnicos y licitaciones.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials">
+  <div class="testi-top reveal">
+    <div class="eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;">Resultados reales</div>
+    <h2>Resultados reales en equipos nacionales e internacionales</h2>
+    <p>En S-Peak, el éxito no se sujeta: se mide en números.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Las clases de idiomas para el cierre de brechas lingüísticas y laborales fue un logro muy objetivo para el nivel y la necesidad de los participantes."</p>
+      <div class="testi-author">
+        <div class="avatar">GV</div>
+        <div>
+          <div class="author-name">Guadalupe Villena</div>
+          <div class="author-role">Directora de RH · Multinacional</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card accent reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Claridad y contexto corporativo en cada lección. S-Peak no es una organización cualquiera: conocen las necesidades específicas de negocio en el idioma que importa."</p>
+      <div class="testi-author">
+        <div class="avatar">FH</div>
+        <div>
+          <div class="author-name">Fernando H.</div>
+          <div class="author-role">Director Corporativo</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Adaptabilidad, seguimiento y atención genuina. Gracias a los reportes de S-Peak, sabemos exactamente en qué invertir y cómo avanza nuestro equipo."</p>
+      <div class="testi-author">
+        <div class="avatar">AV</div>
+        <div>
+          <div class="author-name">Andrea V.</div>
+          <div class="author-role">People Analytics · Del Sur</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-top reveal">
+      <div class="eyebrow" style="justify-content:center;">Preguntas frecuentes</div>
+      <h2>Todo lo que necesita saber</h2>
+      <p>Las preguntas más comunes de nuestros clientes, respondidas sin rodeos.</p>
+    </div>
+    <div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto tiempo toma ver resultados con S-Peak?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Los primeros avances son visibles en 4 a 6 semanas. El reporte de nivel inicial se entrega antes de comenzar, y los reportes de progreso son mensuales desde el primer mes.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuántos colaboradores necesito para contratar el programa?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Trabajamos con grupos de 1 a 10 colaboradores por sesión. Los programas se definen por grupo completo, no por persona individual, lo que optimiza el presupuesto de capacitación.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué modalidades de clases ofrecen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Ofrecemos clases en línea en vivo, presencial e híbrida. La modalidad se define según la operación y los horarios de su equipo para no interrumpir la productividad.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿La capacitación aplica para el STPS y es deducible de impuestos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sí. Entregamos la documentación necesaria para que la capacitación sea válida ante la STPS y pueda ser considerada como deducible de impuestos según la legislación mexicana vigente.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Pueden manejar equipos en diferentes ciudades de México?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">S-Peak tiene más de una década capacitando equipos corporativos en México. Atendemos empresas en todas las ciudades del país bajo modalidad en línea o con instructores presenciales en las principales plazas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Lleve a su equipo al nivel que<br>su operación necesita.</h2>
+  <p>Permítanos diseñar una solución formativa que su equipo de dirección sí pueda completar.</p>
+  <button class="btn-white" onclick="scrollToForm()">Solicitar Propuesta a la Medida</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">s<span>·</span>peak</div>
+    <div class="footer-links">
+      <a href="https://s-peak.com">Inicio</a>
+      <a href="https://s-peak.com/nosotros">Nosotros</a>
+      <a href="https://s-peak.com/blog">Blog</a>
+      <a href="https://linkedin.com/company/s-peak" target="_blank">LinkedIn</a>
+    </div>
+    <p class="footer-copy">© 2026 S-Peak. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll to form
+  function scrollToForm() {
+    document.getElementById('form-anchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Stagger areas
+  document.querySelectorAll('.areas-grid .area-card').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.07) + 's';
+  });
+
+  // Process flow animation
+  const flowSteps = document.querySelectorAll('.flow-step');
+  const flowFill = document.getElementById('flow-fill');
+  const flowObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      let i = 0;
+      function lightNext() {
+        if (i < flowSteps.length) {
+          flowSteps[i].classList.add('lit');
+          const pct = (i / (flowSteps.length - 1)) * 100;
+          if (flowFill) flowFill.style.width = pct + '%';
+          i++;
+          setTimeout(lightNext, 320);
+        }
+      }
+      lightNext();
+      flowObserver.disconnect();
+    }
+  }, { threshold: 0.25 });
+  const flowSection = document.getElementById('flow-steps');
+  if (flowSection) flowObserver.observe(flowSection);
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+
+</body>
+</html>
