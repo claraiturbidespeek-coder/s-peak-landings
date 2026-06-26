@@ -625,11 +625,11 @@
       .dash-chart polygon, .dash-chart circle { opacity: 1; transform: none; }
     }
 
-    footer { background: #1A3C4D; padding: 64px 28px 0; font-family: 'Montserrat', sans-serif; }
+    footer { background: #1A3C4D; padding: 64px 0 0; font-family: 'Montserrat', sans-serif; }
     .footer-inner {
       max-width: var(--max); margin: 0 auto;
       display: grid; grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 48px; padding-bottom: 56px;
+      gap: 48px; padding: 0 28px 56px;
       color: white;
     }
     .footer-col-brand .footer-logo { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 16px; }
@@ -680,6 +680,166 @@
       .testi-card { flex-basis: 100%; margin-right: 0; }
       .footer-inner { grid-template-columns: 1fr; gap: 36px; }
     }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70%  { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-float svg {
+        width: 34px;
+        height: 34px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .whatsapp-float { animation: none; }
+    }
+
+    /* Modal de pre-registro WhatsApp */
+    .wa-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(17, 24, 39, 0.6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .wa-modal-overlay.open { display: flex; opacity: 1; }
+    .wa-modal {
+      width: 100%;
+      max-width: 380px;
+      background: var(--white);
+      border-radius: 0;
+      border-top: 4px solid var(--red);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      transform: translateY(12px);
+      transition: transform 0.25s ease;
+    }
+    .wa-modal-overlay.open .wa-modal { transform: translateY(0); }
+    .wa-modal-head {
+      position: relative;
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wa-modal-head h3 {
+      font-family: var(--font);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .wa-modal-head p {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .wa-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .wa-modal-close:hover { color: var(--navy); }
+    .wa-modal-body { padding: 22px 28px 28px; }
+    .wa-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .wa-form-group label {
+      font-family: var(--font);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .wa-form-group input {
+      font-family: var(--font);
+      border: 1.5px solid var(--border);
+      border-radius: 0;
+      padding: 11px 12px;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .wa-form-group input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
+    }
+    .wa-submit {
+      width: 100%;
+      background: #25D366;
+      color: var(--white);
+      border: none;
+      border-radius: 0;
+      padding: 15px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .wa-submit:hover { background: #1ebe5a; }
+    .wa-submit:active { transform: scale(0.99); }
   </style>
 </head>
 <body>
@@ -692,6 +852,7 @@
     </div>
     <div class="nav-links">
       <a href="#enfoque">Nuestro Enfoque</a>
+      <a href="#metodo">El Método</a>
       <a href="#resultados">Resultados</a>
       <a href="#faq">Preguntas Frecuentes</a>
     </div>
@@ -737,9 +898,9 @@
       </div>
       <div class="hero-stats-row">
         <div class="hero-stat">
-          <span class="float-icon">⏱️</span>
+          <span class="float-icon">🎓</span>
           <span class="float-num">+40K</span>
-          <span class="float-label">Alumnos formados</span>
+          <span class="float-label">Profesionales formados</span>
         </div>
         <div class="hero-stat">
           <span class="float-icon">🏢</span>
@@ -802,8 +963,8 @@
     </div>
     <div class="areas-left reveal">
       <div class="eyebrow">Inglés de negocios</div>
-      <h2>Prepare a su talento con clases de inglés para el mercado global</h2>
-      <p>Cada departamento enfrenta retos distintos en inglés: ventas negocia, finanzas reporta a casa matriz, operaciones coordina con proveedores. Por eso cada programa de inglés empresarial se adapta al rol y al contexto real del puesto. Medimos el avance con indicadores verificables y entregamos reportes que le permiten decidir sobre su inversión.</p>
+      <h2>Prepare a su talento con un programa de inglés para el mercado global</h2>
+      <p>Cada departamento enfrenta retos distintos en inglés: ventas negocia, finanzas reporta a casa matriz, operaciones coordina con proveedores. Por eso cada programa de inglés empresarial <strong>se adapta al rol y al contexto real del puesto</strong>. Medimos el avance con <strong>indicadores verificables</strong> y entregamos reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
       <button class="btn-red" onclick="openModal()">Solicite Información</button>
     </div>
   </div>
@@ -814,8 +975,8 @@
   <div class="evidencia-inner">
     <div class="evidencia-left reveal">
       <div class="eyebrow">Nuestro enfoque</div>
-      <h2>No le entregamos asistencia.<br><em>Le entregamos evidencia.</em></h2>
-      <p>A la dirección de <strong>Recursos Humanos</strong> le entregamos <strong>cuadros de mando</strong> que detallan el <strong>avance, la adopción y el impacto real</strong> del programa, para una <strong>decisión basada en datos</strong> y la optimización de su presupuesto.</p>
+      <h2>No le entregamos listas de asistencia.<br><em>Le entregamos evidencia.</em></h2>
+      <p>A la dirección de <strong>Recursos Humanos</strong> le entregamos <strong>tableros</strong> que detallan el <strong>avance, la adopción y el impacto real</strong> del programa, para una <strong>decisión basada en datos</strong> y la optimización de su presupuesto.</p>
       <div class="evidencia-tags">
         <span class="evidencia-tag">Evidencias demostrables</span>
         <span class="evidencia-tag">Métricas de avance y asistencia</span>
@@ -842,7 +1003,7 @@
             <!-- Métrica destacada -->
             <div class="dash-widget dash-metric">
               <div class="w-metric">92<span>%</span></div>
-              <div class="w-metric-label">Asistencia promedio</div>
+              <div class="w-metric-label">Evidencias aprobadas con rúbrica</div>
               <div class="w-metric-sub">↑ 4 pts vs. trimestre anterior</div>
             </div>
             <!-- Gráfica de línea -->
@@ -911,7 +1072,7 @@
 </section>
 
 <!-- PROCESO INFOGRAFÍA -->
-<section class="proceso">
+<section class="proceso" id="metodo">
   <img class="deco deco-proceso" src="img/isotype.svg" alt="" aria-hidden="true">
   <div class="proceso-inner">
     <div class="proceso-left reveal">
@@ -953,9 +1114,9 @@
 <!-- TESTIMONIOS -->
 <section class="testimonials" id="resultados">
   <div class="testi-top reveal">
-    <div class="eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;">Resultados reales</div>
+    <div class="eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;">Casos de éxito</div>
     <h2>Resultados reales en equipos nacionales e internacionales</h2>
-    <p>En <strong>S-Peak</strong>, el éxito no se sujeta: se mide en números.</p>
+    <p>En <strong>S-Peak</strong>, el éxito no se supone: se mide en números.</p>
   </div>
   <div class="testi-carousel reveal">
     <div class="testi-track">
@@ -1099,7 +1260,7 @@
           5. ¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-a">Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, <strong>sin perder lo invertido</strong>. Lo dejamos definido en la propuesta desde el inicio.</div>
+        <div class="faq-a">Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, <strong>sin perder lo invertido</strong>. <em>Lo dejamos definido en la propuesta desde el inicio.</em></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)">
@@ -1130,7 +1291,7 @@
 <section class="final-cta">
   <img class="deco deco-cta" src="img/isotype.svg" alt="" aria-hidden="true">
   <h2>Lleve a su equipo al nivel que<br>su operación necesita</h2>
-  <p>Permítanos diseñar un programa de inglés para empresas que su equipo de dirección sí pueda completar.</p>
+  <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
   <button class="btn-white" onclick="openModal()">Solicite Información</button>
 </section>
 
@@ -1291,14 +1452,18 @@
       titleEl.textContent = n.dataset.title;
       descEl.textContent = n.dataset.desc;
     }
-    function start() { timer = setInterval(() => show((active + 1) % nodes.length), 3500); }
+    function start() { stop(); timer = setInterval(() => show((active + 1) % nodes.length), 2000); }
     function stop() { clearInterval(timer); }
     nodes.forEach((n, i) => {
       n.addEventListener('mouseenter', () => { stop(); show(i); });
       n.addEventListener('click', () => { stop(); show(i); });
     });
+    // Pausa al pasar el mouse por el círculo del método; reanuda al salir
     const cycle = document.querySelector('.cycle');
-    if (cycle) cycle.addEventListener('mouseleave', start);
+    if (cycle) {
+      cycle.addEventListener('mouseenter', stop);
+      cycle.addEventListener('mouseleave', start);
+    }
     show(0);
     start();
   })();
@@ -1335,6 +1500,95 @@
       }
     }
     setInterval(advance, 3500);
+  })();
+</script>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/525585265520"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp"
+   aria-haspopup="dialog"
+   onclick="openWaModal(event)">
+  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Modal de pre-registro WhatsApp -->
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onclick="closeWaModalOnOverlay(event)">
+  <div class="wa-modal">
+    <div class="wa-modal-head">
+      <button type="button" class="wa-modal-close" aria-label="Cerrar" onclick="closeWaModal()">&times;</button>
+      <h3 id="waModalTitle">Un paso antes de conectar</h3>
+      <p>Le atenderemos de inmediato</p>
+    </div>
+    <div class="wa-modal-body">
+      <form id="waForm" onsubmit="return submitWaForm(event)">
+        <div class="wa-form-group">
+          <label for="waNombre">Nombre *</label>
+          <input type="text" id="waNombre" name="nombre" autocomplete="name" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waCorreo">Correo electrónico *</label>
+          <input type="email" id="waCorreo" name="correo" autocomplete="email" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waTelefono">Teléfono *</label>
+          <input type="tel" id="waTelefono" name="telefono" autocomplete="tel" required>
+        </div>
+        <button type="submit" class="wa-submit">Continuar a WhatsApp &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const overlay = document.getElementById('waModal');
+
+    window.openWaModal = function (e) {
+      if (e) e.preventDefault();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const first = document.getElementById('waNombre');
+      if (first) setTimeout(function () { first.focus(); }, 50);
+    };
+
+    window.closeWaModal = function () {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    window.closeWaModalOnOverlay = function (e) {
+      if (e.target === overlay) window.closeWaModal();
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) window.closeWaModal();
+    });
+
+    window.submitWaForm = function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('waNombre').value.trim();
+      const correo = document.getElementById('waCorreo').value.trim();
+      const telefono = document.getElementById('waTelefono').value.trim();
+
+      const msg = 'Hola, soy ' + nombre + ' (' + telefono + '). Me interesa conocer más sobre los programas de inglés para empresas de S-Peak. Mi correo es ' + correo + '.';
+      const url = 'https://wa.me/525585265520?text=' + encodeURIComponent(msg);
+
+      // Conversión de Google Ads
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion_whatsapp', {});
+      }
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+
+      window.closeWaModal();
+      document.getElementById('waForm').reset();
+      return false;
+    };
   })();
 </script>
 
