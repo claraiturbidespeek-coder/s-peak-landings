@@ -6,7 +6,7 @@
 
   <!-- SEO primario -->
   <title>Inglés para Empresas en México – Programas Medibles | S-Peak</title>
-  <meta name="description" content="Cursos de inglés para empresas en México diseñados por puesto, con avance medible y evidencia para Dirección. Diagnóstico, programa personalizado y reportes claros. Solicite su propuesta.">
+  <meta name="description" content="Cursos de inglés para empresas en México, diseñado por puesto, con avance medible y evidencia para Dirección. Programa a la medida. Solicite su propuesta.">
   <meta name="robots" content="noindex, follow">
   <meta name="author" content="S-Peak">
   <meta name="theme-color" content="#1A3C4D">
@@ -51,14 +51,14 @@
       
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     /* Lenis: requerido para que el smooth scroll funcione sin pelearse con el navegador */
     html.lenis, html.lenis body { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto !important; }
     .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
     .lenis.lenis-stopped { overflow: hidden; }
     .lenis.lenis-smooth iframe { pointer-events: none; }
-    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     :target, [id] { scroll-margin-top: 80px; }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
@@ -696,6 +696,30 @@
         width: 34px;
         height: 34px;
       }
+
+      /* 1. STATS: ocultar la tercera stat (+30 Industrias) en móvil */
+      .hero-stats-row .hero-stat:nth-child(3) { display: none; }
+
+      /* 2. 5 RAZONES: círculos de pasos más pequeños y centro reducido
+         para que no se empalmen con el círculo central */
+      .cycle { max-width: 320px; }
+      .cycle-center { width: 54%; height: 54%; padding: 16px; }
+      .cycle-num { font-size: 24px; }
+      .cycle-title { font-size: 12px; margin: 6px 0 4px; }
+      .cycle-desc { font-size: 10px; line-height: 1.4; }
+      .cycle-node { width: 48px; height: 48px; }
+      .cycle-node svg { width: 22px; height: 22px; }
+
+      /* 3. ESPACIADO: padding vertical uniforme de 48px en todas las secciones */
+      .hero { padding: 48px 20px; }
+      .evidencia,
+      .proceso,
+      .areas,
+      .testimonials,
+      .faq,
+      .final-cta { padding: 48px 20px; }
+      .hero-stats-row { margin-top: 28px; }
+      .logos { margin-top: 0; }
     }
     @media (prefers-reduced-motion: reduce) {
       .whatsapp-float { animation: none; }
@@ -1422,17 +1446,6 @@
         <li><a href="https://s-peak.com/recursos">Centro de Recursos</a></li>
         <li><a href="https://s-peak.com/aviso-de-privacidad">Aviso de privacidad</a></li>
         <li><a href="https://s-peak.com/terminos-y-condiciones">Términos y condiciones</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h3>Idiomas</h3>
-      <ul>
-        <li><a href="https://s-peak.com/aleman">Alemán</a></li>
-        <li><a href="https://s-peak.com/espanol">Español</a></li>
-        <li><a href="https://s-peak.com/frances">Francés</a></li>
-        <li><a href="https://s-peak.com/ingles">Inglés</a></li>
-        <li><a href="https://s-peak.com/italiano">Italiano</a></li>
-        <li><a href="https://s-peak.com/portugues">Portugués</a></li>
       </ul>
     </div>
   </div>
