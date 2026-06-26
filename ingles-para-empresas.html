@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inglés para Empresas en México – Resultados Medibles | S-Peak</title>
-  <meta name="description" content="Capacitación en inglés empresarial a la medida. Diagnóstico, programa personalizado y resultados medibles para su equipo directivo y operativo.">
+
+  <!-- SEO primario -->
+  <title>Inglés para Empresas en México – Programas Medibles | S-Peak</title>
+  <meta name="description" content="Cursos de inglés para empresas en México diseñados por puesto, con avance medible y evidencia para Dirección. Diagnóstico, programa personalizado y reportes claros. Solicite su propuesta.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="author" content="S-Peak">
+  <meta name="theme-color" content="#1A3C4D">
+  <link rel="canonical" href="https://s-peak.com/landing/ingles-para-empresas">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="S-Peak">
+  <meta property="og:title" content="Inglés para Empresas en México – Programas Medibles | S-Peak">
+  <meta property="og:description" content="Cursos de inglés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Más de 500 empresas y 40 000 profesionales formados.">
+  <meta property="og:url" content="https://s-peak.com/landing/ingles-para-empresas">
+  <meta property="og:image" content="https://s-peak.com/img/ejecutiva-hero.webp">
+  <meta property="og:image:alt" content="Ejecutiva en un curso de inglés para empresas de S-Peak">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inglés para Empresas en México – Programas Medibles | S-Peak">
+  <meta name="twitter:description" content="Cursos de inglés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Solicite su propuesta.">
+  <meta name="twitter:image" content="https://s-peak.com/img/ejecutiva-hero.webp">
+
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="apple-touch-icon" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://wa.me">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -40,7 +64,6 @@
     a { text-decoration: none; color: inherit; }
     button, input, textarea { font-family: inherit; }
 
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
     .eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
       text-transform: uppercase; color: var(--red); margin-bottom: 14px;
@@ -56,17 +79,9 @@
     h3 { font-weight: 700; }
     p { font-weight: 400; }
     .eyebrow { letter-spacing: 0.22em; }
-    .stat-num { font-weight: 800; }
-    .stat-label { font-weight: 500; }
     .hero-sub { font-weight: 400; line-height: 1.7; }
     .hero-tag { font-weight: 700; }
     .logos-label { font-weight: 600; }
-    .step-title { font-weight: 700; }
-    .step-desc { font-weight: 400; }
-    .pillar-label { font-weight: 700; }
-    .pillar-sub { font-weight: 400; }
-    .area-name { font-weight: 700; }
-    .area-desc { font-weight: 400; }
     .testi-quote { font-weight: 400; }
     .author-name { font-weight: 700; }
     .author-role { font-weight: 400; }
@@ -74,7 +89,6 @@
     .faq-a { font-weight: 400; }
     .nav-cta, .btn-red, .btn-white, .form-submit { font-weight: 700; letter-spacing: 0.03em; }
     .footer-logo { font-weight: 800; }
-    .footer-links a { font-weight: 500; }
 
     /* REVEAL */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
@@ -318,16 +332,6 @@
       font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
     }
     .btn-red:hover { background: var(--red-dark); }
-    .pillars { display: flex; gap: 12px; }
-    .pillar {
-      flex: 1; background: var(--off); border-radius: 0;
-      padding: 22px 16px; text-align: center;
-      border: 1.5px solid transparent; transition: border-color 0.2s;
-    }
-    .pillar:hover { border-color: var(--red); }
-    .pillar-icon { font-size: 26px; margin-bottom: 10px; }
-    .pillar-label { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 5px; line-height: 1.3; }
-    .pillar-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
 
     /* PROCESO - INFOGRAFÍA */
     .proceso { background: var(--off); padding: 88px 28px; position: relative; overflow: hidden; }
@@ -404,37 +408,6 @@
     .areas-left p { font-size: 15.5px; color: var(--ink-2); line-height: 1.72; margin-bottom: 28px; }
     .areas-media { width: 100%; min-height: 420px; overflow: hidden; }
     .areas-media img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
-
-    /* EJECUTIVOS / CARRUSEL */
-    .execs { padding: 0 0 88px; }
-    .execs-inner { padding-left: max(28px, calc((100% - var(--max)) / 2)); }
-    .areas-carousel { overflow: hidden; }
-    .areas-track { display: flex; width: max-content; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
-    .exec-card {
-      position: relative; flex-shrink: 0;
-      width: 300px; height: 420px; margin-right: 18px;
-      background: linear-gradient(155deg, #cfd6dd 0%, #e4e9ee 100%);
-      overflow: hidden; color: var(--white);
-    }
-    .exec-card::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(26,60,77,0.94) 0%, rgba(26,60,77,0.6) 34%, rgba(26,60,77,0) 62%);
-    }
-    .exec-photo-label {
-      position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%);
-      text-align: center; font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
-      color: rgba(26,60,77,0.35); text-transform: uppercase; z-index: 1;
-    }
-    .exec-badge {
-      position: absolute; top: 16px; left: 16px; z-index: 3;
-      background: var(--red); color: var(--white);
-      font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
-      padding: 7px 12px;
-    }
-    .exec-info { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 20px; }
-    .exec-name { font-size: 18px; font-weight: 800; line-height: 1.2; }
-    .exec-role { font-size: 12.5px; color: rgba(255,255,255,0.72); margin-top: 3px; margin-bottom: 11px; }
-    .exec-challenge { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.92); }
 
     /* TESTIMONIOS */
     .testimonials { background: var(--navy); padding: 88px 28px; }
@@ -642,7 +615,7 @@
     }
     .footer-social a:hover { color: #ffd6df; border-color: #ffd6df; }
     .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
-    .footer-col h4 {
+    .footer-col h3 {
       font-size: 15px; font-weight: 700; color: white;
       margin-bottom: 18px; letter-spacing: 0.01em;
     }
@@ -841,6 +814,140 @@
     .wa-submit:hover { background: #1ebe5a; }
     .wa-submit:active { transform: scale(0.99); }
   </style>
+
+  <!-- Schema markup: Organization + servicio educativo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "EducationalOrganization"],
+        "@id": "https://s-peak.com/#organization",
+        "name": "S-Peak",
+        "url": "https://s-peak.com",
+        "logo": "https://s-peak.com/img/favicon.png",
+        "description": "S-Peak diseña programas de inglés para empresas en México, personalizados por puesto, con avance medible y evidencia verificable para la Dirección.",
+        "sameAs": [
+          "https://linkedin.com/company/s-peak"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "areaServed": "MX",
+          "availableLanguage": ["es", "en"]
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://s-peak.com/#localbusiness",
+        "name": "S-Peak",
+        "image": "https://s-peak.com/img/ejecutiva-hero.webp",
+        "url": "https://s-peak.com/landing/ingles-para-empresas",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "MX",
+          "addressRegion": "Ciudad de México"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "México"
+        },
+        "parentOrganization": { "@id": "https://s-peak.com/#organization" }
+      },
+      {
+        "@type": "Service",
+        "name": "Inglés para empresas",
+        "serviceType": "Capacitación corporativa de inglés",
+        "provider": { "@id": "https://s-peak.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "México" },
+        "description": "Cursos de inglés para empresas diseñados por puesto y nivel, con diagnóstico inicial, seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador."
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://s-peak.com/landing/ingles-para-empresas",
+        "url": "https://s-peak.com/landing/ingles-para-empresas",
+        "name": "Inglés para Empresas en México – Programas Medibles | S-Peak",
+        "inLanguage": "es-MX",
+        "isPartOf": { "@id": "https://s-peak.com/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema markup: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una Tarjeta de Resultados que usted presenta a Dirección. Su equipo avanza por dominio comprobado, no por horas cursadas. Solicite una propuesta y le mostramos un ejemplo de Tarjeta."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En cuánto tiempo veo un cambio real?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un dominio al siguiente (de B1 a B2) toma alrededor de 9 meses con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. Cotice y le estimamos el plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Adaptan el inglés a mi industria y manejan equipos en varios países?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Anclamos cada Sprint al lenguaje de su sector y a la función de cada equipo: comercial, operaciones, finanzas, atención a clientes, coordinación con casa matriz, con foco en que comuniquen y reporten en inglés en situaciones reales. Para multinacionales capacitamos México y filiales en simultáneo, con gestión central y resultados consolidados. Indíquenos su industria y el alcance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Quién imparte y qué respaldo tienen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, lo cambiamos. La calidad no se deja al azar. Pregúntenos por el perfil de quienes trabajarían con su equipo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, sin perder lo invertido. Lo dejamos definido en la propuesta desde el inicio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo encaja el programa sin frenar la operación?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las sesiones se agendan en los horarios que le convengan a su equipo, en la modalidad que elija: en sus instalaciones, en línea en vivo o híbrida. Y como la operación trae imprevistos, manejamos reposición ágil: si se atraviesa una junta o una urgencia, la sesión se repone sin trámites, para que el avance no se detenga. Cuéntenos cómo opera su equipo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta y cómo se cobra?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se cotiza por grupo completo, no por persona, de 1 a 10 colaboradores: a más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones es avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. Solicite su cotización y le damos el número para su caso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tiene registro ante la STPS y es deducible de impuestos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí a ambas. El programa cuenta con registro oficial ante la STPS y emitimos la constancia de capacitación de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. Solicite la información para su expediente."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -848,7 +955,9 @@
 <nav>
   <div class="nav-inner">
     <div class="nav-logo">
-      <img src="img/logo_white.svg" alt="s·peak" loading="eager">
+      <a href="https://s-peak.com" aria-label="S-Peak — inicio">
+        <img src="img/logo_white.svg" alt="S-Peak, cursos de inglés para empresas" width="1776" height="492" loading="eager">
+      </a>
     </div>
     <div class="nav-links">
       <a href="#enfoque">Nuestro Enfoque</a>
@@ -862,7 +971,7 @@
 
 <!-- HERO -->
 <section class="hero">
-  <img class="deco deco-hero" src="img/isotype.svg" alt="" aria-hidden="true">
+  <img class="deco deco-hero" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
   <div class="hero-inner">
     <!-- COLUMNA IZQUIERDA (60%) -->
     <div class="hero-content reveal">
@@ -894,7 +1003,7 @@
     <div class="hero-visual reveal">
       <div class="hero-circle" aria-hidden="true"></div>
       <div class="hero-photo">
-        <img src="img/ejecutiva-hero.webp" alt="Ejecutiva de empresa" loading="eager" fetchpriority="high">
+        <img src="img/ejecutiva-hero.webp" alt="Ejecutiva en un curso de inglés para empresas de S-Peak" width="1300" height="1898" loading="eager" fetchpriority="high">
       </div>
       <div class="hero-stats-row">
         <div class="hero-stat">
@@ -919,35 +1028,35 @@
 
 <!-- LOGOS -->
 <div class="logos">
-  <img class="deco deco-logos" src="img/isotype.svg" alt="" aria-hidden="true">
+  <img class="deco deco-logos" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
   <div class="logos-card">
     <p class="logos-label">Más de 500 empresas confían en <strong>S-Peak</strong></p>
     <div class="logos-track-wrap">
       <div class="logos-track">
       <!-- Set 1 -->
-      <img src="img/logos/axa.webp" alt="AXA" loading="lazy">
-      <img src="img/logos/club%20med.webp" alt="Club Med" loading="lazy">
-      <img src="img/logos/gbm.webp" alt="GBM" loading="lazy">
-      <img src="img/logos/kio.webp" alt="KIO" loading="lazy">
-      <img src="img/logos/loreal.webp" alt="L'Oréal" loading="lazy">
-      <img src="img/logos/naturgy.webp" alt="Naturgy" loading="lazy">
-      <img src="img/logos/paramount.webp" alt="Paramount" loading="lazy">
-      <img src="img/logos/pepsico.webp" alt="PepsiCo" loading="lazy">
-      <img src="img/logos/reanult.webp" alt="Renault" loading="lazy">
-      <img src="img/logos/santander.webp" alt="Santander" loading="lazy">
-      <img src="img/logos/walmart.webp" alt="Walmart" loading="lazy">
+      <img src="img/logos/axa.webp" alt="Logo de AXA" width="600" height="300" loading="lazy">
+      <img src="img/logos/club%20med.webp" alt="Logo de Club Med" width="600" height="300" loading="lazy">
+      <img src="img/logos/gbm.webp" alt="Logo de GBM" width="600" height="300" loading="lazy">
+      <img src="img/logos/kio.webp" alt="Logo de KIO" width="600" height="300" loading="lazy">
+      <img src="img/logos/loreal.webp" alt="Logo de L'Oréal" width="600" height="300" loading="lazy">
+      <img src="img/logos/naturgy.webp" alt="Logo de Naturgy" width="600" height="300" loading="lazy">
+      <img src="img/logos/paramount.webp" alt="Logo de Paramount" width="600" height="300" loading="lazy">
+      <img src="img/logos/pepsico.webp" alt="Logo de PepsiCo" width="600" height="300" loading="lazy">
+      <img src="img/logos/reanult.webp" alt="Logo de Renault" width="600" height="300" loading="lazy">
+      <img src="img/logos/santander.webp" alt="Logo de Santander" width="600" height="300" loading="lazy">
+      <img src="img/logos/walmart.webp" alt="Logo de Walmart" width="600" height="300" loading="lazy">
       <!-- Set 2 (duplicado para loop infinito) -->
-      <img src="img/logos/axa.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/club%20med.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/gbm.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/kio.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/loreal.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/naturgy.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/paramount.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/pepsico.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/reanult.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/santander.webp" alt="" aria-hidden="true" loading="lazy">
-      <img src="img/logos/walmart.webp" alt="" aria-hidden="true" loading="lazy">
+      <img src="img/logos/axa.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/club%20med.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/gbm.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/kio.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/loreal.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/naturgy.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/paramount.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/pepsico.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/reanult.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/santander.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/walmart.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
       </div>
     </div>
   </div>
@@ -958,7 +1067,7 @@
   <div class="areas-inner">
     <div class="areas-right reveal">
       <div class="areas-media">
-        <img src="img/imagen-ejecutivo.webp" alt="Ejecutivo en un curso de inglés para empresas" loading="lazy">
+        <img src="img/imagen-ejecutivo.webp" alt="Ejecutivo en un programa de inglés para empresas de S-Peak" width="1024" height="768" loading="lazy">
       </div>
     </div>
     <div class="areas-left reveal">
@@ -1073,7 +1182,7 @@
 
 <!-- PROCESO INFOGRAFÍA -->
 <section class="proceso" id="metodo">
-  <img class="deco deco-proceso" src="img/isotype.svg" alt="" aria-hidden="true">
+  <img class="deco deco-proceso" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
   <div class="proceso-inner">
     <div class="proceso-left reveal">
       <div class="eyebrow">El método S-Peak</div>
@@ -1289,7 +1398,7 @@
 
 <!-- FINAL CTA -->
 <section class="final-cta">
-  <img class="deco deco-cta" src="img/isotype.svg" alt="" aria-hidden="true">
+  <img class="deco deco-cta" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
   <h2>Lleve a su equipo al nivel que<br>su operación necesita</h2>
   <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
   <button class="btn-white" onclick="openModal()">Solicite Información</button>
@@ -1308,7 +1417,7 @@
       </div>
     </div>
     <div class="footer-col">
-      <h4>Información</h4>
+      <h3>Información</h3>
       <ul>
         <li><a href="https://s-peak.com/recursos">Centro de Recursos</a></li>
         <li><a href="https://s-peak.com/aviso-de-privacidad">Aviso de privacidad</a></li>
@@ -1316,7 +1425,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Idiomas</h4>
+      <h3>Idiomas</h3>
       <ul>
         <li><a href="https://s-peak.com/aleman">Alemán</a></li>
         <li><a href="https://s-peak.com/espanol">Español</a></li>
