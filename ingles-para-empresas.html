@@ -837,6 +837,40 @@
     }
     .wa-submit:hover { background: #1ebe5a; }
     .wa-submit:active { transform: scale(0.99); }
+
+    /* Botón volver al inicio — discreto, lado izquierdo, aparece al hacer scroll */
+    .back-to-top {
+      position: fixed;
+      left: 20px;
+      bottom: 24px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--navy);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.2s;
+      z-index: 900;
+    }
+    .back-to-top.is-visible {
+      opacity: 0.55;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover { opacity: 1; background: var(--white); }
+    .back-to-top svg { width: 18px; height: 18px; }
+    @media (max-width: 600px) {
+      .back-to-top { left: 14px; bottom: 18px; width: 36px; height: 36px; }
+    }
   </style>
 
   <!-- Schema markup: Organization + servicio educativo -->
@@ -1709,6 +1743,30 @@
       document.getElementById('waForm').reset();
       return false;
     };
+  })();
+</script>
+
+<!-- Botón volver al inicio -->
+<button type="button" class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+<script>
+  (function () {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function onScroll() {
+      if (window.pageYOffset > 400) btn.classList.add('is-visible');
+      else btn.classList.remove('is-visible');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener('click', function () {
+      if (window.__lenis) window.__lenis.scrollTo(0);
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   })();
 </script>
 
