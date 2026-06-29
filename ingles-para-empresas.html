@@ -4,23 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5QG29W7R');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18039159502"></script>
+  <!-- Google Tag Manager (carga diferida tras window.load para no competir con el LCP) -->
+  <!-- La conversion de Google Ads (AW-18039159502) se gestiona dentro de GTM, no con gtag.js directo -->
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18039159502');
+    window.addEventListener('load', function () {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5QG29W7R');
+    });
   </script>
-  <!-- End Google tag (gtag.js) -->
+  <!-- End Google Tag Manager -->
 
   <!-- SEO primario -->
   <title>Inglés para Empresas en México – Programas Medibles | S-Peak</title>
@@ -1589,7 +1585,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/lenis-1.1.13.min.js"></script>
 <script>
   // Smooth scroll (Lenis)
   (function () {
@@ -1790,10 +1786,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const msg = 'Hola, soy ' + nombre + ' (' + telefono + '). Me interesa conocer más sobre los programas de inglés para empresas de S-Peak. Mi correo es ' + correo + '.';
       const url = 'https://wa.me/525585265520?text=' + encodeURIComponent(msg);
 
-      // Conversión de Google Ads
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion_whatsapp', {});
-      }
+      // Conversión de WhatsApp → la recoge GTM (trigger: Custom Event "conversion_whatsapp")
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'conversion_whatsapp' });
 
       window.open(url, '_blank', 'noopener,noreferrer');
 
