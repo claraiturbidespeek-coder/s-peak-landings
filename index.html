@@ -330,6 +330,10 @@
     .form-status.is-success { background: #e7f6ec; color: #1b7a3d; }
     .form-status.is-error { background: #fbe9ec; color: var(--red); }
     .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
+    .lead-success { padding: 40px 28px 44px; text-align: center; }
+    .lead-success-check { width: 84px; height: 84px; color: #1b7a3d; margin: 0 auto 20px; display: block; }
+    .lead-success h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+    .lead-success p { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 360px; margin-left: auto; margin-right: auto; }
 
     /* LOGOS CARRUSEL */
     .logos { background: transparent; padding: 0 28px; margin-top: -72px; position: relative; z-index: 5; }
@@ -1548,11 +1552,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="modal-overlay" id="lead-modal" onclick="overlayClose(event)">
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-header">
-      <div>
+      <div id="leadModalHead">
         <h2 id="modal-title">Hable con un Experto</h2>
         <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
       </div>
       <button class="modal-close" type="button" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="lead-success" id="leadSuccess" role="status" aria-live="polite" hidden>
+      <svg class="lead-success-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="11"></circle>
+        <path d="M7 12.5l3.5 3.5L17 9"></path>
+      </svg>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
     </div>
     <form class="form-body" id="leadForm" novalidate>
       <div class="form-row">
@@ -1623,6 +1635,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // Modal
   function openModal() {
+    // Restablece el estado inicial (formulario visible, confirmación oculta) por si se reabre.
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('leadSuccess');
+    const head = document.getElementById('leadModalHead');
+    const status = document.getElementById('leadStatus');
+    if (form) form.hidden = false;
+    if (head) head.hidden = false;
+    if (success) success.hidden = true;
+    if (status) { status.hidden = true; status.textContent = ''; status.classList.remove('is-success', 'is-error'); }
     document.getElementById('lead-modal').classList.add('open');
     document.body.style.overflow = 'hidden';
     if (window.__lenis) window.__lenis.stop();
@@ -1709,15 +1730,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       window.sendLead(payload)
         .then(function () {
-          setStatus('¡Gracias! Recibimos su solicitud. Un asesor le contactará en menos de 24 horas.', 'is-success');
+          // Éxito: reemplaza el contenido del modal por el estado de confirmación.
           form.reset();
+          form.hidden = true;
+          const head = document.getElementById('leadModalHead');
+          if (head) head.hidden = true;
+          const success = document.getElementById('leadSuccess');
+          if (success) success.hidden = false;
           window.dataLayer = window.dataLayer || [];
           window.dataLayer.push({ event: 'lead_formulario_principal' });
         })
         .catch(function () {
           setStatus('No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp.', 'is-error');
-        })
-        .finally(function () {
           btn.disabled = false;
           btn.textContent = originalLabel;
         });
