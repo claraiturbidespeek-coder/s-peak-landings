@@ -4,6 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Atribución: captura UTMs + gclid lo antes posible (antes de cualquier redirect o
+       limpieza de URL) y los persiste en sessionStorage, para reusarlos al enviar los
+       formularios aunque el query string ya no esté en la barra. Debe ir antes de GTM. -->
+  <script>
+    (function () {
+      try {
+        var STORAGE_KEY = 'speak_attribution';
+        var FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'];
+        var params;
+        try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+        var fromUrl = {};
+        var hasAny = false;
+        FIELDS.forEach(function (k) {
+          var v = (params.get(k) || '').trim();
+          if (v) { fromUrl[k] = v; hasAny = true; }
+        });
+        if (!hasAny) return; // Nada nuevo en la URL: conservamos lo ya persistido en la sesión.
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch (e) { stored = {}; }
+        // La URL manda: mezclamos lo nuevo sobre lo previo de la sesión.
+        FIELDS.forEach(function (k) { if (fromUrl[k]) stored[k] = fromUrl[k]; });
+        try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(stored)); } catch (e) {}
+      } catch (e) {}
+    })();
+  </script>
+
   <!-- Google Tag Manager (carga diferida tras window.load para no competir con el LCP) -->
   <!-- La conversion de Google Ads (AW-18039159502) se gestiona dentro de GTM, no con gtag.js directo -->
   <script>
@@ -24,7 +50,7 @@
   <meta name="robots" content="noindex, follow">
   <meta name="author" content="S-Peak">
   <meta name="theme-color" content="#1A3C4D">
-  <link rel="canonical" href="https://s-peak.com/landing/ingles-para-empresas">
+  <link rel="canonical" href="https://s-peak.com/landing/ingles-para-empresas/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -32,7 +58,7 @@
   <meta property="og:site_name" content="S-Peak">
   <meta property="og:title" content="Inglés para Empresas en México – Programas Medibles | S-Peak">
   <meta property="og:description" content="Cursos de inglés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Más de 500 empresas y 40 000 profesionales formados.">
-  <meta property="og:url" content="https://s-peak.com/landing/ingles-para-empresas">
+  <meta property="og:url" content="https://s-peak.com/landing/ingles-para-empresas/">
   <meta property="og:image" content="https://s-peak.com/img/ejecutiva-hero.webp">
   <meta property="og:image:alt" content="Ejecutiva en un curso de inglés para empresas de S-Peak">
 
@@ -1669,15 +1695,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.collectLeadTags = function () {
     let params;
     try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
-    const get = function (key) {
-      const v = params ? (params.get(key) || '').trim() : '';
-      return v || 'No especificado';
+    let stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem('speak_attribution') || '{}') || {}; } catch (_) { stored = {}; }
+    // Prioridad por campo: 1) query actual en la URL, 2) valor persistido en la sesión, 3) vacío.
+    const raw = function (key) {
+      const live = params ? (params.get(key) || '').trim() : '';
+      if (live) return live;
+      return (stored[key] || '').toString().trim();
     };
+    let utmSource = raw('utm_source');
+    let utmMedium = raw('utm_medium');
+    let utmCampaign = raw('utm_campaign');
+    let utmContent = raw('utm_content');
+    const gclid = raw('gclid');
+    // Respaldo Google Ads: si NO hubo utm_source (ni en URL ni persistido) pero sí hay gclid,
+    // marcamos origen google/cpc y guardamos el gclid en utm_content para no perder el rastro.
+    // Si los UTM sí vienen, mandan ellos; el gclid es solo respaldo.
+    if (!utmSource && gclid) {
+      utmSource = 'google';
+      if (!utmMedium) utmMedium = 'cpc';
+      if (!utmContent) utmContent = 'gclid:' + gclid;
+    }
+    const NA = 'No especificado';
     return {
-      utm_source: get('utm_source'),
-      utm_medium: get('utm_medium'),
-      utm_campaign: get('utm_campaign'),
-      utm_content: get('utm_content'),
+      utm_source: utmSource || NA,
+      utm_medium: utmMedium || NA,
+      utm_campaign: utmCampaign || NA,
+      utm_content: utmContent || NA,
       idioma: 'Inglés',
     };
   };
