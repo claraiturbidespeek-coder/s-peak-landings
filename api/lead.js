@@ -9,6 +9,12 @@ const SUBJECT = 'Nuevo lead - Landing Inglés para Empresas';
 // Orígenes permitidos para CORS.
 const ALLOWED_ORIGINS = ['https://s-peak.com', 'https://www.s-peak.com'];
 
+// Kommo — el lead se crea en el buzón "Leads Entrantes" (Incoming Leads) del pipeline
+// Leads B2B por la ruta Unsorted (POST /leads/unsorted/forms). El token y el subdominio
+// SOLO se leen de variables de entorno (process.env), nunca se escriben en el código.
+const KOMMO_PIPELINE_ID = 7648487;
+const KOMMO_REQUEST_TIMEOUT_MS = 7000;
+
 function escapeHtml(value) {
   return String(value == null ? '' : value)
     .replace(/&/g, '&amp;')
@@ -27,6 +33,122 @@ function applyCors(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.setHeader('Access-Control-Max-Age', '86400');
+}
+
+// Petición a la API de Kommo con timeout, para que una llamada lenta no retenga la función.
+async function kommoFetch(url, token, method, body) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), KOMMO_REQUEST_TIMEOUT_MS);
+  try {
+    return await fetch(url, {
+      method,
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal,
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+// Crea el lead en Kommo por la ruta Unsorted para que caiga en el buzón "Leads Entrantes"
+// del pipeline Leads B2B, con el contacto (y empresa si viene) ligados y SIN responsable:
+// quien lo acepte en Kommo se vuelve el responsable, por eso no mandamos user_id ni status_id.
+// Nunca lanza: cualquier error se registra en log para que no pase silencioso.
+async function sendLeadToKommo({ nombre, empresa, correo, telefono, detalles, sourceName, req }) {
+  const token = process.env.KOMMO_TOKEN;
+  const subdomain = process.env.KOMMO_SUBDOMAIN;
+  if (!token || !subdomain) {
+    console.error('Kommo: faltan variables de entorno; se omite la creación del lead', {
+      hasToken: !!token,
+      hasSubdomain: !!subdomain,
+    });
+    return;
+  }
+
+  const base = `https://${subdomain}.kommo.com/api/v4`;
+  const nowSec = Math.floor(Date.now() / 1000);
+  const ip = (req.headers['x-forwarded-for'] || '').toString().split(',')[0].trim() || '0.0.0.0';
+  const referer = (req.headers['referer'] || req.headers['origin'] || '').toString();
+
+  // Contacto: nombre + email y teléfono como campos de sistema de Kommo.
+  const contactFields = [];
+  if (correo) {
+    contactFields.push({ field_code: 'EMAIL', values: [{ value: correo, enum_code: 'WORK' }] });
+  }
+  if (telefono) {
+    contactFields.push({ field_code: 'PHONE', values: [{ value: telefono, enum_code: 'WORK' }] });
+  }
+  const contact = { name: nombre || correo || 'Contacto sin nombre' };
+  if (contactFields.length) {
+    contact.custom_fields_values = contactFields;
+  }
+
+  const leadName = `Lead Web — ${nombre || correo || 'Sin nombre'}${empresa ? ` (${empresa})` : ''}`;
+
+  // NO enviamos responsable ni status_id: el lead entra al buzón de aceptación tal cual.
+  const embedded = {
+    leads: [{ name: leadName, pipeline_id: KOMMO_PIPELINE_ID }],
+    contacts: [contact],
+  };
+  if (empresa) {
+    embedded.companies = [{ name: empresa }];
+  }
+
+  const payload = [
+    {
+      source_name: sourceName,
+      source_uid: `web-${nowSec}-${Math.random().toString(36).slice(2, 10)}`,
+      created_at: nowSec,
+      pipeline_id: KOMMO_PIPELINE_ID,
+      metadata: {
+        form_id: 'formulario-landing',
+        form_name: sourceName,
+        form_sent_at: nowSec,
+        form_page: referer || 'https://s-peak.com',
+        ip,
+      },
+      _embedded: embedded,
+    },
+  ];
+
+  let leadId = null;
+  try {
+    const res = await kommoFetch(`${base}/leads/unsorted/forms`, token, 'POST', payload);
+    const text = await res.text().catch(() => '');
+    if (!res.ok) {
+      console.error('Kommo: fallo al crear el lead (unsorted/forms):', res.status, text);
+      return;
+    }
+    try {
+      const data = JSON.parse(text);
+      const unsorted = (((data._embedded || {}).unsorted || [])[0] || {})._embedded || {};
+      leadId = unsorted.leads && unsorted.leads[0] ? unsorted.leads[0].id : null;
+    } catch (_) {
+      // Si no podemos parsear el ID, el lead ya se creó; solo perderíamos la nota.
+    }
+  } catch (err) {
+    console.error('Kommo: excepción al crear el lead (unsorted/forms):', String((err && err.message) || err));
+    return;
+  }
+
+  // Nota con los detalles del formulario, para que se vean al aceptar el lead en el buzón.
+  if (leadId && detalles) {
+    try {
+      const noteRes = await kommoFetch(`${base}/leads/${leadId}/notes`, token, 'POST', [
+        { note_type: 'common', params: { text: detalles } },
+      ]);
+      if (!noteRes.ok) {
+        const noteText = await noteRes.text().catch(() => '');
+        console.error('Kommo: lead creado pero falló la nota con los detalles:', noteRes.status, noteText);
+      }
+    } catch (err) {
+      console.error('Kommo: lead creado pero excepción al agregar la nota:', String((err && err.message) || err));
+    }
+  }
 }
 
 module.exports = async function handler(req, res) {
@@ -115,6 +237,23 @@ module.exports = async function handler(req, res) {
     </table>
   </div>`;
 
+  // Kommo (fire-and-forget): arrancamos la creación del lead en paralelo al correo. Su
+  // resultado NUNCA cambia la respuesta al cliente: el correo se manda y la conversión se
+  // dispara aunque Kommo falle. sendLeadToKommo ya captura todo; el .catch es cinturón extra.
+  const sourceName = `Formulario Sitio Web${origen && origen !== 'Desconocido' ? ` — ${origen}` : ''}`;
+  const kommoDone = sendLeadToKommo({
+    nombre,
+    empresa,
+    correo,
+    telefono,
+    detalles: text,
+    sourceName,
+    req,
+  }).catch((err) => {
+    console.error('Kommo: excepción no controlada al crear el lead:', String((err && err.message) || err));
+  });
+
+  let emailStatus;
   try {
     const resendRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -136,12 +275,24 @@ module.exports = async function handler(req, res) {
     if (!resendRes.ok) {
       const detail = await resendRes.text().catch(() => '');
       console.error('Error de Resend:', resendRes.status, detail);
-      return res.status(502).json({ ok: false, error: 'No se pudo enviar el correo' });
+      emailStatus = 'failed';
+    } else {
+      emailStatus = 'ok';
     }
-
-    return res.status(200).json({ ok: true });
   } catch (err) {
     console.error('Excepción al enviar con Resend:', err);
-    return res.status(500).json({ ok: false, error: 'Error inesperado al enviar el correo' });
+    emailStatus = 'error';
   }
+
+  // Esperamos a que Kommo termine dentro del ciclo de vida de la función (nunca lanza),
+  // pero su resultado no altera el status que devolvemos.
+  await kommoDone;
+
+  if (emailStatus === 'ok') {
+    return res.status(200).json({ ok: true });
+  }
+  if (emailStatus === 'failed') {
+    return res.status(502).json({ ok: false, error: 'No se pudo enviar el correo' });
+  }
+  return res.status(500).json({ ok: false, error: 'Error inesperado al enviar el correo' });
 };
