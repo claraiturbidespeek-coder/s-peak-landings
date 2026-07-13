@@ -1654,6 +1654,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (!target) return;
         e.preventDefault();
         lenis.scrollTo(target, { offset: -80 });
+        history.pushState(null, '', id);
       });
     });
     window.__lenis = lenis;
