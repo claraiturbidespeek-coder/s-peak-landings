@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Atribución: captura UTMs + gclid lo antes posible y los persiste en sessionStorage,
+       para reusarlos al enviar el formulario aunque el query string ya no esté en la barra. -->
+  <script>
+    (function () {
+      try {
+        var STORAGE_KEY = 'speak_attribution';
+        var FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'];
+        var params;
+        try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+        var fromUrl = {};
+        var hasAny = false;
+        FIELDS.forEach(function (k) {
+          var v = (params.get(k) || '').trim();
+          if (v) { fromUrl[k] = v; hasAny = true; }
+        });
+        if (!hasAny) return; // Nada nuevo en la URL: conservamos lo ya persistido en la sesión.
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch (e) { stored = {}; }
+        FIELDS.forEach(function (k) { if (fromUrl[k]) stored[k] = fromUrl[k]; });
+        try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(stored)); } catch (e) {}
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>Página no encontrada (404) | S-Peak</title>
+  <meta name="description" content="La página que busca no está disponible. Regrese al inicio de S-Peak o solicite información sobre nuestros programas de idiomas para empresas.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="author" content="S-Peak">
+  <meta name="theme-color" content="#1A3C4D">
+
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+  <link rel="dns-prefetch" href="https://wa.me">
+  <style>
+    /* Montserrat self-hosted (woff2 variable, subset latin: cubre acentos y ñ del español) */
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 800;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    :root {
+      --red: #B51E40;
+      --red-dark: #8f1832;
+      --navy: #1A3C4D;
+      --white: #FFFFFF;
+      --off: #F5F7FA;
+      --ink: #111827;
+      --ink-2: #374151;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --yellow: #F5A623;
+      --font: 'Montserrat', -apple-system, sans-serif;
+      --max: 1160px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font-family: inherit; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block; width: 24px; height: 2px; background: var(--red);
+    }
+
+    h1 { font-weight: 800; }
+    .nav-cta, .btn-red, .btn-outline, .form-submit { font-weight: 700; letter-spacing: 0.03em; }
+    .footer-logo { font-weight: 800; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #1A3C4D;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 28px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      padding: 11px 22px; border-radius: 0;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* SECCIÓN 404 */
+    .notfound {
+      background: var(--off);
+      min-height: calc(100vh - 68px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px 28px; position: relative; overflow: hidden;
+    }
+    .notfound-inner {
+      max-width: 720px; margin: 0 auto; text-align: center;
+      position: relative; z-index: 1;
+    }
+    .notfound .eyebrow { justify-content: center; }
+    .notfound-code {
+      font-size: clamp(96px, 20vw, 200px); font-weight: 800;
+      color: var(--navy); line-height: 0.95; letter-spacing: -0.04em;
+      margin: 4px 0 10px;
+    }
+    .notfound h1 {
+      font-size: clamp(26px, 3.4vw, 40px); font-weight: 800;
+      color: var(--navy); letter-spacing: -0.025em; line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .notfound-sub {
+      font-size: 17px; color: var(--ink-2); line-height: 1.65;
+      max-width: 520px; margin: 0 auto 34px;
+    }
+    .notfound-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      padding: 14px 28px; border-radius: 0; font-weight: 700;
+      font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+    .btn-outline {
+      display: inline-block; background: transparent; color: var(--navy);
+      padding: 14px 28px; border-radius: 0; font-weight: 700;
+      font-size: 15px; cursor: pointer; border: 1.5px solid var(--navy);
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+
+    /* ISOTIPO DECORATIVO */
+    .deco { position: absolute; z-index: 0; pointer-events: none; }
+    .deco-404 {
+      top: 50%; left: 50%; width: clamp(320px, 62vw, 640px);
+      opacity: 0.05; transform: translate(-50%, -50%);
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; z-index: 1000;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--white); width: 100%; max-width: 600px;
+      max-height: 92vh; overflow-y: auto; border-radius: 0;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .modal-header {
+      background: var(--navy); color: var(--white);
+      padding: 26px 28px 24px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .modal-header h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+    .modal-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .modal-close {
+      background: none; border: none; color: var(--white);
+      font-size: 28px; line-height: 1; cursor: pointer; padding: 0;
+      flex-shrink: 0; opacity: 0.75; transition: opacity 0.2s;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    /* FORM */
+    .form-body { padding: 24px 28px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: 11.5px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group textarea {
+      border: 1.5px solid var(--border); border-radius: 0;
+      padding: 10px 12px; font-size: 14px; color: var(--ink);
+      background: var(--white); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,60,77,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; background: var(--red); color: var(--white);
+      border: none; padding: 15px; border-radius: 0;
+      font-size: 15px; font-weight: 800; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 4px;
+      letter-spacing: 0.01em;
+    }
+    .form-submit:hover { background: var(--red-dark); }
+    .form-submit:active { transform: scale(0.99); }
+    .form-submit:disabled { opacity: 0.7; cursor: progress; }
+    .form-status { font-size: 13px; text-align: center; margin-top: 12px; padding: 10px 12px; border-radius: 6px; }
+    .form-status.is-success { background: #e7f6ec; color: #1b7a3d; }
+    .form-status.is-error { background: #fbe9ec; color: var(--red); }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
+    .lead-success { padding: 40px 28px 44px; text-align: center; }
+    .lead-success-check { width: 84px; height: 84px; color: #1b7a3d; margin: 0 auto 20px; display: block; }
+    .lead-success h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+    .lead-success p { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 360px; margin-left: auto; margin-right: auto; }
+
+    /* FOOTER */
+    footer { background: #1A3C4D; padding: 64px 0 0; font-family: 'Montserrat', sans-serif; }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px; padding: 0 28px 56px;
+      color: white;
+    }
+    .footer-col-brand .footer-logo { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .footer-col-brand p { font-size: 14px; line-height: 1.6; color: white; max-width: 320px; margin-bottom: 20px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: white; transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-social a:hover { color: #ffd6df; border-color: #ffd6df; }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-col h3 {
+      font-size: 15px; font-weight: 700; color: white;
+      margin-bottom: 18px; letter-spacing: 0.01em;
+    }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: white; transition: color 0.2s; }
+    .footer-col a:hover { color: #ffd6df; }
+    .footer-bottom {
+      background: #0f2330; padding: 20px 28px; text-align: center;
+    }
+    .footer-bottom p { font-size: 13px; color: white; margin: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .notfound-actions { flex-direction: column; }
+      .notfound-actions .btn-red, .notfound-actions .btn-outline { width: 100%; }
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70%  { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-float svg {
+        width: 34px;
+        height: 34px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .whatsapp-float { animation: none; }
+    }
+
+    /* Modal de pre-registro WhatsApp */
+    .wa-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(17, 24, 39, 0.6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .wa-modal-overlay.open { display: flex; opacity: 1; }
+    .wa-modal {
+      width: 100%;
+      max-width: 380px;
+      background: var(--white);
+      border-radius: 0;
+      border-top: 4px solid var(--red);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      transform: translateY(12px);
+      transition: transform 0.25s ease;
+    }
+    .wa-modal-overlay.open .wa-modal { transform: translateY(0); }
+    .wa-modal-head {
+      position: relative;
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wa-modal-head h3 {
+      font-family: var(--font);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .wa-modal-head p {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .wa-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .wa-modal-close:hover { color: var(--navy); }
+    .wa-modal-body { padding: 22px 28px 28px; }
+    .wa-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .wa-form-group label {
+      font-family: var(--font);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .wa-form-group input {
+      font-family: var(--font);
+      border: 1.5px solid var(--border);
+      border-radius: 0;
+      padding: 11px 12px;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .wa-form-group input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
+    }
+    .wa-submit {
+      width: 100%;
+      background: #25D366;
+      color: var(--white);
+      border: none;
+      border-radius: 0;
+      padding: 15px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .wa-submit:hover { background: #1ebe5a; }
+    .wa-submit:active { transform: scale(0.99); }
+
+    /* Botón volver al inicio — discreto, lado izquierdo, aparece al hacer scroll */
+    .back-to-top {
+      position: fixed;
+      left: 20px;
+      bottom: 24px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--navy);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.2s;
+      z-index: 900;
+    }
+    .back-to-top.is-visible {
+      opacity: 0.55;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover { opacity: 1; background: var(--white); }
+    .back-to-top svg { width: 18px; height: 18px; }
+    @media (max-width: 600px) {
+      .back-to-top { left: 14px; bottom: 18px; width: 36px; height: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="https://s-peak.com" aria-label="S-Peak — inicio">
+        <img src="/assets/img/logo_white.svg" alt="S-Peak, cursos de inglés para empresas" width="1776" height="492" loading="eager">
+      </a>
+    </div>
+    <button class="nav-cta" onclick="openModal()">Solicite Información</button>
+  </div>
+</nav>
+
+<!-- 404 -->
+<main class="notfound">
+  <img class="deco deco-404" src="/assets/img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
+  <div class="notfound-inner">
+    <div class="eyebrow">Error 404</div>
+    <div class="notfound-code">404</div>
+    <h1>No encontramos la página que busca</h1>
+    <p class="notfound-sub">Es posible que la dirección haya cambiado o que la página ya no esté disponible. Regrese al inicio o escríbanos: con gusto le orientamos.</p>
+    <div class="notfound-actions">
+      <a class="btn-red" href="https://s-peak.com">Volver al inicio</a>
+      <button class="btn-outline" type="button" onclick="openModal()">Solicite Información</button>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col footer-col-brand">
+      <div class="footer-logo">s<span>·</span>peak</div>
+      <p>Formación de idiomas para empresas. Capacitación corporativa diseñada para equipos que necesitan resultados&nbsp;medibles.</p>
+      <div class="footer-social">
+        <a href="https://linkedin.com/company/s-peak" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="https://s-peak.com/aviso-de-privacidad">Aviso de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><strong>S-Peak</strong> 2026 | Copyright Todos los Derechos Reservados</p>
+  </div>
+</footer>
+
+<!-- MODAL FORMULARIO -->
+<div class="modal-overlay" id="lead-modal" onclick="overlayClose(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <div id="leadModalHead">
+        <h2 id="modal-title">Hable con un Experto</h2>
+        <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="lead-success" id="leadSuccess" role="status" aria-live="polite" hidden>
+      <svg class="lead-success-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="11"></circle>
+        <path d="M7 12.5l3.5 3.5L17 9"></path>
+      </svg>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
+    </div>
+    <form class="form-body" id="leadForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadNombre">Nombre y Apellido *</label>
+          <input type="text" id="leadNombre" name="nombre" autocomplete="name" placeholder="María González" required>
+        </div>
+        <div class="form-group">
+          <label for="leadEmpresa">Empresa *</label>
+          <input type="text" id="leadEmpresa" name="empresa" autocomplete="organization" placeholder="Grupo Industrial SA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadCorreo">Correo Electrónico *</label>
+          <input type="email" id="leadCorreo" name="correo" autocomplete="email" placeholder="maria@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label for="leadTelefono">Teléfono</label>
+          <input type="tel" id="leadTelefono" name="telefono" autocomplete="tel" placeholder="+52 55 0000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="leadPuesto">Puesto que desempeña</label>
+        <input type="text" id="leadPuesto" name="puesto" autocomplete="organization-title" placeholder="Ej. Directora de Recursos Humanos">
+      </div>
+      <div class="form-group">
+        <label for="leadMensaje">Cuéntenos su necesidad</label>
+        <textarea id="leadMensaje" name="mensaje" placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
+      </div>
+      <button class="form-submit" type="submit" id="leadSubmit">Solicite Información</button>
+      <p class="form-status" id="leadStatus" role="status" aria-live="polite" hidden></p>
+      <p class="form-note">Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener noreferrer" style="color: var(--muted); text-decoration: underline;">Aviso de privacidad</a>.</p>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Modal de contacto
+  function openModal() {
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('leadSuccess');
+    const head = document.getElementById('leadModalHead');
+    const status = document.getElementById('leadStatus');
+    if (form) form.hidden = false;
+    if (head) head.hidden = false;
+    if (success) success.hidden = true;
+    if (status) { status.hidden = true; status.textContent = ''; status.classList.remove('is-success', 'is-error'); }
+    document.getElementById('lead-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('lead-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function overlayClose(e) {
+    if (e.target === e.currentTarget) closeModal();
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ---- Envío de leads vía función serverless ----
+  window.LEAD_ENDPOINT = 'https://s-peak-landings.vercel.app/api/lead';
+
+  // Etiquetas internas: UTMs de la URL o de la sesión + idioma fijo.
+  window.collectLeadTags = function () {
+    let params;
+    try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
+    let stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem('speak_attribution') || '{}') || {}; } catch (_) { stored = {}; }
+    const raw = function (key) {
+      const live = params ? (params.get(key) || '').trim() : '';
+      if (live) return live;
+      return (stored[key] || '').toString().trim();
+    };
+    let utmSource = raw('utm_source');
+    let utmMedium = raw('utm_medium');
+    let utmCampaign = raw('utm_campaign');
+    let utmContent = raw('utm_content');
+    const gclid = raw('gclid');
+    if (!utmSource && gclid) {
+      utmSource = 'google';
+      if (!utmMedium) utmMedium = 'cpc';
+      if (!utmContent) utmContent = 'gclid:' + gclid;
+    }
+    const NA = 'No especificado';
+    return {
+      utm_source: utmSource || NA,
+      utm_medium: utmMedium || NA,
+      utm_campaign: utmCampaign || NA,
+      utm_content: utmContent || NA,
+      idioma: 'Inglés',
+    };
+  };
+
+  window.sendLead = function (payload) {
+    return fetch(window.LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json().catch(function () { return {}; });
+    });
+  };
+
+  // Formulario "Solicite Información": POST + estado en el modal, sin redirección.
+  (function () {
+    const form = document.getElementById('leadForm');
+    if (!form) return;
+    const btn = document.getElementById('leadSubmit');
+    const status = document.getElementById('leadStatus');
+
+    function setStatus(text, kind) {
+      status.textContent = text;
+      status.classList.remove('is-success', 'is-error');
+      if (kind) status.classList.add(kind);
+      status.hidden = false;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const payload = Object.assign({
+        nombre: form.nombre.value.trim(),
+        empresa: form.empresa.value.trim(),
+        correo: form.correo.value.trim(),
+        telefono: form.telefono.value.trim(),
+        puesto: form.puesto.value.trim(),
+        mensaje: form.mensaje.value.trim(),
+        origen: 'Página 404',
+      }, window.collectLeadTags());
+
+      const originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      setStatus('Enviando su solicitud…', null);
+
+      window.sendLead(payload)
+        .then(function () {
+          form.reset();
+          form.hidden = true;
+          const head = document.getElementById('leadModalHead');
+          if (head) head.hidden = true;
+          const success = document.getElementById('leadSuccess');
+          if (success) success.hidden = false;
+        })
+        .catch(function () {
+          setStatus('No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp.', 'is-error');
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        });
+    });
+  })();
+</script>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/525585265520"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp"
+   aria-haspopup="dialog"
+   onclick="openWaModal(event)">
+  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Modal de pre-registro WhatsApp -->
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onclick="closeWaModalOnOverlay(event)">
+  <div class="wa-modal">
+    <div class="wa-modal-head">
+      <button type="button" class="wa-modal-close" aria-label="Cerrar" onclick="closeWaModal()">&times;</button>
+      <h3 id="waModalTitle">Un paso antes de conectar</h3>
+      <p>Le atenderemos de inmediato</p>
+    </div>
+    <div class="wa-modal-body">
+      <form id="waForm" onsubmit="return submitWaForm(event)">
+        <div class="wa-form-group">
+          <label for="waNombre">Nombre *</label>
+          <input type="text" id="waNombre" name="nombre" autocomplete="name" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waCorreo">Correo electrónico *</label>
+          <input type="email" id="waCorreo" name="correo" autocomplete="email" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waTelefono">Teléfono *</label>
+          <input type="tel" id="waTelefono" name="telefono" autocomplete="tel" required>
+        </div>
+        <button type="submit" class="wa-submit">Continuar a WhatsApp &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const overlay = document.getElementById('waModal');
+
+    window.openWaModal = function (e) {
+      if (e) e.preventDefault();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const first = document.getElementById('waNombre');
+      if (first) setTimeout(function () { first.focus(); }, 50);
+    };
+
+    window.closeWaModal = function () {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    window.closeWaModalOnOverlay = function (e) {
+      if (e.target === overlay) window.closeWaModal();
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) window.closeWaModal();
+    });
+
+    window.submitWaForm = function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('waNombre').value.trim();
+      const correo = document.getElementById('waCorreo').value.trim();
+      const telefono = document.getElementById('waTelefono').value.trim();
+
+      const msg = 'Hola, soy ' + nombre + ' (' + telefono + '). Me interesa conocer más sobre los programas de inglés para empresas de S-Peak. Mi correo es ' + correo + '.';
+      const url = 'https://wa.me/525585265520?text=' + encodeURIComponent(msg);
+
+      // Registro del lead por correo (fire-and-forget): NO se espera para no retrasar WhatsApp.
+      try {
+        const payload = Object.assign({
+          nombre: nombre,
+          empresa: '',
+          correo: correo,
+          telefono: telefono,
+          puesto: '',
+          mensaje: '',
+          origen: 'WhatsApp (404)',
+        }, window.collectLeadTags());
+        window.sendLead(payload).catch(function () {});
+      } catch (_) {}
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+
+      window.closeWaModal();
+      document.getElementById('waForm').reset();
+      return false;
+    };
+  })();
+</script>
+
+<!-- Botón volver al inicio -->
+<button type="button" class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+<script>
+  (function () {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function onScroll() {
+      if (window.pageYOffset > 400) btn.classList.add('is-visible');
+      else btn.classList.remove('is-visible');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+</body>
+</html>

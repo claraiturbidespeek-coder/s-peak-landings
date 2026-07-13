@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos de Idiomas para Equipos de Ventas y Marketing | S-Peak</title>
+  <meta name="description" content="Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas. Cotice ahora.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="S-Peak">
+  <meta name="theme-color" content="#1A3C4D">
+  <link rel="canonical" href="https://s-peak.com/equipo/ventas-y-marketing/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="S-Peak">
+  <meta property="og:title" content="Capacitación de Idiomas para Equipos de Ventas y Marketing | S-Peak">
+  <meta property="og:description" content="Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas. Cotice ahora.">
+  <meta property="og:url" content="https://s-peak.com/equipo/ventas-y-marketing/">
+  <meta property="og:image" content="https://s-peak.com/assets/img/og-ventas.jpg">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 800;
+      font-display: optional;
+      src: url('/assets/fonts/montserrat-latin.woff2') format('woff2');
+    }
+
+    :root {
+      --red: #B51E40;
+      --red-dark: #8f1832;
+      --navy: #1A3C4D;
+      --white: #FFFFFF;
+      --off: #F5F7FA;
+      --ink: #111827;
+      --ink-2: #374151;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --yellow: #F5A623;
+      --font: 'Montserrat', -apple-system, sans-serif;
+      --max: 1160px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    :target, [id] { scroll-margin-top: 80px; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font-family: inherit; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block; width: 24px; height: 2px; background: var(--red);
+    }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #1A3C4D;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 28px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; }
+    .nav-links a { color: rgba(255,255,255,0.85); }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      padding: 11px 22px; border-radius: 0;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      background: var(--off); border-bottom: 1px solid var(--border);
+      padding: 10px 28px;
+    }
+    .breadcrumb-inner {
+      max-width: var(--max); margin: 0 auto;
+      font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px;
+    }
+    .breadcrumb-inner a { color: var(--muted); }
+    .breadcrumb-inner a:hover { color: var(--navy); }
+    .breadcrumb-inner span { color: var(--navy); font-weight: 600; }
+
+    /* HERO */
+    .hero { background: linear-gradient(180deg, #EAEFF5 0%, #F5F7FA 55%); padding: 80px 28px 100px; position: relative; overflow: hidden; }
+    .hero-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: center;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FDF0F3; color: var(--red);
+      font-size: 11.5px; font-weight: 700;
+      padding: 6px 14px; border-radius: 0;
+      margin-bottom: 22px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-tag::before {
+      content: ''; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--red);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(28px, 3.2vw, 42px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em; color: var(--navy);
+      margin-bottom: 20px; text-transform: capitalize;
+    }
+    .hero h1 strong { color: var(--red); font-weight: 800; }
+    .hero-sub {
+      font-size: 16px; color: var(--ink-2);
+      line-height: 1.7; margin-bottom: 32px;
+      font-weight: 400; max-width: 540px;
+    }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      padding: 15px 32px; border-radius: 0; font-weight: 700;
+      font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+    .hero-social { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+    .hero-avatars { display: flex; }
+    .hero-avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 800;
+      border: 2px solid var(--white); margin-left: -10px; flex-shrink: 0;
+    }
+    .hero-avatar:first-child { margin-left: 0; }
+    .hero-avatar:nth-child(2) { background: var(--red); }
+    .hero-social-text p { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+    .hero-social-text strong { color: var(--navy); font-weight: 700; }
+    .stars { font-size: 13px; color: var(--yellow); margin-bottom: 3px; }
+
+    /* HERO VISUAL */
+    .hero-visual { position: relative; }
+    .hero-img-wrap {
+      position: relative;
+      background: var(--navy);
+      overflow: hidden;
+      height: 420px;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      opacity: 0.85;
+    }
+    .hero-img-badge {
+      position: absolute; bottom: 20px; left: 20px;
+      background: var(--white); padding: 14px 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .badge-icon {
+      width: 40px; height: 40px; background: #FDF0F3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .badge-num { font-size: 22px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .badge-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+
+    /* LOGOS */
+    .logos { background: transparent; padding: 0 28px; margin-top: -60px; position: relative; z-index: 5; }
+    .logos-card {
+      max-width: var(--max); margin: 0 auto;
+      background: var(--white); padding: 24px 0;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+    }
+    .logos-label { text-align: center; font-size: 13px; color: var(--muted); margin-bottom: 20px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+    .logos-track-wrap {
+      overflow: hidden; max-width: 920px; width: 100%; margin: 0 auto;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+    }
+    .logos-track {
+      display: flex; align-items: center; width: max-content;
+      animation: logos-scroll 25s linear infinite;
+    }
+    .logos-track img {
+      height: 44px; width: auto; object-fit: contain; margin-right: 56px;
+      flex-shrink: 0; filter: grayscale(100%); opacity: 0.65;
+      transition: filter 0.3s, opacity 0.3s;
+    }
+    .logos-track img:hover { filter: grayscale(0%); opacity: 1; }
+    @keyframes logos-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* DOLOR */
+    .dolor { padding: 88px 28px; }
+    .dolor-inner { max-width: var(--max); margin: 0 auto; }
+    .dolor-top { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .dolor-top h2 {
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px;
+    }
+    .dolor-top h2 em { font-style: normal; color: var(--red); }
+    .dolor-top p { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
+    .dolor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
+    .dolor-card {
+      border: 1px solid var(--border); padding: 28px 24px;
+      background: var(--white); position: relative;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .dolor-card:hover { border-color: var(--red); box-shadow: 0 8px 24px rgba(181,30,64,0.08); }
+    .dolor-card-icon {
+      width: 44px; height: 44px; background: #FDF0F3;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+    .dolor-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+    .dolor-card p { font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+    .dolor-cta { text-align: center; }
+
+    /* COMPETENCIAS */
+    .competencias { background: var(--off); padding: 88px 28px; }
+    .competencias-inner { max-width: var(--max); margin: 0 auto; }
+    .section-top { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .section-top h2 {
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-top p { font-size: 16px; color: var(--ink-2); line-height: 1.7; }
+    .comp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .comp-card {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 24px 20px; transition: border-color 0.2s, transform 0.2s;
+    }
+    .comp-card:hover { border-color: var(--red); transform: translateY(-3px); }
+    .comp-icon {
+      width: 48px; height: 48px; background: #FDF0F3; color: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+    .comp-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .comp-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.35; }
+    .comp-card p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
+
+    /* FRANJA IDIOMAS */
+    .franja { background: var(--navy); padding: 56px 28px; }
+    .franja-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .franja-left h2 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .franja-left p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
+    .franja-right { display: flex; flex-wrap: wrap; gap: 10px; }
+    .idioma-pill {
+      background: rgba(255,255,255,0.08); color: var(--white);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 10px 18px; font-size: 14px; font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
+      cursor: default;
+    }
+    .idioma-pill:hover { background: var(--red); border-color: var(--red); }
+    .idioma-pill a { color: var(--white); }
+
+    /* MERCADO */
+    .mercado { padding: 88px 28px; }
+    .mercado-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .mercado-left h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 8px; }
+    .mercado-left .eyebrow { margin-bottom: 18px; }
+    .mercado-left > p { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 32px; }
+    .mercado-items { display: flex; flex-direction: column; gap: 20px; }
+    .mercado-item { display: flex; gap: 16px; align-items: flex-start; }
+    .mercado-item-icon {
+      width: 40px; height: 40px; background: #FDF0F3; color: var(--red);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0; margin-top: 2px;
+    }
+    .mercado-item h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+    .mercado-item p { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
+    .mercado-item p em { font-style: normal; font-size: 11px; color: var(--muted); }
+    .mercado-right { background: var(--navy); padding: 36px 32px; color: var(--white); }
+    .mercado-right h3 { font-size: 20px; font-weight: 800; margin-bottom: 28px; line-height: 1.3; }
+    .stat-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .stat-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .stat-big { font-size: 36px; font-weight: 800; color: var(--red); line-height: 1; letter-spacing: -0.02em; flex-shrink: 0; }
+    .stat-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+    .stat-source { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 3px; display: block; }
+
+    /* DIFERENCIADORES */
+    .diferenciadores { background: var(--off); padding: 88px 28px; }
+    .dif-inner { max-width: var(--max); margin: 0 auto; }
+    .dif-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
+    .dif-card { background: var(--white); border: 1px solid var(--border); padding: 28px 24px; display: flex; gap: 16px; }
+    .dif-icon {
+      width: 44px; height: 44px; background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .dif-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+    .dif-card p { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
+
+    /* CTA BANDA */
+    .cta-banda { background: var(--red); padding: 56px 28px; text-align: center; position: relative; overflow: hidden; }
+    .cta-banda h2 { font-size: clamp(24px, 3vw, 38px); font-weight: 800; color: var(--white); letter-spacing: -0.025em; margin-bottom: 12px; position: relative; z-index: 1; }
+    .cta-banda p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; position: relative; z-index: 1; }
+    .btn-white {
+      display: inline-block; background: var(--white); color: var(--red);
+      padding: 16px 36px; border-radius: 0; font-weight: 800;
+      font-size: 15px; cursor: pointer; border: none;
+      transition: transform 0.2s, box-shadow 0.2s; position: relative; z-index: 1;
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+
+    /* TESTIMONIOS */
+    .testimonials { background: var(--navy); padding: 88px 28px; }
+    .testi-top { max-width: var(--max); margin: 0 auto 48px; text-align: center; }
+    .testi-top h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--white); margin-bottom: 12px; letter-spacing: -0.025em; }
+    .testi-top p { font-size: 16px; color: rgba(255,255,255,0.55); }
+    .testi-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testi-card {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      padding: 28px 24px; display: flex; flex-direction: column;
+    }
+    .testi-card.accent { background: var(--yellow); border-color: transparent; }
+    .testi-quote { font-size: 14px; line-height: 1.72; color: rgba(255,255,255,0.85); margin-bottom: 22px; flex: 1; }
+    .testi-card.accent .testi-quote { color: var(--navy); }
+    .testi-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .testi-card.accent .avatar { background: rgba(30,45,74,0.18); color: var(--navy); }
+    .author-name { font-size: 13px; font-weight: 700; color: var(--white); }
+    .testi-card.accent .author-name { color: var(--navy); }
+    .author-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .testi-card.accent .author-role { color: rgba(30,45,74,0.55); }
+
+    /* STATS */
+    .stats { background: var(--white); padding: 72px 28px; border-top: 1px solid var(--border); }
+    .stats-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+    .stat-item {}
+    .stat-num { font-size: 52px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; }
+
+    /* FAQ */
+    .faq { padding: 88px 28px; }
+    .faq-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
+    .faq-left h2 { font-size: clamp(26px, 2.8vw, 36px); font-weight: 800; color: var(--navy); margin: 14px 0 16px; letter-spacing: -0.025em; line-height: 1.12; }
+    .faq-left > p { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 28px; }
+    .faq-cta-card { background: var(--navy); color: var(--white); padding: 28px 26px; }
+    .faq-cta-card p { font-size: 17px; font-weight: 700; line-height: 1.4; margin-bottom: 18px; }
+    .faq-list { display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--white); border: 1px solid var(--border); transition: border-color 0.2s; }
+    .faq-item:hover, .faq-item.open { border-color: var(--red); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 14px 20px; font-size: 14.5px; font-weight: 600; color: var(--navy);
+      cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .faq-q:hover { color: var(--red); }
+    .faq-icon {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--off); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 17px; color: var(--muted);
+      transition: transform 0.3s, background 0.2s, color 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--red); color: white; }
+    .faq-a {
+      font-size: 14px; color: var(--ink-2); line-height: 1.75;
+      padding: 0 20px; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease; opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 600px; opacity: 1; padding-bottom: 20px; }
+
+    /* FOOTER */
+    footer { background: #1A3C4D; padding: 64px 0 0; }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px; padding: 0 28px 56px; color: white;
+    }
+    .footer-logo { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .footer-col-brand p { font-size: 14px; line-height: 1.6; color: white; max-width: 320px; margin-bottom: 20px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); color: white;
+      transition: color 0.2s, border-color 0.2s; margin-right: 8px;
+    }
+    .footer-social a:hover { color: #ffd6df; border-color: #ffd6df; }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-col h3 { font-size: 15px; font-weight: 700; color: white; margin-bottom: 18px; }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: white; transition: color 0.2s; }
+    .footer-col a:hover { color: #ffd6df; }
+    .footer-bottom { background: #0f2330; padding: 20px 28px; text-align: center; }
+    .footer-bottom p { font-size: 13px; color: white; margin: 0; }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; z-index: 1000;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: var(--white); width: 100%; max-width: 600px; max-height: 92vh; overflow-y: auto; border-radius: 0; box-shadow: 0 24px 64px rgba(0,0,0,0.35); }
+    .modal-header { background: var(--navy); color: var(--white); padding: 26px 28px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .modal-header h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+    .modal-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .modal-close { background: none; border: none; color: var(--white); font-size: 28px; line-height: 1; cursor: pointer; padding: 0; opacity: 0.75; transition: opacity 0.2s; }
+    .modal-close:hover { opacity: 1; }
+    .form-body { padding: 24px 28px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: 11.5px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group textarea { border: 1.5px solid var(--border); border-radius: 0; padding: 10px 12px; font-size: 14px; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,60,77,0.08); }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit { width: 100%; background: var(--red); color: var(--white); border: none; padding: 15px; border-radius: 0; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
+    .form-submit:hover { background: var(--red-dark); }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
+    .lead-success { padding: 40px 28px 44px; text-align: center; }
+    .lead-success-check { width: 72px; height: 72px; color: #1b7a3d; margin: 0 auto 20px; display: block; }
+    .lead-success h3 { font-size: 22px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+    .lead-success p { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+
+    /* WHATSAPP */
+    .whatsapp-float {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 56px; height: 56px; border-radius: 50%; background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+    .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 22px rgba(37,211,102,0.55); }
+    .whatsapp-float svg { width: 32px; height: 32px; fill: #fff; }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0.5); }
+      70%  { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 14px rgba(37,211,102,0); }
+      100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .dolor-grid { grid-template-columns: 1fr; }
+      .comp-grid { grid-template-columns: repeat(2, 1fr); }
+      .franja-inner { grid-template-columns: 1fr; gap: 32px; }
+      .mercado-inner { grid-template-columns: 1fr; }
+      .dif-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr 1fr; }
+      .stats-inner { grid-template-columns: repeat(3, 1fr); }
+      .faq-inner { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px 80px; }
+      .comp-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .dolor { padding: 56px 20px; }
+      .competencias, .franja, .mercado, .diferenciadores, .testimonials, .faq { padding: 56px 20px; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://s-peak.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Soluciones por Equipo", "item": "https://s-peak.com/equipo/" },
+          { "@type": "ListItem", "position": 3, "name": "Ventas y Marketing", "item": "https://s-peak.com/equipo/ventas-y-marketing/" }
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Cursos de idiomas para equipos de Ventas y Marketing",
+        "serviceType": "Capacitación corporativa de idiomas para equipos comerciales",
+        "provider": { "@type": "Organization", "name": "S-Peak", "url": "https://s-peak.com" },
+        "areaServed": { "@type": "Country", "name": "México" },
+        "description": "Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "¿Cuánto cuesta capacitar a un equipo de ventas en S-Peak?", "acceptedAnswer": { "@type": "Answer", "text": "Depende de la frecuencia, modalidad, duración y tamaño del grupo (de 1 a 10 personas; a más alumnos, menor es el costo por persona). Solicite una cotización adaptada a sus objetivos." } },
+          { "@type": "Question", "name": "¿En cuánto tiempo mi equipo comercial estará listo para cerrar negocios en otro idioma?", "acceptedAnswer": { "@type": "Answer", "text": "Depende del nivel inicial. Pasar de un nivel básico (A2) a uno apto para negociar (B2) toma de 12 a 18 meses. Si el equipo ya es intermedio (B1), puede lograrlo en 6 a 9 meses con sesiones intensivas." } }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="https://s-peak.com" aria-label="S-Peak — inicio">
+        <img src="/assets/img/logo_white.svg" alt="S-Peak" width="140" height="40" loading="eager">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="https://s-peak.com/#enfoque">Nuestro Enfoque</a>
+      <a href="https://s-peak.com/#metodo">El Método</a>
+      <a href="https://s-peak.com/#resultados">Resultados</a>
+      <a href="https://s-peak.com/#faq">Preguntas Frecuentes</a>
+    </div>
+    <button class="nav-cta" onclick="openModal()">Solicite Información</button>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="https://s-peak.com">Inicio</a>
+    <span aria-hidden="true">›</span>
+    <a href="https://s-peak.com/equipo/">Soluciones por Equipo</a>
+    <span aria-hidden="true">›</span>
+    <span>Ventas y Marketing</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img style="position:absolute;top:20px;right:20px;width:60px;opacity:0.06;transform:rotate(15deg);pointer-events:none;" src="/assets/img/isotype.svg" alt="" aria-hidden="true" loading="lazy">
+  <div class="hero-inner">
+    <div class="hero-content reveal">
+      <div class="hero-tag">Inglés corporativo · Ventas y Marketing</div>
+      <h1>Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong></h1>
+      <p class="hero-sub">Cierre más negocios y conecte con clientes internacionales en inglés, francés, alemán, italiano o portugués. Su equipo es la cara de la empresa: cuando el idioma no está a la altura, una sola oportunidad perdida cuesta más que todo un programa anual de capacitación.</p>
+      <button class="btn-red" onclick="openModal()">Solicitar Cotización</button>
+      <div class="hero-social">
+        <div class="hero-avatars">
+          <span class="hero-avatar">MG</span>
+          <span class="hero-avatar">FH</span>
+          <span class="hero-avatar">AV</span>
+          <span class="hero-avatar">RC</span>
+        </div>
+        <div class="hero-social-text">
+          <div class="stars">★★★★★</div>
+          <p>+<strong>500 empresas</strong> confían en S-Peak para capacitar a sus equipos comerciales</p>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-img-wrap">
+        <img src="/equipo/ventas-y-marketing/img/hero.webp" alt="Equipo comercial en cursos de inglés de negocios" width="600" height="420" loading="eager">
+        <div class="hero-img-badge">
+          <div class="badge-icon">🤝</div>
+          <div>
+            <div class="badge-num">+500</div>
+            <div class="badge-label">Empresas atendidas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-card">
+    <p class="logos-label">Más de 500 empresas confían en <strong>S-Peak</strong></p>
+    <div class="logos-track-wrap">
+      <div class="logos-track">
+        <img src="/assets/img/logos/axa.webp" alt="AXA" height="44" loading="lazy">
+        <img src="/assets/img/logos/gbm.webp" alt="GBM" height="44" loading="lazy">
+        <img src="/assets/img/logos/loreal.webp" alt="L'Oréal" height="44" loading="lazy">
+        <img src="/assets/img/logos/naturgy.webp" alt="Naturgy" height="44" loading="lazy">
+        <img src="/assets/img/logos/pepsico.webp" alt="PepsiCo" height="44" loading="lazy">
+        <img src="/assets/img/logos/santander.webp" alt="Santander" height="44" loading="lazy">
+        <img src="/assets/img/logos/walmart.webp" alt="Walmart" height="44" loading="lazy">
+        <img src="/assets/img/logos/axa.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/gbm.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/loreal.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/naturgy.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/pepsico.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/santander.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+        <img src="/assets/img/logos/walmart.webp" alt="" aria-hidden="true" height="44" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPETENCIAS -->
+<section class="competencias" id="competencias">
+  <div class="competencias-inner">
+    <div class="section-top reveal">
+      <div class="eyebrow" style="justify-content:center;">Las habilidades que cierran negocios</div>
+      <h2>Las habilidades que su equipo comercial necesita para cerrar en cualquier idioma</h2>
+      <p>Desarrollamos las competencias lingüísticas que su equipo aplica en situaciones reales de negocio. No enseñamos gramática aislada: entrenamos para que cierren, presenten y negocien con confianza.</p>
+    </div>
+    <div class="comp-grid reveal">
+      <div class="comp-card">
+        <div class="comp-icon">📊</div>
+        <div class="comp-num">01</div>
+        <h3>Vocabulario técnico comercial</h3>
+        <p>Terminología específica de ventas, marketing digital, embudo de conversión y métricas clave (CAC, LTV, CTR).</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">✍️</div>
+        <div class="comp-num">02</div>
+        <h3>Redacción profesional</h3>
+        <p>Correos de ventas, propuestas por escrito y mensajes de prospección en LinkedIn que generan respuestas.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🎤</div>
+        <div class="comp-num">03</div>
+        <h3>Presentaciones ejecutivas</h3>
+        <p>Pitches ante directivos, comités o inversionistas con manejo de diapositivas y respuestas fluidas en tiempo real.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🤝</div>
+        <div class="comp-num">04</div>
+        <h3>Conversación y networking</h3>
+        <p>Interacción natural en eventos y ferias internacionales, iniciando y sosteniendo diálogos de valor.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚖️</div>
+        <div class="comp-num">05</div>
+        <h3>Negociación internacional</h3>
+        <p>Estructuras para negociar condiciones, precios y plazos. Aprenden a proponer contraofertas y manejar silencios estratégicos.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🛡️</div>
+        <div class="comp-num">06</div>
+        <h3>Manejo de objeciones</h3>
+        <p>Respuestas fluidas ante las resistencias típicas del entorno B2B (precio, tiempo, autoridad, riesgo).</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🔄</div>
+        <div class="comp-num">07</div>
+        <h3>Comunicación comercial integral</h3>
+        <p>Aplicación de marcos de venta consultiva (descubrimiento, propuesta y cierre) en dos idiomas.</p>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🌟</div>
+        <div class="comp-num">08</div>
+        <h3>Atención a clientes internacionales</h3>
+        <p>Comunicación de posventa, seguimiento y resolución de problemas. La retención se define en la primera queja bien resuelta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOLOR -->
+<section class="dolor" id="dolor">
+  <div class="dolor-inner">
+    <div class="dolor-top reveal">
+      <div class="eyebrow" style="justify-content:center;">El costo real de la barrera del idioma</div>
+      <h2>¿Cuántas oportunidades comerciales pierde su empresa por la <em>barrera del idioma</em>?</h2>
+      <p>No es una métrica abstracta; es un costo medible y silencioso que se refleja en tres escenarios:</p>
+    </div>
+    <div class="dolor-grid reveal">
+      <div class="dolor-card">
+        <div class="dolor-card-icon">📋</div>
+        <h3>La propuesta que no se cerró</h3>
+        <p>Su mejor vendedor tiene la solución y los números, pero si no fluye en el idioma, el cliente duda y la competencia entra. Un solo contrato internacional perdido al año cuesta más que todo un programa anual de capacitación.</p>
+      </div>
+      <div class="dolor-card">
+        <div class="dolor-card-icon">📧</div>
+        <h3>El correo de prospección sin respuesta</h3>
+        <p>Su equipo envía 200 correos al mes a Estados Unidos, Europa o Latinoamérica, pero la tasa de respuesta es del 1%. Un correo con errores de gramática o tono se descarta en el primer párrafo.</p>
+      </div>
+      <div class="dolor-card">
+        <div class="dolor-card-icon">🌐</div>
+        <h3>La feria internacional sin contactos reales</h3>
+        <p>Una inversión de 50,000 dólares en un stand en HANNOVER MESSE o CES se pierde si las conversaciones no pasan del "nice to meet you". Sin un segundo contacto, no hay negocio.</p>
+      </div>
+    </div>
+    <div class="dolor-cta reveal">
+      <button class="btn-red" onclick="openModal()">Solicitar cotización</button>
+    </div>
+  </div>
+</section>
+
+<!-- MERCADO -->
+<section class="mercado" id="mercado">
+  <div class="mercado-inner">
+    <div class="mercado-left reveal">
+      <div class="eyebrow">Por qué urge ahora</div>
+      <h2>Por qué su empresa no puede esperar el año próximo para capacitar al equipo comercial</h2>
+      <div class="mercado-items">
+        <div class="mercado-item">
+          <div class="mercado-item-icon">🎓</div>
+          <div>
+            <h3>El talento bilingüe es escaso y caro de retener</h3>
+            <p>Menos del 15% de los profesionales en México son verdaderamente bilingües. Capacitar al equipo que ya conoce su operación reduce la dependencia externa. <em>Fuente: SEP</em></p>
+          </div>
+        </div>
+        <div class="mercado-item">
+          <div class="mercado-item-icon">🇺🇸</div>
+          <div>
+            <h3>Su mercado más grande exige inglés ($534,874 M en exportaciones a EE.UU.)</h3>
+            <p>México es el primer socio comercial de Estados Unidos desde 2023. Depender de un solo colaborador bilingüe crea un cuello de botella. <em>Fuente: Secretaría de Economía e INEGI</em></p>
+          </div>
+        </div>
+        <div class="mercado-item">
+          <div class="mercado-item-icon">🏭</div>
+          <div>
+            <h3>El nearshoring trae a sus próximos clientes y no hablan español</h3>
+            <p>Se proyectan 500,000 empleos y 50,000 millones en inversión en 3 años. El proveedor que negocia directamente en el idioma del inversionista entra primero. <em>Fuente: Secretaría de Economía</em></p>
+          </div>
+        </div>
+        <div class="mercado-item">
+          <div class="mercado-item-icon">⚠️</div>
+          <div>
+            <h3>Un error de interpretación en el T-MEC cuesta millones</h3>
+            <p>Desde 2025, EE.UU. aplica aranceles del 25% a productos que incumplan reglas de origen. Comprender estas normativas en inglés técnico protege los márgenes del negocio. <em>Fuente: USTR y DOF 2025</em></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mercado-right reveal">
+      <h3>México en números que su equipo comercial debe conocer</h3>
+      <div class="stat-row">
+        <div class="stat-big">15%</div>
+        <div>
+          <div class="stat-desc">de profesionales en México son verdaderamente bilingües</div>
+          <span class="stat-source">Fuente: SEP</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-big">#1</div>
+        <div>
+          <div class="stat-desc">México, primer socio comercial de EE.UU. desde 2023</div>
+          <span class="stat-source">Fuente: Secretaría de Economía</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-big">$50B</div>
+        <div>
+          <div class="stat-desc">en inversión nearshoring proyectada en los próximos 3 años</div>
+          <span class="stat-source">Fuente: Secretaría de Economía</span>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-big">25%</div>
+        <div>
+          <div class="stat-desc">deducción adicional bajo el decreto del Plan México (DOF 2025)</div>
+          <span class="stat-source">Confirme con su área contable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section class="diferenciadores">
+  <div class="dif-inner">
+    <div class="section-top reveal">
+      <div class="eyebrow" style="justify-content:center;">Por qué S-Peak</div>
+      <h2>Por qué empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak</h2>
+    </div>
+    <div class="dif-grid reveal">
+      <div class="dif-card">
+        <div class="dif-icon">🎯</div>
+        <div>
+          <h3>Programa diseñado por sector</h3>
+          <p>Adaptamos el vocabulario, casos y simulaciones a su industria (manufactura, retail, servicios financieros, tecnología o farmacéutica). Sin cursos genéricos.</p>
+        </div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">📈</div>
+        <div>
+          <h3>Medición real de avance</h3>
+          <p>Tarjeta de Resultados mensual para Dirección con evidencias comprobables. No reportamos solo asistencia, sino competencias adquiridas.</p>
+        </div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">🌐</div>
+        <div>
+          <h3>El idioma de su mercado, no solo inglés</h3>
+          <p>Inglés para Norteamérica y negocios globales, así como francés, alemán, italiano, portugués o español según sus metas estratégicas.</p>
+        </div>
+      </div>
+      <div class="dif-card">
+        <div class="dif-icon">✅</div>
+        <div>
+          <h3>Registro STPS y deducción fiscal</h3>
+          <p>Contamos con registro oficial ante la STPS. La inversión califica para la deducción adicional del 25% bajo el decreto del Plan México (DOF 2023 y 2025).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANDA -->
+<section class="cta-banda">
+  <img style="position:absolute;top:50%;right:40px;width:120px;opacity:0.08;transform:translateY(-50%) rotate(30deg);pointer-events:none;" src="/assets/img/isotype.svg" alt="" aria-hidden="true">
+  <h2>Comience con una cotización para su equipo comercial</h2>
+  <p>Cuéntenos su caso. Le responderemos en menos de 24 horas hábiles.</p>
+  <button class="btn-white" onclick="openModal()">Solicitar Cotización</button>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials" id="resultados">
+  <div class="testi-top reveal">
+    <div class="eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;">Lo que dicen los equipos</div>
+    <h2>Lo que dicen los equipos de ventas que ya tomaron clases con S-Peak</h2>
+    <p>En S-Peak, el éxito no se supone: se mide en números.</p>
+  </div>
+  <div class="testi-grid reveal">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
+      <div class="testi-author">
+        <div class="avatar">BI</div>
+        <div>
+          <div class="author-name">Braskem Idesa</div>
+          <div class="author-role">Área de RRHH</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card accent">
+      <div class="stars" style="color:var(--navy);">★★★★★</div>
+      <p class="testi-quote">"S-Peak es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
+      <div class="testi-author">
+        <div class="avatar">FD</div>
+        <div>
+          <div class="author-name">Fernanda D.</div>
+          <div class="author-role">Alumna · Chedraui</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-quote">"Valoramos el seguimiento que S-Peak nos brinda, el feedback que piden a través de citas regulares y encuestas, así como su reacción a lo que pedimos como cliente."</p>
+      <div class="testi-author">
+        <div class="avatar">EC</div>
+        <div>
+          <div class="author-name">Erika C.</div>
+          <div class="author-role">People Development &amp; D&amp;I Expert</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner reveal">
+    <div class="stat-item">
+      <div class="stat-num">+40K</div>
+      <div class="stat-label">Profesionales formados</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">+500</div>
+      <div class="stat-label">Empresas clientes</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">+20</div>
+      <div class="stat-label">Años de experiencia</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-left reveal">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Preguntas frecuentes sobre capacitación para equipos de ventas y marketing</h2>
+      <p>Resolvemos las dudas más comunes antes de que tenga que buscarlas.</p>
+      <div class="faq-cta-card">
+        <p>¿Tiene una pregunta que no está aquí?</p>
+        <button class="btn-red" onclick="openModal()">Hable con un experto</button>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuánto cuesta capacitar a un equipo de ventas en S-Peak?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Depende de la frecuencia, modalidad, duración y tamaño del grupo (de 1 a 10 personas; a más alumnos, menor es el costo por persona). Solicite una cotización adaptada a sus objetivos.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿En cuánto tiempo mi equipo estará listo para cerrar negocios en otro idioma?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Depende del nivel inicial. Pasar de un nivel básico (A2) a uno apto para negociar (B2) toma de 12 a 18 meses. Si el equipo ya es intermedio (B1), puede lograrlo en <strong>6 a 9 meses</strong> con sesiones intensivas. En el diagnóstico inicial le damos una proyección realista.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo miden el progreso de mis colaboradores?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Evaluamos el desempeño real con entregables prácticos (grabaciones, propuestas escritas o simulaciones de llamadas) al final de cada etapa, no con exámenes de memoria. RH recibe un <strong>reporte mensual</strong> con enlaces para verificar el avance.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué pasa si mis vendedores tienen agendas ocupadas y faltan a clases?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Monitoreamos la asistencia de forma proactiva. Si un colaborador falta, lo reportamos a RH en tiempo real para buscar su recuperación o ajustar el grupo, protegiendo así su inversión.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué idiomas ofrecen para equipos comerciales?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Inglés, francés, alemán, italiano, portugués y español para extranjeros. Cada programa se alinea a su mercado: inglés para negocios globales, alemán para el sector automotriz o italiano para el Bajío industrial, según el diagnóstico inicial.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Pueden capacitar equipos comerciales en varios países?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sí. Coordinamos la capacitación simultánea en México y filiales de Latinoamérica o el mundo, centralizando la gestión en un solo punto de contacto y bajo un estándar de calidad uniforme.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿S-Peak está registrado ante la STPS?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sí, contamos con registro oficial ante la Secretaría del Trabajo y Previsión Social y emitimos las constancias de capacitación correspondientes para su empresa.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuál es el ROI de capacitar al equipo comercial?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Se vuelve tangible cuando su equipo vende directamente sin traductores ni intermediarios. Para la mayoría de las empresas, <strong>asegurar un solo contrato internacional</strong> que se habría perdido cubre toda la inversión anual del programa.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col footer-col-brand">
+      <div class="footer-logo">s<span style="color:var(--red);">·</span>peak</div>
+      <p>Formación de idiomas para empresas. Capacitación corporativa diseñada para equipos que necesitan resultados medibles.</p>
+      <div class="footer-social">
+        <a href="https://linkedin.com/company/s-peak" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Soluciones por equipo</h3>
+      <ul>
+        <li><a href="/equipo/ventas-y-marketing/">Ventas y Marketing</a></li>
+        <li><a href="/equipo/directivos/">Directivos</a></li>
+        <li><a href="/equipo/finanzas-y-contabilidad/">Finanzas y Contabilidad</a></li>
+        <li><a href="/equipo/operaciones-y-logistica/">Operaciones y Logística</a></li>
+        <li><a href="/equipo/atencion-a-clientes/">Atención a Clientes</a></li>
+        <li><a href="/equipo/legal-y-juridico/">Legal y Jurídico</a></li>
+        <li><a href="/equipo/tecnologia-e-ingenieria/">Tecnología e Ingeniería</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="https://s-peak.com/aviso-de-privacidad/">Aviso de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><strong>S-Peak</strong> 2026 | Copyright Todos los Derechos Reservados</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="lead-modal" onclick="overlayClose(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <div>
+        <h2 id="modal-title">Hable con un Experto</h2>
+        <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="lead-success" id="leadSuccess" hidden>
+      <svg class="lead-success-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="11"></circle><path d="M7 12.5l3.5 3.5L17 9"></path>
+      </svg>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
+    </div>
+    <form class="form-body" id="leadForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadNombre">Nombre y Apellido *</label>
+          <input type="text" id="leadNombre" name="nombre" autocomplete="name" placeholder="María González" required>
+        </div>
+        <div class="form-group">
+          <label for="leadEmpresa">Empresa *</label>
+          <input type="text" id="leadEmpresa" name="empresa" autocomplete="organization" placeholder="Grupo Industrial SA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadCorreo">Correo Electrónico *</label>
+          <input type="email" id="leadCorreo" name="correo" autocomplete="email" placeholder="maria@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label for="leadTelefono">Teléfono</label>
+          <input type="tel" id="leadTelefono" name="telefono" autocomplete="tel" placeholder="+52 55 0000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="leadPuesto">Puesto</label>
+        <input type="text" id="leadPuesto" name="puesto" autocomplete="organization-title" placeholder="Ej. Directora de Recursos Humanos">
+      </div>
+      <div class="form-group">
+        <label for="leadMensaje">Cuéntenos su necesidad</label>
+        <textarea id="leadMensaje" name="mensaje" placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
+      </div>
+      <button class="form-submit" type="submit" id="leadSubmit">Solicite Información</button>
+      <p id="leadStatus" role="status" aria-live="polite" style="font-size:13px;text-align:center;margin-top:10px;display:none;"></p>
+      <p class="form-note">Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:underline;">Aviso de privacidad</a>.</p>
+    </form>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/525585265520" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  // Modal
+  function openModal() {
+    document.getElementById('lead-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('lead-modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function overlayClose(e) { if (e.target === e.currentTarget) closeModal(); }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Lead endpoint — mismo que la landing
+  window.LEAD_ENDPOINT = 'https://s-peak-landings.vercel.app/api/lead';
+
+  window.collectLeadTags = function () {
+    let params; try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
+    let stored = {}; try { stored = JSON.parse(sessionStorage.getItem('speak_attribution') || '{}') || {}; } catch (_) {}
+    const raw = (k) => { const v = params ? (params.get(k)||'').trim() : ''; return v || (stored[k]||'').toString().trim(); };
+    let src = raw('utm_source'), med = raw('utm_medium'), cam = raw('utm_campaign'), con = raw('utm_content'), gc = raw('gclid');
+    if (!src && gc) { src = 'google'; if (!med) med = 'cpc'; if (!con) con = 'gclid:' + gc; }
+    const NA = 'No especificado';
+    return { utm_source: src||NA, utm_medium: med||NA, utm_campaign: cam||NA, utm_content: con||NA, pagina: 'equipo/ventas-y-marketing' };
+  };
+
+  // Form submit
+  (function () {
+    const form = document.getElementById('leadForm');
+    const btn = document.getElementById('leadSubmit');
+    const status = document.getElementById('leadStatus');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+      const payload = Object.assign({
+        nombre: form.nombre.value.trim(),
+        empresa: form.empresa.value.trim(),
+        correo: form.correo.value.trim(),
+        telefono: form.telefono.value.trim(),
+        puesto: form.puesto.value.trim(),
+        mensaje: form.mensaje.value.trim(),
+        origen: 'Formulario equipo/ventas-y-marketing',
+      }, window.collectLeadTags());
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      status.style.display = 'block'; status.textContent = 'Enviando su solicitud…';
+      fetch(window.LEAD_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive: true })
+        .then(r => { if (!r.ok) throw new Error(); return r.json().catch(()=>{}); })
+        .then(() => {
+          form.hidden = true;
+          document.getElementById('leadSuccess').hidden = false;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'lead_formulario_principal' });
+        })
+        .catch(() => {
+          status.textContent = 'No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp.';
+          status.style.color = 'var(--red)';
+          btn.disabled = false; btn.textContent = 'Solicite Información';
+        });
+    });
+  })();
+
+  // Reveal on scroll
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
