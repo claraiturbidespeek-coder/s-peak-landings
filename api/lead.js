@@ -188,6 +188,12 @@ module.exports = async function handler(req, res) {
   const puesto = (body.puesto || '').toString().trim();
   const mensaje = (body.mensaje || '').toString().trim();
   const origen = (body.origen || '').toString().trim() || 'Desconocido';
+  // Página desde la que se envió el formulario: la manda el front (window.location.href).
+  // Respaldo: el referer del navegador. Si no hay ninguno, se marca como no especificada.
+  const pagina =
+    (body.pagina || '').toString().trim() ||
+    (req.headers.referer || '').toString().trim() ||
+    'No especificada';
 
   // Etiquetas internas: UTMs de la URL e idioma fijo de la landing.
   const noEspecificado = 'No especificado';
@@ -205,6 +211,7 @@ module.exports = async function handler(req, res) {
   const noProporcionado = 'No proporcionado';
   const rows = [
     ['Origen', origen],
+    ['Página', pagina],
     ['Nombre', nombre],
     ['Empresa', empresa || noProporcionado],
     ['Correo', correo],

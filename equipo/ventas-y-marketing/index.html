@@ -1095,7 +1095,9 @@
     let src = raw('utm_source'), med = raw('utm_medium'), cam = raw('utm_campaign'), con = raw('utm_content'), gc = raw('gclid');
     if (!src && gc) { src = 'google'; if (!med) med = 'cpc'; if (!con) con = 'gclid:' + gc; }
     const NA = 'No especificado';
-    return { utm_source: src||NA, utm_medium: med||NA, utm_campaign: cam||NA, utm_content: con||NA, pagina: 'equipo/ventas-y-marketing' };
+    // pagina: dirección completa de la página desde la que se envió el formulario.
+    const pagina = (function () { try { return window.location.href; } catch (_) { return ''; } })();
+    return { utm_source: src||NA, utm_medium: med||NA, utm_campaign: cam||NA, utm_content: con||NA, pagina: pagina };
   };
 
   // Form submit

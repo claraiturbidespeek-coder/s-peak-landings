@@ -632,6 +632,8 @@
       utm_campaign: utmCampaign || NA,
       utm_content: utmContent || NA,
       idioma: 'Inglés',
+      // Dirección completa de la página desde la que se envió el formulario.
+      pagina: (function () { try { return window.location.href; } catch (_) { return ''; } })(),
     };
   };
 
