@@ -15,7 +15,7 @@
   <meta property="og:title" content="Capacitación de Idiomas para Equipos de Ventas y Marketing | S-Peak">
   <meta property="og:description" content="Inglés y otros idiomas para vendedores y equipos de marketing B2B. Vocabulario comercial, negociación internacional y presentaciones ejecutivas. Cotice ahora.">
   <meta property="og:url" content="https://s-peak.com/equipo/ventas-y-marketing/">
-  <meta property="og:image" content="https://s-peak.com/assets/img/og-ventas.jpg">
+  <meta property="og:image" content="https://s-peak.com/assets/img/og-links.jpg">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
   <link rel="apple-touch-icon" href="/assets/img/favicon.png">
   <style>
@@ -109,9 +109,11 @@
       background: var(--red); color: var(--white);
       padding: 11px 22px; border-radius: 0;
       font-size: 14px; font-weight: 700;
-      cursor: pointer; border: none; transition: background 0.2s;
+      cursor: pointer; border: none;
+      transition: background 0.25s ease, transform 0.25s cubic-bezier(.22,.85,.3,1), box-shadow 0.25s ease;
     }
-    .nav-cta:hover { background: var(--red-dark); }
+    .nav-cta:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.28); }
+    .nav-cta:active { transform: translateY(0); box-shadow: none; }
 
     /* BREADCRUMB */
     .breadcrumb {
@@ -153,7 +155,7 @@
       font-size: clamp(28px, 3.2vw, 42px);
       font-weight: 800; line-height: 1.1;
       letter-spacing: -0.03em; color: var(--navy);
-      margin-bottom: 20px; text-transform: capitalize;
+      margin-bottom: 20px;
     }
     .hero h1 strong { color: var(--red); font-weight: 800; }
     .hero-sub {
@@ -164,10 +166,18 @@
     .btn-red {
       display: inline-block; background: var(--red); color: var(--white);
       padding: 15px 32px; border-radius: 0; font-weight: 700;
-      font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
-      letter-spacing: 0.01em;
+      font-size: 15px; cursor: pointer; border: none;
+      letter-spacing: 0.01em; position: relative; overflow: hidden;
+      transition: background 0.25s ease, transform 0.25s cubic-bezier(.22,.85,.3,1), box-shadow 0.25s ease;
     }
-    .btn-red:hover { background: var(--red-dark); }
+    .btn-red::after {
+      content: ''; position: absolute; top: 0; left: -75%; width: 45%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.28), transparent);
+      transform: skewX(-22deg); transition: left 0.6s ease; pointer-events: none;
+    }
+    .btn-red:hover { background: var(--red-dark); transform: translateY(-3px); box-shadow: 0 12px 26px rgba(181,30,64,0.32); }
+    .btn-red:hover::after { left: 130%; }
+    .btn-red:active { transform: translateY(-1px); box-shadow: 0 6px 14px rgba(181,30,64,0.28); }
     .hero-social { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
     .hero-avatars { display: flex; }
     .hero-avatar {
@@ -195,22 +205,25 @@
       width: 100%; height: 100%; object-fit: cover; object-position: center top;
       opacity: 0.85;
     }
-    .hero-img-badge {
-      position: absolute; bottom: 20px; left: 20px;
-      background: var(--white); padding: 14px 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-      display: flex; align-items: center; gap: 12px;
+    .hero-stats-row { display: flex; gap: 12px; margin-top: -56px; position: relative; z-index: 2; }
+    .hero-stat {
+      flex: 1; background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      padding: 16px 10px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
     }
-    .badge-icon {
-      width: 40px; height: 40px; background: #FDF0F3;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
+    .float-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: #FDF0F3; color: var(--red);
+      display: flex; align-items: center; justify-content: center; font-size: 17px;
     }
-    .badge-num { font-size: 22px; font-weight: 800; color: var(--navy); line-height: 1; }
-    .badge-label { font-size: 11px; color: var(--muted); font-weight: 500; }
+    .float-icon svg { width: 18px; height: 18px; }
+    .float-num { font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+    .float-label { font-size: 11px; color: var(--muted); font-weight: 500; line-height: 1.3; }
 
     /* LOGOS */
-    .logos { background: transparent; padding: 0 28px; margin-top: -60px; position: relative; z-index: 5; }
+    .logos { background: var(--off); padding: 0 28px; margin-top: -60px; position: relative; z-index: 5; }
     .logos-card {
       max-width: var(--max); margin: 0 auto;
       background: var(--white); padding: 24px 0;
@@ -250,17 +263,28 @@
     .dolor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 48px; }
     .dolor-card {
       border: 1px solid var(--border); padding: 28px 24px;
-      background: var(--white); position: relative;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--navy); position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
-    .dolor-card:hover { border-color: var(--red); box-shadow: 0 8px 24px rgba(181,30,64,0.08); }
+    .dolor-card::before {
+      content: ''; position: absolute; top: -1px; left: -1px; width: 0; height: 3px;
+      background: var(--red); transition: width 0.4s cubic-bezier(.22,.85,.3,1);
+    }
+    .dolor-card:hover {
+      border-color: var(--red); transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 18px 40px rgba(181,30,64,0.16);
+    }
+    .dolor-card:hover::before { width: calc(100% + 2px); }
     .dolor-card-icon {
-      width: 44px; height: 44px; background: #FDF0F3;
+      width: 44px; height: 44px; background: rgba(255,255,255,0.1); color: var(--white);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px;
+      margin-bottom: 16px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
-    .dolor-card h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
-    .dolor-card p { font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+    .dolor-card-icon svg { width: 22px; height: 22px; }
+    .dolor-card:hover .dolor-card-icon { background: var(--red); color: var(--white); transform: scale(1.08); }
+    .dolor-card h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 10px; line-height: 1.3; }
+    .dolor-card p { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; }
     .dolor-cta { text-align: center; }
 
     /* COMPETENCIAS */
@@ -275,20 +299,76 @@
     .comp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .comp-card {
       background: var(--white); border: 1px solid var(--border);
-      padding: 24px 20px; transition: border-color 0.2s, transform 0.2s;
+      padding: 24px 20px; position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
-    .comp-card:hover { border-color: var(--red); transform: translateY(-3px); }
+    .comp-card::before {
+      content: ''; position: absolute; top: -1px; left: -1px; width: 0; height: 3px;
+      background: var(--red); transition: width 0.4s cubic-bezier(.22,.85,.3,1);
+    }
+    .comp-card:hover {
+      border-color: var(--red); transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 44px rgba(26,60,77,0.16);
+    }
+    .comp-card:hover::before { width: calc(100% + 2px); }
     .comp-icon {
       width: 48px; height: 48px; background: #FDF0F3; color: var(--red);
       display: flex; align-items: center; justify-content: center;
-      font-size: 22px; margin-bottom: 16px;
+      margin-bottom: 16px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
+    .comp-icon svg { width: 24px; height: 24px; }
+    .comp-card:hover .comp-icon { transform: scale(1.08) rotate(-3deg); }
+    .comp-card .comp-num { transition: letter-spacing 0.3s ease; }
+    .comp-card:hover .comp-num { letter-spacing: 0.16em; }
     .comp-num { font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
     .comp-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.35; }
     .comp-card p { font-size: 13px; color: var(--ink-2); line-height: 1.65; }
 
+    /* COLORES POR CARD (grid 4 col: nunca dos iguales contiguas h/v) */
+    .comp-card:nth-child(1), .comp-card:nth-child(4), .comp-card:nth-child(7) { background: var(--navy); border-color: transparent; }
+    .comp-card:nth-child(2), .comp-card:nth-child(5), .comp-card:nth-child(8) { background: var(--red); border-color: transparent; }
+    .comp-card:nth-child(3), .comp-card:nth-child(6) { background: #EAB120; border-color: transparent; }
+    /* navy + rojo: texto e ícono en blanco */
+    .comp-card:nth-child(1) h3, .comp-card:nth-child(2) h3, .comp-card:nth-child(4) h3,
+    .comp-card:nth-child(5) h3, .comp-card:nth-child(7) h3, .comp-card:nth-child(8) h3,
+    .comp-card:nth-child(1) p, .comp-card:nth-child(2) p, .comp-card:nth-child(4) p,
+    .comp-card:nth-child(5) p, .comp-card:nth-child(7) p, .comp-card:nth-child(8) p { color: var(--white); }
+    .comp-card:nth-child(1) .comp-num, .comp-card:nth-child(2) .comp-num, .comp-card:nth-child(4) .comp-num,
+    .comp-card:nth-child(5) .comp-num, .comp-card:nth-child(7) .comp-num, .comp-card:nth-child(8) .comp-num { color: rgba(255,255,255,0.7); }
+    .comp-card:nth-child(1) .comp-icon, .comp-card:nth-child(2) .comp-icon, .comp-card:nth-child(4) .comp-icon,
+    .comp-card:nth-child(5) .comp-icon, .comp-card:nth-child(7) .comp-icon, .comp-card:nth-child(8) .comp-icon {
+      background: rgba(255,255,255,0.15); color: var(--white);
+    }
+    /* amarillo: texto e ícono en navy */
+    .comp-card:nth-child(3) h3, .comp-card:nth-child(6) h3,
+    .comp-card:nth-child(3) p, .comp-card:nth-child(6) p { color: var(--navy); }
+    .comp-card:nth-child(3) .comp-num, .comp-card:nth-child(6) .comp-num { color: var(--navy); }
+    .comp-card:nth-child(3) .comp-icon, .comp-card:nth-child(6) .comp-icon {
+      background: rgba(26,60,77,0.12); color: var(--navy);
+    }
+    /* hover: barra e ícono legibles sobre cada fondo */
+    .comp-card:nth-child(2)::before, .comp-card:nth-child(5)::before,
+    .comp-card:nth-child(8)::before { background: var(--white); }
+    .comp-card:nth-child(3)::before, .comp-card:nth-child(6)::before { background: var(--navy); }
+    .comp-card:nth-child(1):hover, .comp-card:nth-child(2):hover, .comp-card:nth-child(4):hover,
+    .comp-card:nth-child(5):hover, .comp-card:nth-child(7):hover, .comp-card:nth-child(8):hover { border-color: transparent; }
+    .comp-card:nth-child(3):hover, .comp-card:nth-child(6):hover { border-color: transparent; }
+    .comp-card:nth-child(1):hover .comp-icon, .comp-card:nth-child(2):hover .comp-icon, .comp-card:nth-child(4):hover .comp-icon,
+    .comp-card:nth-child(5):hover .comp-icon, .comp-card:nth-child(7):hover .comp-icon, .comp-card:nth-child(8):hover .comp-icon {
+      background: rgba(255,255,255,0.25);
+    }
+    .comp-card:nth-child(3):hover .comp-icon, .comp-card:nth-child(6):hover .comp-icon {
+      background: rgba(26,60,77,0.2);
+    }
+
     /* FRANJA IDIOMAS */
-    .franja { background: var(--navy); padding: 56px 28px; }
+    .franja { background: var(--navy); padding: 56px 28px; border-top: 4px solid var(--red); position: relative; overflow: hidden; }
+    .franja::after {
+      content: ''; position: absolute; right: -60px; top: -50px;
+      width: 210px; height: 210px; border: 2px solid rgba(181,30,64,0.55);
+      transform: rotate(22deg); pointer-events: none;
+    }
     .franja-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
     .franja-left h2 { font-size: clamp(22px, 2.4vw, 32px); font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.02em; }
     .franja-left p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
@@ -300,43 +380,89 @@
       transition: background 0.2s, border-color 0.2s;
       cursor: default;
     }
-    .idioma-pill:hover { background: var(--red); border-color: var(--red); }
+    .idioma-pill { position: relative; }
+    .idioma-pill:hover { background: var(--red); border-color: var(--red); transform: translateY(-3px); box-shadow: 0 10px 22px rgba(181,30,64,0.35); }
     .idioma-pill a { color: var(--white); }
 
     /* MERCADO */
     .mercado { padding: 88px 28px; }
     .mercado-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-    .mercado-left h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 8px; }
+    .mercado-left { min-width: 0; }
+    .mercado-left h2 { font-size: clamp(26px, 2.8vw, 38px); font-weight: 800; color: var(--navy); line-height: 1.15; letter-spacing: -0.025em; margin-bottom: 8px; max-width: none; }
     .mercado-left .eyebrow { margin-bottom: 18px; }
-    .mercado-left > p { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 32px; }
-    .mercado-items { display: flex; flex-direction: column; gap: 20px; }
-    .mercado-item { display: flex; gap: 16px; align-items: flex-start; }
+    .mercado-left > p { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 32px; max-width: none; }
+
+    /* CARRUSEL MERCADO */
+    .mercado-carousel {
+      display: flex; gap: 16px;
+      width: 100%; max-width: 100%; min-width: 0;
+      overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain;
+      scroll-behavior: auto;
+      padding: 8px 0 14px; margin: 0;
+      scrollbar-width: none; -ms-overflow-style: none;
+      cursor: grab; -webkit-overflow-scrolling: touch;
+    }
+    .mercado-carousel::-webkit-scrollbar { display: none; }
+    .mercado-carousel:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+    .mercado-carousel.dragging { cursor: grabbing; user-select: none; }
+    .mercado-card {
+      flex: 0 0 min(74%, 246px);
+      background: var(--white); border: 1px solid var(--border);
+      padding: 24px 22px; display: flex; flex-direction: column;
+      position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
+    }
+    .mercado-card::before {
+      content: ''; position: absolute; top: -1px; left: -1px; width: 0; height: 3px;
+      background: var(--red); transition: width 0.4s cubic-bezier(.22,.85,.3,1);
+    }
+    .mercado-card:hover {
+      border-color: var(--red); transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 18px 40px rgba(181,30,64,0.16);
+    }
+    .mercado-card:hover::before { width: calc(100% + 2px); }
     .mercado-item-icon {
       width: 40px; height: 40px; background: #FDF0F3; color: var(--red);
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; flex-shrink: 0; margin-top: 2px;
+      flex-shrink: 0; margin-bottom: 16px;
+      transition: background 0.3s ease, color 0.3s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
-    .mercado-item h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
-    .mercado-item p { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; }
-    .mercado-item p em { font-style: normal; font-size: 11px; color: var(--muted); }
-    .mercado-right { background: var(--navy); padding: 36px 32px; color: var(--white); }
-    .mercado-right h3 { font-size: 20px; font-weight: 800; margin-bottom: 28px; line-height: 1.3; }
-    .stat-row { display: flex; gap: 8px; align-items: baseline; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .stat-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .stat-big { font-size: 36px; font-weight: 800; color: var(--red); line-height: 1; letter-spacing: -0.02em; flex-shrink: 0; }
-    .stat-desc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.5; }
-    .stat-source { font-size: 10px; color: rgba(255,255,255,0.35); margin-top: 3px; display: block; }
+    .mercado-item-icon svg { width: 20px; height: 20px; }
+    .mercado-card:hover .mercado-item-icon { background: var(--red); color: var(--white); transform: scale(1.08); }
+    .mercado-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.3; }
+    .mercado-card p { font-size: 13.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 16px; }
+    .mercado-card-source {
+      font-size: 11px; color: var(--muted); line-height: 1.4;
+      margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border);
+    }
+    .mercado-right { min-width: 0; }
 
     /* DIFERENCIADORES */
     .diferenciadores { background: var(--off); padding: 88px 28px; }
     .dif-inner { max-width: var(--max); margin: 0 auto; }
     .dif-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
-    .dif-card { background: var(--white); border: 1px solid var(--border); padding: 28px 24px; display: flex; gap: 16px; }
+    .dif-card {
+      background: var(--white); border: 1px solid var(--border); padding: 28px 24px;
+      display: flex; gap: 16px; position: relative;
+      transition: border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
+    }
+    .dif-card::before {
+      content: ''; position: absolute; top: -1px; left: -1px; width: 3px; height: 0;
+      background: var(--red); transition: height 0.4s cubic-bezier(.22,.85,.3,1);
+    }
+    .dif-card:hover {
+      border-color: var(--red); transform: translateY(-6px) scale(1.015);
+      box-shadow: 0 20px 44px rgba(26,60,77,0.16);
+    }
+    .dif-card:hover::before { height: calc(100% + 2px); }
     .dif-icon {
       width: 44px; height: 44px; background: var(--navy); color: var(--white);
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; flex-shrink: 0;
+      flex-shrink: 0;
+      transition: background 0.3s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
+    .dif-icon svg { width: 22px; height: 22px; }
+    .dif-card:hover .dif-icon { background: var(--red); transform: scale(1.08) rotate(-3deg); }
     .dif-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
     .dif-card p { font-size: 13.5px; color: var(--ink-2); line-height: 1.65; }
 
@@ -347,10 +473,18 @@
     .btn-white {
       display: inline-block; background: var(--white); color: var(--red);
       padding: 16px 36px; border-radius: 0; font-weight: 800;
-      font-size: 15px; cursor: pointer; border: none;
-      transition: transform 0.2s, box-shadow 0.2s; position: relative; z-index: 1;
+      font-size: 15px; cursor: pointer; border: none; overflow: hidden;
+      transition: transform 0.25s cubic-bezier(.22,.85,.3,1), box-shadow 0.25s ease;
+      position: relative; z-index: 1;
     }
-    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.2); }
+    .btn-white::after {
+      content: ''; position: absolute; top: 0; left: -75%; width: 45%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(181,30,64,0.14), transparent);
+      transform: skewX(-22deg); transition: left 0.6s ease; pointer-events: none;
+    }
+    .btn-white:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 14px 32px rgba(0,0,0,0.24); }
+    .btn-white:hover::after { left: 130%; }
+    .btn-white:active { transform: translateY(-1px) scale(1); box-shadow: 0 6px 16px rgba(0,0,0,0.2); }
 
     /* TESTIMONIOS */
     .testimonials { background: var(--navy); padding: 88px 28px; }
@@ -360,9 +494,20 @@
     .testi-grid { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .testi-card {
       background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
-      padding: 28px 24px; display: flex; flex-direction: column;
+      padding: 28px 24px; display: flex; flex-direction: column; position: relative;
+      transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(.22,.85,.3,1);
     }
+    .testi-card::before {
+      content: ''; position: absolute; top: -1px; left: -1px; width: 0; height: 3px;
+      background: var(--red); transition: width 0.4s cubic-bezier(.22,.85,.3,1);
+    }
+    .testi-card:hover {
+      background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.22);
+      transform: translateY(-6px) scale(1.015); box-shadow: 0 22px 46px rgba(0,0,0,0.3);
+    }
+    .testi-card:hover::before { width: calc(100% + 2px); }
     .testi-card.accent { background: var(--yellow); border-color: transparent; }
+    .testi-card.accent:hover { background: var(--yellow); border-color: transparent; }
     .testi-quote { font-size: 14px; line-height: 1.72; color: rgba(255,255,255,0.85); margin-bottom: 22px; flex: 1; }
     .testi-card.accent .testi-quote { color: var(--navy); }
     .testi-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
@@ -379,18 +524,12 @@
     .testi-card.accent .author-role { color: rgba(30,45,74,0.55); }
 
     /* STATS */
-    .stats { background: var(--white); padding: 72px 28px; border-top: 1px solid var(--border); }
-    .stats-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
-    .stat-item {}
-    .stat-num { font-size: 52px; font-weight: 800; color: var(--navy); letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px; }
-    .stat-label { font-size: 15px; color: var(--muted); font-weight: 500; }
-
     /* FAQ */
     .faq { padding: 88px 28px; }
     .faq-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: start; }
     .faq-left h2 { font-size: clamp(26px, 2.8vw, 36px); font-weight: 800; color: var(--navy); margin: 14px 0 16px; letter-spacing: -0.025em; line-height: 1.12; }
     .faq-left > p { font-size: 15px; color: var(--ink-2); line-height: 1.7; margin-bottom: 28px; }
-    .faq-cta-card { background: var(--navy); color: var(--white); padding: 28px 26px; }
+    .faq-cta-card { background: var(--navy); color: var(--white); padding: 28px 26px; border-top: 4px solid var(--red); }
     .faq-cta-card p { font-size: 17px; font-weight: 700; line-height: 1.4; margin-bottom: 18px; }
     .faq-list { display: flex; flex-direction: column; gap: 10px; }
     .faq-item { background: var(--white); border: 1px solid var(--border); transition: border-color 0.2s; }
@@ -458,8 +597,10 @@
     .form-group input, .form-group textarea { border: 1.5px solid var(--border); border-radius: 0; padding: 10px 12px; font-size: 14px; color: var(--ink); background: var(--white); outline: none; transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
     .form-group input:focus, .form-group textarea:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,60,77,0.08); }
     .form-group textarea { resize: vertical; min-height: 80px; }
-    .form-submit { width: 100%; background: var(--red); color: var(--white); border: none; padding: 15px; border-radius: 0; font-size: 15px; font-weight: 800; cursor: pointer; transition: background 0.2s; margin-top: 4px; }
-    .form-submit:hover { background: var(--red-dark); }
+    .form-submit { width: 100%; background: var(--red); color: var(--white); border: none; padding: 15px; border-radius: 0; font-size: 15px; font-weight: 800; cursor: pointer; margin-top: 4px; transition: background 0.25s ease, transform 0.25s cubic-bezier(.22,.85,.3,1), box-shadow 0.25s ease; }
+    .form-submit:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(181,30,64,0.28); }
+    .form-submit:active { transform: translateY(0); box-shadow: none; }
+    .form-submit:disabled { transform: none; box-shadow: none; opacity: 0.75; cursor: default; }
     .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
     .lead-success { padding: 40px 28px 44px; text-align: center; }
     .lead-success-check { width: 72px; height: 72px; color: #1b7a3d; margin: 0 auto 20px; display: block; }
@@ -483,6 +624,52 @@
       100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4), 0 0 0 0 rgba(37,211,102,0); }
     }
 
+    /* ÍCONOS SVG (Lucide) */
+    .float-icon svg, .comp-icon svg, .dolor-card-icon svg,
+    .mercado-item-icon svg, .dif-icon svg {
+      display: block; fill: none; stroke: currentColor;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    /* ACENTOS GRÁFICOS DE SECCIÓN */
+    .dolor, .competencias, .mercado, .diferenciadores, .testimonials { position: relative; }
+    .dolor, .competencias, .diferenciadores, .testimonials { overflow: hidden; }
+    .competencias, .diferenciadores { border-top: 1px solid var(--border); }
+    .competencias::before, .diferenciadores::before {
+      content: ''; position: absolute; top: 0; left: 50%; margin-left: -36px;
+      width: 72px; height: 3px; background: var(--red); z-index: 2;
+    }
+    .competencias::after, .dolor::after, .diferenciadores::after, .testimonials::after {
+      content: ''; position: absolute; pointer-events: none;
+      border: 2px solid rgba(181,30,64,0.10);
+    }
+    .competencias::after { width: 240px; height: 240px; right: -80px; top: 70px; transform: rotate(24deg); }
+    .dolor::after { width: 180px; height: 180px; left: -70px; bottom: 40px; border-radius: 50%; }
+    .diferenciadores::after { width: 200px; height: 200px; left: -70px; top: -60px; transform: rotate(16deg); }
+    .testimonials::after { width: 260px; height: 260px; right: -90px; bottom: -80px; transform: rotate(20deg); border-color: rgba(181,30,64,0.5); }
+    .cta-banda::before {
+      content: ''; position: absolute; left: -60px; top: 50%; margin-top: -110px;
+      width: 220px; height: 220px; border: 2px solid rgba(255,255,255,0.16);
+      transform: rotate(22deg); pointer-events: none;
+    }
+    .hero-img-wrap::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+      background: var(--red); z-index: 2;
+    }
+
+    /* ENTRADA ESCALONADA DE TARJETAS */
+    @keyframes card-in { from { opacity: 0; transform: translateY(22px); } }
+    .stagger.visible > *, .reveal.visible .stagger > * {
+      animation: card-in 0.6s cubic-bezier(.22,.85,.3,1) backwards;
+    }
+    .stagger > *:nth-child(2) { animation-delay: 0.07s; }
+    .stagger > *:nth-child(3) { animation-delay: 0.14s; }
+    .stagger > *:nth-child(4) { animation-delay: 0.21s; }
+    .stagger > *:nth-child(5) { animation-delay: 0.28s; }
+    .stagger > *:nth-child(6) { animation-delay: 0.35s; }
+    .stagger > *:nth-child(7) { animation-delay: 0.42s; }
+    .stagger > *:nth-child(8) { animation-delay: 0.49s; }
+
     /* RESPONSIVE */
     @media (max-width: 960px) {
       .hero-inner { grid-template-columns: 1fr; }
@@ -492,19 +679,33 @@
       .mercado-inner { grid-template-columns: 1fr; }
       .dif-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr 1fr; }
-      .stats-inner { grid-template-columns: repeat(3, 1fr); }
       .faq-inner { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; gap: 32px; }
       .nav-links { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hero-stats-row .hero-stat:nth-child(3) { display: none; }
+      .hero-stats-row { margin-top: 28px; }
     }
     @media (max-width: 600px) {
       .hero { padding: 48px 20px 80px; }
       .comp-grid { grid-template-columns: 1fr; }
       .testi-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: 1fr; gap: 24px; }
       .form-row { grid-template-columns: 1fr; }
       .dolor { padding: 56px 20px; }
       .competencias, .franja, .mercado, .diferenciadores, .testimonials, .faq { padding: 56px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .comp-card:hover, .dolor-card:hover, .dif-card:hover,
+      .testi-card:hover, .mercado-card:hover, .btn-red:hover,
+      .btn-white:hover, .nav-cta:hover, .form-submit:hover, .idioma-pill:hover { transform: none; }
     }
   </style>
 
@@ -577,7 +778,7 @@
     <div class="hero-content reveal">
       <div class="hero-tag">Inglés corporativo · Ventas y Marketing</div>
       <h1>Cursos de idiomas para equipos de <strong>Ventas y Marketing</strong></h1>
-      <p class="hero-sub">Cierre más negocios y conecte con clientes internacionales en inglés, francés, alemán, italiano o portugués. Su equipo es la cara de la empresa: cuando el idioma no está a la altura, una sola oportunidad perdida cuesta más que todo un programa anual de capacitación.</p>
+      <p class="hero-sub">Cierre más negocios y conecte con clientes internacionales en inglés, francés, alemán, italiano, portugués o español. Su equipo es la cara de la empresa: cuando el idioma no está a la altura, una sola oportunidad perdida cuesta más que todo un programa anual de capacitación.</p>
       <button class="btn-red" onclick="openModal()">Solicitar Cotización</button>
       <div class="hero-social">
         <div class="hero-avatars">
@@ -595,12 +796,28 @@
     <div class="hero-visual reveal">
       <div class="hero-img-wrap">
         <img src="/equipo/ventas-y-marketing/img/hero.webp" alt="Equipo comercial en cursos de inglés de negocios" width="600" height="420" loading="eager">
-        <div class="hero-img-badge">
-          <div class="badge-icon">🤝</div>
-          <div>
-            <div class="badge-num">+500</div>
-            <div class="badge-label">Empresas atendidas</div>
-          </div>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <span class="float-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+          </span>
+          <span class="float-num">+40K</span>
+          <span class="float-label">Profesionales formados</span>
+        </div>
+        <div class="hero-stat">
+          <span class="float-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+          </span>
+          <span class="float-num">+500</span>
+          <span class="float-label">Empresas atendidas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="float-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></svg>
+          </span>
+          <span class="float-num">+20</span>
+          <span class="float-label">Años de experiencia</span>
         </div>
       </div>
     </div>
@@ -640,51 +857,67 @@
       <h2>Las habilidades que su equipo comercial necesita para cerrar en cualquier idioma</h2>
       <p>Desarrollamos las competencias lingüísticas que su equipo aplica en situaciones reales de negocio. No enseñamos gramática aislada: entrenamos para que cierren, presenten y negocien con confianza.</p>
     </div>
-    <div class="comp-grid reveal">
+    <div class="comp-grid reveal stagger">
       <div class="comp-card">
-        <div class="comp-icon">📊</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        </div>
         <div class="comp-num">01</div>
         <h3>Vocabulario técnico comercial</h3>
         <p>Terminología específica de ventas, marketing digital, embudo de conversión y métricas clave (CAC, LTV, CTR).</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">✍️</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+        </div>
         <div class="comp-num">02</div>
         <h3>Redacción profesional</h3>
         <p>Correos de ventas, propuestas por escrito y mensajes de prospección en LinkedIn que generan respuestas.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🎤</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>
+        </div>
         <div class="comp-num">03</div>
         <h3>Presentaciones ejecutivas</h3>
         <p>Pitches ante directivos, comités o inversionistas con manejo de diapositivas y respuestas fluidas en tiempo real.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🤝</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="comp-num">04</div>
         <h3>Conversación y networking</h3>
         <p>Interacción natural en eventos y ferias internacionales, iniciando y sosteniendo diálogos de valor.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">⚖️</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m11 17 2 2a1 1 0 1 0 3-3"/><path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4"/><path d="m21 3 1 11h-2"/><path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3"/><path d="M3 4h8"/></svg>
+        </div>
         <div class="comp-num">05</div>
         <h3>Negociación internacional</h3>
         <p>Estructuras para negociar condiciones, precios y plazos. Aprenden a proponer contraofertas y manejar silencios estratégicos.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🛡️</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
         <div class="comp-num">06</div>
         <h3>Manejo de objeciones</h3>
         <p>Respuestas fluidas ante las resistencias típicas del entorno B2B (precio, tiempo, autoridad, riesgo).</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🔄</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
+        </div>
         <div class="comp-num">07</div>
         <h3>Comunicación comercial integral</h3>
         <p>Aplicación de marcos de venta consultiva (descubrimiento, propuesta y cierre) en dos idiomas.</p>
       </div>
       <div class="comp-card">
-        <div class="comp-icon">🌟</div>
+        <div class="comp-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+        </div>
         <div class="comp-num">08</div>
         <h3>Atención a clientes internacionales</h3>
         <p>Comunicación de posventa, seguimiento y resolución de problemas. La retención se define en la primera queja bien resuelta.</p>
@@ -701,19 +934,25 @@
       <h2>¿Cuántas oportunidades comerciales pierde su empresa por la <em>barrera del idioma</em>?</h2>
       <p>No es una métrica abstracta; es un costo medible y silencioso que se refleja en tres escenarios:</p>
     </div>
-    <div class="dolor-grid reveal">
+    <div class="dolor-grid reveal stagger">
       <div class="dolor-card">
-        <div class="dolor-card-icon">📋</div>
+        <div class="dolor-card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m14.5 12.5-5 5"/><path d="m9.5 12.5 5 5"/></svg>
+        </div>
         <h3>La propuesta que no se cerró</h3>
         <p>Su mejor vendedor tiene la solución y los números, pero si no fluye en el idioma, el cliente duda y la competencia entra. Un solo contrato internacional perdido al año cuesta más que todo un programa anual de capacitación.</p>
       </div>
       <div class="dolor-card">
-        <div class="dolor-card-icon">📧</div>
+        <div class="dolor-card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/><path d="m17 17 4 4"/><path d="m21 17-4 4"/></svg>
+        </div>
         <h3>El correo de prospección sin respuesta</h3>
         <p>Su equipo envía 200 correos al mes a Estados Unidos, Europa o Latinoamérica, pero la tasa de respuesta es del 1%. Un correo con errores de gramática o tono se descarta en el primer párrafo.</p>
       </div>
       <div class="dolor-card">
-        <div class="dolor-card-icon">🌐</div>
+        <div class="dolor-card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="17" x2="22" y1="8" y2="13"/><line x1="22" x2="17" y1="8" y2="13"/></svg>
+        </div>
         <h3>La feria internacional sin contactos reales</h3>
         <p>Una inversión de 50,000 dólares en un stand en HANNOVER MESSE o CES se pierde si las conversaciones no pasan del "nice to meet you". Sin un segundo contacto, no hay negocio.</p>
       </div>
@@ -730,66 +969,42 @@
     <div class="mercado-left reveal">
       <div class="eyebrow">Por qué urge ahora</div>
       <h2>Por qué su empresa no puede esperar el año próximo para capacitar al equipo comercial</h2>
-      <div class="mercado-items">
-        <div class="mercado-item">
-          <div class="mercado-item-icon">🎓</div>
-          <div>
-            <h3>El talento bilingüe es escaso y caro de retener</h3>
-            <p>Menos del 15% de los profesionales en México son verdaderamente bilingües. Capacitar al equipo que ya conoce su operación reduce la dependencia externa. <em>Fuente: SEP</em></p>
-          </div>
-        </div>
-        <div class="mercado-item">
-          <div class="mercado-item-icon">🇺🇸</div>
-          <div>
-            <h3>Su mercado más grande exige inglés ($534,874 M en exportaciones a EE.UU.)</h3>
-            <p>México es el primer socio comercial de Estados Unidos desde 2023. Depender de un solo colaborador bilingüe crea un cuello de botella. <em>Fuente: Secretaría de Economía e INEGI</em></p>
-          </div>
-        </div>
-        <div class="mercado-item">
-          <div class="mercado-item-icon">🏭</div>
-          <div>
-            <h3>El nearshoring trae a sus próximos clientes y no hablan español</h3>
-            <p>Se proyectan 500,000 empleos y 50,000 millones en inversión en 3 años. El proveedor que negocia directamente en el idioma del inversionista entra primero. <em>Fuente: Secretaría de Economía</em></p>
-          </div>
-        </div>
-        <div class="mercado-item">
-          <div class="mercado-item-icon">⚠️</div>
-          <div>
-            <h3>Un error de interpretación en el T-MEC cuesta millones</h3>
-            <p>Desde 2025, EE.UU. aplica aranceles del 25% a productos que incumplan reglas de origen. Comprender estas normativas en inglés técnico protege los márgenes del negocio. <em>Fuente: USTR y DOF 2025</em></p>
-          </div>
-        </div>
-      </div>
+      <p>Cada mes que su equipo comercial opera sin el idioma correcto es una ventana que se cierra frente a la competencia. Estos son los datos que explican por qué actuar ahora, no en el próximo trimestre, marca la diferencia.</p>
     </div>
     <div class="mercado-right reveal">
-      <h3>México en números que su equipo comercial debe conocer</h3>
-      <div class="stat-row">
-        <div class="stat-big">15%</div>
-        <div>
-          <div class="stat-desc">de profesionales en México son verdaderamente bilingües</div>
-          <span class="stat-source">Fuente: SEP</span>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-big">#1</div>
-        <div>
-          <div class="stat-desc">México, primer socio comercial de EE.UU. desde 2023</div>
-          <span class="stat-source">Fuente: Secretaría de Economía</span>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-big">$50B</div>
-        <div>
-          <div class="stat-desc">en inversión nearshoring proyectada en los próximos 3 años</div>
-          <span class="stat-source">Fuente: Secretaría de Economía</span>
-        </div>
-      </div>
-      <div class="stat-row">
-        <div class="stat-big">25%</div>
-        <div>
-          <div class="stat-desc">deducción adicional bajo el decreto del Plan México (DOF 2025)</div>
-          <span class="stat-source">Confirme con su área contable</span>
-        </div>
+      <div class="mercado-carousel stagger" id="mercadoCarousel" tabindex="0" role="region" aria-label="Razones para capacitar al equipo comercial ahora">
+        <article class="mercado-card">
+          <div class="mercado-item-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+          </div>
+          <h3>El talento bilingüe es escaso y caro de retener</h3>
+          <p>Menos del 15% de los profesionales en México son verdaderamente bilingües. Capacitar al equipo que ya conoce su operación reduce la dependencia externa.</p>
+          <span class="mercado-card-source">Fuente: SEP</span>
+        </article>
+        <article class="mercado-card">
+          <div class="mercado-item-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></svg>
+          </div>
+          <h3>Su mercado más grande exige inglés ($534,874 M en exportaciones a EE.UU.)</h3>
+          <p>México es el primer socio comercial de Estados Unidos desde 2023. Depender de un solo colaborador bilingüe crea un cuello de botella.</p>
+          <span class="mercado-card-source">Fuente: Secretaría de Economía e INEGI</span>
+        </article>
+        <article class="mercado-card">
+          <div class="mercado-item-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
+          </div>
+          <h3>El nearshoring trae a sus próximos clientes y no hablan español</h3>
+          <p>Se proyectan 500,000 empleos y 50,000 millones en inversión en 3 años. El proveedor que negocia directamente en el idioma del inversionista entra primero.</p>
+          <span class="mercado-card-source">Fuente: Secretaría de Economía</span>
+        </article>
+        <article class="mercado-card">
+          <div class="mercado-item-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          </div>
+          <h3>Un error de interpretación en el T-MEC cuesta millones</h3>
+          <p>Desde 2025, EE.UU. aplica aranceles del 25% a productos que incumplan reglas de origen. Comprender estas normativas en inglés técnico protege los márgenes del negocio.</p>
+          <span class="mercado-card-source">Fuente: USTR y DOF 2025</span>
+        </article>
       </div>
     </div>
   </div>
@@ -802,30 +1017,38 @@
       <div class="eyebrow" style="justify-content:center;">Por qué S-Peak</div>
       <h2>Por qué empresas como Braskem Idesa, Chedraui y +500 más eligen S-Peak</h2>
     </div>
-    <div class="dif-grid reveal">
+    <div class="dif-grid reveal stagger">
       <div class="dif-card">
-        <div class="dif-icon">🎯</div>
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
         <div>
           <h3>Programa diseñado por sector</h3>
           <p>Adaptamos el vocabulario, casos y simulaciones a su industria (manufactura, retail, servicios financieros, tecnología o farmacéutica). Sin cursos genéricos.</p>
         </div>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">📈</div>
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
         <div>
           <h3>Medición real de avance</h3>
           <p>Tarjeta de Resultados mensual para Dirección con evidencias comprobables. No reportamos solo asistencia, sino competencias adquiridas.</p>
         </div>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">🌐</div>
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        </div>
         <div>
           <h3>El idioma de su mercado, no solo inglés</h3>
           <p>Inglés para Norteamérica y negocios globales, así como francés, alemán, italiano, portugués o español según sus metas estratégicas.</p>
         </div>
       </div>
       <div class="dif-card">
-        <div class="dif-icon">✅</div>
+        <div class="dif-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
         <div>
           <h3>Registro STPS y deducción fiscal</h3>
           <p>Contamos con registro oficial ante la STPS. La inversión califica para la deducción adicional del 25% bajo el decreto del Plan México (DOF 2023 y 2025).</p>
@@ -850,7 +1073,7 @@
     <h2>Lo que dicen los equipos de ventas que ya tomaron clases con S-Peak</h2>
     <p>En S-Peak, el éxito no se supone: se mide en números.</p>
   </div>
-  <div class="testi-grid reveal">
+  <div class="testi-grid reveal stagger">
     <div class="testi-card">
       <div class="stars">★★★★★</div>
       <p class="testi-quote">"El equipo de S-Peak tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
@@ -883,24 +1106,6 @@
           <div class="author-role">People Development &amp; D&amp;I Expert</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stats-inner reveal">
-    <div class="stat-item">
-      <div class="stat-num">+40K</div>
-      <div class="stat-label">Profesionales formados</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">+500</div>
-      <div class="stat-label">Empresas clientes</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">+20</div>
-      <div class="stat-label">Años de experiencia</div>
     </div>
   </div>
 </section>
@@ -1141,6 +1346,115 @@
     entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Carrusel mercado: auto-scroll continuo + arrastre manual
+  (function () {
+    const car = document.getElementById('mercadoCarousel');
+    if (!car) return;
+
+    const SPEED = 0.024;   // px por milisegundo (~24 px/s)
+    const originals = Array.from(car.children);
+    if (!originals.length) return;
+
+    // Se duplican las tarjetas: al llegar al final del primer juego se resta
+    // un periodo y el contenido bajo la ventana es idéntico, así el bucle no salta.
+    const appendSet = () => originals.forEach(node => {
+      const clone = node.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      clone.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
+      car.appendChild(clone);
+    });
+
+    let period = 0;
+    const layout = () => {
+      if (car.children.length <= originals.length) appendSet();
+      period = car.children[originals.length].offsetLeft - car.children[0].offsetLeft;
+      // Suficientes juegos para que un periodo completo siempre sea alcanzable.
+      let guard = 0;
+      while (period > 0 && car.scrollWidth - car.clientWidth < period && guard++ < 6) appendSet();
+    };
+    layout();
+
+    let pos = car.scrollLeft;
+    let hovering = false, dragging = false, touching = false, touchTimer = null;
+    let last = null;
+
+    const running = () => !hovering && !dragging && !touching && period > 0;
+
+    const tick = (ts) => {
+      if (last === null) last = ts;
+      let dt = ts - last;
+      last = ts;
+      if (dt > 100) dt = 100;              // evita un salto al volver de otra pestaña
+      if (running()) {
+        pos += SPEED * dt;
+        while (pos >= period) pos -= period;
+        car.scrollLeft = pos;
+      }
+      requestAnimationFrame(tick);
+    };
+
+    // Si el desplazamiento no lo produjimos nosotros, fue el usuario: nos resincronizamos
+    // para que el movimiento automático continúe desde donde él lo dejó.
+    car.addEventListener('scroll', () => {
+      if (Math.abs(car.scrollLeft - pos) > 2) pos = car.scrollLeft;
+    }, { passive: true });
+
+    car.addEventListener('mouseenter', () => { hovering = true; });
+    car.addEventListener('mouseleave', () => { hovering = false; });
+    car.addEventListener('focusin', () => { hovering = true; });
+    car.addEventListener('focusout', () => { hovering = false; });
+
+    // Táctil: se cede el control al gesto nativo y se reanuda tras la inercia.
+    car.addEventListener('touchstart', () => {
+      touching = true;
+      if (touchTimer) clearTimeout(touchTimer);
+    }, { passive: true });
+    car.addEventListener('touchend', () => {
+      if (touchTimer) clearTimeout(touchTimer);
+      touchTimer = setTimeout(() => { touching = false; }, 1200);
+    }, { passive: true });
+
+    // Arrastre con mouse/pluma
+    let startX = 0, startLeft = 0;
+    car.addEventListener('pointerdown', (e) => {
+      if (e.pointerType === 'touch') return;
+      dragging = true;
+      startX = e.clientX;
+      startLeft = car.scrollLeft;
+      car.classList.add('dragging');
+    });
+
+    car.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4 && !car.hasPointerCapture(e.pointerId)) {
+        car.setPointerCapture(e.pointerId);
+      }
+      car.scrollLeft = startLeft - dx;
+    });
+
+    const stopDrag = (e) => {
+      if (!dragging) return;
+      dragging = false;
+      pos = car.scrollLeft;
+      car.classList.remove('dragging');
+      if (e && car.hasPointerCapture(e.pointerId)) car.releasePointerCapture(e.pointerId);
+    };
+    car.addEventListener('pointerup', stopDrag);
+    car.addEventListener('pointercancel', stopDrag);
+    car.addEventListener('pointerleave', stopDrag);
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => { layout(); pos = car.scrollLeft; }, 150);
+    });
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      requestAnimationFrame(tick);
+    }
+  })();
 
   // FAQ
   function toggleFaq(btn) {

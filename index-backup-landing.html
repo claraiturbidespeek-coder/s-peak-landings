@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Atribución: captura UTMs + gclid lo antes posible (antes de cualquier redirect o
+       limpieza de URL) y los persiste en sessionStorage, para reusarlos al enviar los
+       formularios aunque el query string ya no esté en la barra. Debe ir antes de GTM. -->
+  <script>
+    (function () {
+      try {
+        var STORAGE_KEY = 'speak_attribution';
+        var FIELDS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'];
+        var params;
+        try { params = new URLSearchParams(window.location.search); } catch (e) { return; }
+        var fromUrl = {};
+        var hasAny = false;
+        FIELDS.forEach(function (k) {
+          var v = (params.get(k) || '').trim();
+          if (v) { fromUrl[k] = v; hasAny = true; }
+        });
+        if (!hasAny) return; // Nada nuevo en la URL: conservamos lo ya persistido en la sesión.
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || '{}') || {}; } catch (e) { stored = {}; }
+        // La URL manda: mezclamos lo nuevo sobre lo previo de la sesión.
+        FIELDS.forEach(function (k) { if (fromUrl[k]) stored[k] = fromUrl[k]; });
+        try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(stored)); } catch (e) {}
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Google Tag Manager (carga diferida tras window.load para no competir con el LCP) -->
+  <!-- La conversion de Google Ads (AW-18039159502) se gestiona dentro de GTM, no con gtag.js directo -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.addEventListener('load', function () {
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-5QG29W7R');
+    });
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- SEO primario -->
+  <title>Inglés para Empresas en México – Programas Medibles | S-Peak</title>
+  <meta name="description" content="Cursos de inglés para empresas en México, diseñado por puesto, con avance medible y evidencia para Dirección. Programa a la medida. Solicite su propuesta.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="author" content="S-Peak">
+  <meta name="theme-color" content="#1A3C4D">
+  <link rel="canonical" href="https://s-peak.com/landing/ingles-para-empresas/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="S-Peak">
+  <meta property="og:title" content="Inglés para Empresas en México – Programas Medibles | S-Peak">
+  <meta property="og:description" content="Cursos de inglés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Más de 500 empresas y 40 000 profesionales formados.">
+  <meta property="og:url" content="https://s-peak.com/landing/ingles-para-empresas/">
+  <meta property="og:image" content="https://s-peak.com/img/ejecutiva-hero.webp">
+  <meta property="og:image:alt" content="Ejecutiva en un curso de inglés para empresas de S-Peak">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Inglés para Empresas en México – Programas Medibles | S-Peak">
+  <meta name="twitter:description" content="Cursos de inglés para empresas diseñados por puesto, con avance medible y evidencia para Dirección. Solicite su propuesta.">
+  <meta name="twitter:image" content="https://s-peak.com/img/ejecutiva-hero.webp">
+
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="apple-touch-icon" href="img/favicon.png">
+  <link rel="dns-prefetch" href="https://wa.me">
+  <link rel="preload" as="image" href="img/ejecutiva-hero.webp" fetchpriority="high">
+  <style>
+    /* Montserrat self-hosted (woff2 variable, subset latin: cubre acentos y ñ del español) */
+    /* Un solo archivo variable sirve todos los pesos; se declara un @font-face por peso usado. */
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 400;
+      font-display: optional;
+      src: url('fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 500;
+      font-display: optional;
+      src: url('fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 600;
+      font-display: optional;
+      src: url('fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 700;
+      font-display: optional;
+      src: url('fonts/montserrat-latin.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Montserrat';
+      font-style: normal;
+      font-weight: 800;
+      font-display: optional;
+      src: url('fonts/montserrat-latin.woff2') format('woff2');
+    }
+    :root {
+      --red: #B51E40;
+      --red-dark: #8f1832;
+      --navy: #1A3C4D;
+      --white: #FFFFFF;
+      --off: #F5F7FA;
+      --ink: #111827;
+      --ink-2: #374151;
+      --muted: #6B7280;
+      --border: #E5E7EB;
+      --yellow: #F5A623;
+      --font: 'Montserrat', -apple-system, sans-serif;
+      --max: 1160px;
+      
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    /* Lenis: requerido para que el smooth scroll funcione sin pelearse con el navegador */
+    html.lenis, html.lenis body { height: auto; }
+    .lenis.lenis-smooth { scroll-behavior: auto !important; }
+    .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+    .lenis.lenis-stopped { overflow: hidden; }
+    .lenis.lenis-smooth iframe { pointer-events: none; }
+    body { font-family: var(--font); color: var(--ink); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    :target, [id] { scroll-margin-top: 80px; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font-family: inherit; }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .eyebrow::before {
+      content: ''; display: inline-block; width: 24px; height: 2px; background: var(--red);
+    }
+
+    /* TIPOGRAFÍA MONTSERRAT — ESCALA DE PESOS */
+    h1 { font-weight: 800; }
+    h2 { font-weight: 700; }
+    h3 { font-weight: 700; }
+    p { font-weight: 400; }
+    .eyebrow { letter-spacing: 0.22em; }
+    .hero-sub { font-weight: 400; line-height: 1.7; }
+    .hero-tag { font-weight: 700; }
+    .logos-label { font-weight: 600; }
+    .testi-quote { font-weight: 400; }
+    .author-name { font-weight: 700; }
+    .author-role { font-weight: 400; }
+    .faq-q { font-weight: 600; }
+    .faq-a { font-weight: 400; }
+    .nav-cta, .btn-red, .btn-white, .form-submit { font-weight: 700; letter-spacing: 0.03em; }
+    .footer-logo { font-weight: 800; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: #1A3C4D;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 28px;
+      height: 68px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { height: 36px; width: auto; display: block; }
+    .nav-links { display: flex; gap: 32px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.85); }
+    .nav-links a { color: rgba(255,255,255,0.85); }
+    .nav-links a:hover { color: #FFFFFF; }
+    .nav-cta {
+      background: var(--red); color: var(--white);
+      padding: 11px 22px; border-radius: 0;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--red-dark); }
+
+    /* HERO */
+    .hero { background: linear-gradient(180deg, #EAEFF5 0%, #F5F7FA 55%); padding: 80px 28px 120px; position: relative; }
+    .hero-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: stretch;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #FDF0F3; color: var(--red);
+      font-size: 11.5px; font-weight: 700;
+      padding: 6px 14px; border-radius: 0;
+      margin-bottom: 22px; letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-tag::before {
+      content: ''; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--red);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    .hero h1 {
+      font-size: clamp(30px, 3.4vw, 44px);
+      font-weight: 800; line-height: 1.1;
+      letter-spacing: -0.03em; color: var(--navy);
+      margin-bottom: 20px;
+    }
+    .hero h1 strong { color: var(--red); font-weight: 800; }
+    .hero-sub {
+      font-size: 17px; color: var(--ink-2);
+      line-height: 1.65; margin-bottom: 32px;
+      font-weight: 400; max-width: 540px;
+    }
+    /* HERO SOCIAL PROOF */
+    .hero-social { display: flex; align-items: center; gap: 16px; margin-top: 32px; }
+    .hero-avatars { display: flex; }
+    .hero-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800;
+      border: 2px solid var(--white); margin-left: -12px; flex-shrink: 0;
+    }
+    .hero-avatar:first-child { margin-left: 0; }
+    .hero-avatar:nth-child(2) { background: var(--red); }
+    .hero-social-text .stars { margin-bottom: 3px; }
+    .hero-social-text p { font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+    .hero-social-text strong { color: var(--navy); font-weight: 700; }
+
+    /* HERO VISUAL (columna derecha) */
+    .hero-visual {
+      position: relative; background: transparent; padding: 0;
+      align-self: start;
+    }
+    .hero-circle {
+      position: absolute; top: 210px; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 420px; height: 420px; border-radius: 50%;
+      background: #1A3C4D; opacity: 0.12; z-index: 0;
+      pointer-events: none;
+    }
+    .hero-photo {
+      position: relative; z-index: 1;
+      height: 440px; background: transparent;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: contain; object-position: center bottom;
+      display: block;
+    }
+    .hero-stats-row { display: flex; gap: 12px; margin-top: -56px; position: relative; z-index: 2; }
+    .hero-stat {
+      flex: 1; background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+      padding: 16px 10px; text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+    }
+    .float-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: #FDF0F3; color: var(--red);
+      display: flex; align-items: center; justify-content: center; font-size: 17px;
+    }
+    .float-num { font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+    .float-label { font-size: 11px; color: var(--muted); font-weight: 500; line-height: 1.3; }
+
+    /* FAKE FORM TRIGGER */
+    .fake-form {
+      display: flex; align-items: center; gap: 14px;
+      background: var(--white); border: 1.5px solid var(--border);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+      padding: 12px 12px 12px 18px; width: 100%;
+      cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .fake-form:hover { border-color: var(--navy); box-shadow: 0 16px 40px rgba(0,0,0,0.15); }
+    .fake-form-icon { color: var(--muted); flex-shrink: 0; display: flex; }
+    .fake-form-icon svg { width: 22px; height: 22px; }
+    .fake-form-text { flex: 1; min-width: 0; color: var(--muted); font-size: 15px; font-weight: 500; }
+    .fake-form-btn {
+      background: var(--red); color: var(--white); border: none; border-radius: 0;
+      width: 180px; padding: 11px 16px; font-size: 13.5px; font-weight: 700;
+      white-space: nowrap; cursor: pointer; transition: background 0.2s;
+      flex-shrink: 0; flex-grow: 0;
+    }
+    .fake-form:hover .fake-form-btn { background: var(--red-dark); }
+
+    /* MODAL */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px; z-index: 1000;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--white); width: 100%; max-width: 600px;
+      max-height: 92vh; overflow-y: auto; border-radius: 0;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.35);
+    }
+    .modal-header {
+      background: var(--navy); color: var(--white);
+      padding: 26px 28px 24px;
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .modal-header h2 { font-size: 22px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; }
+    .modal-header p { font-size: 13px; color: rgba(255,255,255,0.65); }
+    .modal-close {
+      background: none; border: none; color: var(--white);
+      font-size: 28px; line-height: 1; cursor: pointer; padding: 0;
+      flex-shrink: 0; opacity: 0.75; transition: opacity 0.2s;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    /* FORM */
+    .form-body { padding: 24px 28px 28px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 12px; }
+    .form-group label { font-size: 11.5px; font-weight: 700; color: var(--ink-2); text-transform: uppercase; letter-spacing: 0.05em; }
+    .form-group input, .form-group textarea {
+      border: 1.5px solid var(--border); border-radius: 0;
+      padding: 10px 12px; font-size: 14px; color: var(--ink);
+      background: var(--white); outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; width: 100%;
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,60,77,0.08);
+    }
+    .form-group textarea { resize: vertical; min-height: 80px; }
+    .form-submit {
+      width: 100%; background: var(--red); color: var(--white);
+      border: none; padding: 15px; border-radius: 0;
+      font-size: 15px; font-weight: 800; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 4px;
+      letter-spacing: 0.01em;
+    }
+    .form-submit:hover { background: var(--red-dark); }
+    .form-submit:active { transform: scale(0.99); }
+    .form-submit:disabled { opacity: 0.7; cursor: progress; }
+    .form-status { font-size: 13px; text-align: center; margin-top: 12px; padding: 10px 12px; border-radius: 6px; }
+    .form-status.is-success { background: #e7f6ec; color: #1b7a3d; }
+    .form-status.is-error { background: #fbe9ec; color: var(--red); }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; }
+    .lead-success { padding: 40px 28px 44px; text-align: center; }
+    .lead-success-check { width: 84px; height: 84px; color: #1b7a3d; margin: 0 auto 20px; display: block; }
+    .lead-success h3 { font-size: 24px; font-weight: 800; color: var(--navy); margin: 0 0 10px; }
+    .lead-success p { font-size: 15px; line-height: 1.6; color: var(--ink-2); margin: 0; max-width: 360px; margin-left: auto; margin-right: auto; }
+
+    /* LOGOS CARRUSEL */
+    .logos { background: transparent; padding: 0 28px; margin-top: -72px; position: relative; z-index: 5; }
+    .logos-card {
+      max-width: var(--max); margin: 0 auto;
+      background: var(--white); padding: 28px 0;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+    }
+    .logos-label { text-align: center; font-size: 17px; color: var(--muted); margin-bottom: 24px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .logos-track-wrap {
+      overflow: hidden; max-width: 920px; width: 100%; margin: 0 auto;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+    .logos-track {
+      display: flex; align-items: center; width: max-content;
+      animation: logos-scroll 25s linear infinite;
+    }
+    .logos-track img {
+      height: 50px; width: auto; object-fit: contain; margin-right: 56px;
+      flex-shrink: 0; filter: grayscale(100%); opacity: 0.7;
+      transition: filter 0.3s ease, opacity 0.3s ease;
+    }
+    .logos-track img:hover { filter: grayscale(0%); opacity: 1; }
+    @keyframes logos-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* EVIDENCIA */
+    .evidencia { padding: 88px 28px; }
+    .evidencia-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 0.92fr 1.08fr; gap: 40px; align-items: center;
+    }
+    .evidencia-left h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      line-height: 1.12; letter-spacing: -0.025em; color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .evidencia-left h2 em { font-style: normal; color: var(--red); }
+    .evidencia-left p { font-size: 16px; color: var(--ink-2); line-height: 1.72; margin-bottom: 28px; }
+    .evidencia-tags { display: flex; flex-wrap: nowrap; gap: 7px; margin-bottom: 28px; }
+    .evidencia-tag {
+      display: flex; align-items: center; gap: 5px; white-space: nowrap;
+      background: var(--off); border: 1px solid var(--border);
+      padding: 7px 9px; font-size: 10.5px; font-weight: 600; color: var(--navy);
+    }
+    .evidencia-tag::before { content: '✓'; color: var(--red); font-weight: 800; }
+    .btn-red {
+      display: inline-block; background: var(--red); color: var(--white);
+      padding: 14px 28px; border-radius: 0; font-weight: 700;
+      font-size: 15px; cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .btn-red:hover { background: var(--red-dark); }
+
+    /* PROCESO - INFOGRAFÍA */
+    .proceso { background: var(--off); padding: 88px 28px; position: relative; overflow: hidden; }
+    .proceso-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center;
+    }
+    .proceso-left h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); line-height: 1.12;
+    }
+    .proceso-intro { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-top: 18px; }
+    /* CICLO RADIAL */
+    .cycle { position: relative; width: 100%; max-width: 560px; aspect-ratio: 1 / 1; margin: 0 auto; }
+    .cycle::before {
+      content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 76%; height: 76%; border-radius: 50%; border: 2px dashed var(--border);
+    }
+    .cycle-center {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 60%; height: 60%; border-radius: 50%;
+      background: var(--white); border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(26,60,77,0.08);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 26px;
+    }
+    .cycle-num { font-size: 32px; font-weight: 800; color: var(--red); line-height: 1; }
+    .cycle-title { font-size: 14px; font-weight: 700; color: var(--navy); margin: 8px 0 6px; line-height: 1.25; }
+    .cycle-desc { font-size: 11px; color: var(--muted); line-height: 1.45; }
+    .cycle-node {
+      position: absolute; transform: translate(-50%, -50%);
+      width: 70px; height: 70px; border-radius: 50%;
+      background: var(--white); border: 2px solid var(--border);
+      color: var(--muted); font-size: 21px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2;
+      transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .cycle-node svg { width: 30px; height: 30px; }
+    .cycle-node:hover { border-color: var(--red); color: var(--red); }
+    .cycle-node.active {
+      background: var(--red); border-color: var(--red); color: var(--white);
+      box-shadow: 0 0 0 6px rgba(181,30,64,0.12);
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    /* CITA DESTACADA */
+    .proceso-quote {
+      max-width: 820px; margin: 48px auto 0;
+      background: var(--navy); color: var(--white);
+      padding: 26px 30px 26px 56px; position: relative; overflow: hidden;
+    }
+    .proceso-quote .pq-mark {
+      position: absolute; top: 4px; left: 16px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 80px; line-height: 1; color: var(--red);
+      pointer-events: none;
+    }
+    .proceso-quote p {
+      position: relative; z-index: 1;
+      font-size: 15px; font-weight: 600;
+      line-height: 1.5; max-width: 680px; margin: 0;
+    }
+
+    /* ÁREAS */
+    .areas { padding: 88px 28px; }
+    .areas-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center;
+    }
+    .areas-left h2 {
+      font-size: clamp(26px, 2.6vw, 36px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); line-height: 1.18; margin-bottom: 18px;
+    }
+    .areas-left p { font-size: 15.5px; color: var(--ink-2); line-height: 1.72; margin-bottom: 28px; }
+    .areas-media { width: 100%; min-height: 420px; overflow: hidden; }
+    .areas-media img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; display: block; }
+
+    /* TESTIMONIOS */
+    .testimonials { background: var(--navy); padding: 88px 28px; }
+    .testi-top { max-width: var(--max); margin: 0 auto 48px; text-align: center; }
+    .testi-top h2 {
+      font-size: clamp(28px, 3vw, 42px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--white); margin-bottom: 12px;
+    }
+    .testi-top p { font-size: 16px; color: rgba(255,255,255,0.55); }
+    .testi-carousel { max-width: var(--max); margin: 0 auto; overflow: hidden; }
+    .testi-track { display: flex; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+    .testi-card {
+      flex: 0 0 calc((100% - 36px) / 3); margin-right: 18px;
+      display: flex; flex-direction: column;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0; padding: 28px 24px;
+    }
+    .testi-card.accent { background: var(--yellow); border-color: transparent; }
+    .stars { font-size: 14px; color: var(--yellow); margin-bottom: 14px; letter-spacing: 2px; }
+    .testi-card.accent .stars { color: var(--navy); }
+    .testi-quote {
+      font-size: 14px; line-height: 1.72;
+      color: rgba(255,255,255,0.85); margin-bottom: 22px;
+    }
+    .testi-card.accent .testi-quote { color: var(--navy); }
+    .testi-author { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 800; color: white; flex-shrink: 0;
+    }
+    .testi-card.accent .avatar { background: rgba(30,45,74,0.18); color: var(--navy); }
+    .author-name { font-size: 13px; font-weight: 700; color: var(--white); }
+    .testi-card.accent .author-name { color: var(--navy); }
+    .author-role { font-size: 11px; color: rgba(255,255,255,0.45); }
+    .testi-card.accent .author-role { color: rgba(30,45,74,0.55); }
+
+    /* FAQ */
+    .faq { padding: 88px 28px; }
+    .faq-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 56px; align-items: start;
+    }
+    .faq-left { position: static; }
+    .faq-left h2 {
+      font-size: clamp(28px, 3vw, 38px); font-weight: 800;
+      letter-spacing: -0.025em; color: var(--navy); margin: 14px 0 16px; line-height: 1.12;
+    }
+    .faq-left > p { font-size: 16px; color: var(--ink-2); line-height: 1.7; margin-bottom: 28px; }
+    .faq-cta-card { background: var(--navy); color: var(--white); padding: 28px 26px; }
+    .faq-cta-card p { font-size: 18px; font-weight: 700; line-height: 1.4; margin-bottom: 18px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white); border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .faq-item:hover, .faq-item.open { border-color: var(--red); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      padding: 13px 22px; font-size: 15px; font-weight: 600; color: var(--navy);
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--red); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--off); display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 18px; font-weight: 400;
+      transition: transform 0.3s, background 0.2s, color 0.2s; color: var(--muted);
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg); background: var(--red); color: white;
+    }
+    .faq-a {
+      font-size: 14px; color: var(--ink-2); line-height: 1.75;
+      padding: 0 22px; max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease; opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 600px; opacity: 1; padding-bottom: 22px; }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--red); padding: 88px 28px;
+      text-align: center; color: var(--white);
+      position: relative; overflow: hidden;
+    }
+    .final-cta h2 {
+      font-size: clamp(30px, 4vw, 52px); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.08; margin-bottom: 16px;
+    }
+    .final-cta p {
+      font-size: 18px; color: rgba(255,255,255,0.8);
+      margin-bottom: 36px; max-width: 540px; margin-left: auto; margin-right: auto;
+    }
+    .btn-white {
+      display: inline-block; background: var(--white); color: var(--red);
+      padding: 17px 40px; border-radius: 0; font-weight: 800;
+      font-size: 16px; cursor: pointer; border: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-white:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.25);
+    }
+
+    /* ISOTIPO DECORATIVO */
+    .deco { position: absolute; z-index: 0; pointer-events: none; }
+    .deco-hero { top: 24px; right: 24px; width: 60px; opacity: 0.08; transform: rotate(15deg); }
+    .deco-logos { top: 50%; left: 24px; width: 40px; opacity: 0.06; transform: translateY(-50%); }
+    .deco-proceso { bottom: 24px; right: 24px; width: 80px; opacity: 0.07; transform: rotate(-20deg); }
+    .deco-cta { top: 50%; right: 40px; width: 120px; opacity: 0.1; transform: translateY(-50%) rotate(30deg); }
+    /* Mantener el contenido por encima del isotipo (z-index 0) */
+    .hero-inner, .logos-card, .proceso-inner, .proceso-quote { position: relative; z-index: 1; }
+    .final-cta h2, .final-cta p, .final-cta .btn-white { position: relative; z-index: 1; }
+
+    /* EVIDENCIA DASHBOARD MOCK */
+    .dash {
+      background: var(--white); border: 1px solid var(--border);
+      box-shadow: 0 24px 56px rgba(26,60,77,0.16);
+      font-family: var(--font); overflow: hidden;
+    }
+    .dash-topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--navy); color: var(--white); padding: 13px 18px;
+    }
+    .dash-topbar-title { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; }
+    .dash-dots { display: flex; gap: 5px; }
+    .dash-dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+    .dash-topbar-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .dash-content { background: var(--off); padding: 14px; }
+    .dash-chips { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+    .dash-chip {
+      background: var(--white); border: 1px solid var(--border);
+      padding: 6px 10px; font-size: 11px; font-weight: 600; color: var(--ink-2);
+    }
+    .dash-chip b { color: var(--red); font-weight: 800; }
+    .dash-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .dash-widget { background: var(--white); border: 1px solid var(--border); padding: 14px; }
+    .w-title { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 11px; }
+    /* big metric */
+    .dash-metric { display: flex; flex-direction: column; justify-content: center; }
+    .w-metric { font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -0.03em; }
+    .w-metric span { font-size: 22px; color: var(--red); margin-left: 2px; }
+    .w-metric-label { font-size: 12.5px; color: var(--ink-2); font-weight: 600; margin-top: 8px; }
+    .w-metric-sub { font-size: 11.5px; color: var(--red); font-weight: 700; margin-top: 5px; }
+    /* chart */
+    .dash-chart svg { width: 100%; height: 62px; display: block; }
+    .dash-chart-x { display: flex; justify-content: space-between; margin-top: 7px; font-size: 9.5px; font-weight: 600; color: var(--muted); }
+    /* skills */
+    .w-skill { margin-bottom: 9px; }
+    .w-skill:last-child { margin-bottom: 0; }
+    .w-skill-top { display: flex; justify-content: space-between; font-size: 11.5px; font-weight: 600; color: var(--navy); margin-bottom: 5px; }
+    .w-skill-pct { font-weight: 800; }
+    .w-bar { height: 7px; background: var(--off); overflow: hidden; }
+    .w-bar span { display: block; height: 100%; background: var(--red); }
+    /* people */
+    .w-person { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--border); }
+    .w-person:first-of-type { border-top: none; padding-top: 0; }
+    .w-person-av { width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+    .w-person-name { flex: 1; min-width: 0; font-size: 12px; font-weight: 600; color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .w-person-lvl { font-size: 9.5px; font-weight: 800; color: var(--red); border: 1px solid var(--border); padding: 3px 6px; }
+    .w-person-pct { font-size: 12px; font-weight: 800; color: var(--navy); width: 36px; text-align: right; }
+    /* DASHBOARD ANIMATIONS (al entrar en viewport) */
+    .w-bar span {
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .evidencia-right.visible .w-bar span { transform: scaleX(1); }
+    .dash-skills .w-skill:nth-child(2) .w-bar span { transition-delay: 0.05s; }
+    .dash-skills .w-skill:nth-child(3) .w-bar span { transition-delay: 0.15s; }
+    .dash-skills .w-skill:nth-child(4) .w-bar span { transition-delay: 0.25s; }
+    .dash-skills .w-skill:nth-child(5) .w-bar span { transition-delay: 0.35s; }
+    .dash-chart polyline {
+      stroke-dasharray: 1; stroke-dashoffset: 1;
+      transition: stroke-dashoffset 1.5s ease 0.2s;
+    }
+    .evidencia-right.visible .dash-chart polyline { stroke-dashoffset: 0; }
+    .dash-chart polygon { opacity: 0; transition: opacity 0.8s ease 0.7s; }
+    .evidencia-right.visible .dash-chart polygon { opacity: 1; }
+    .dash-chart circle { opacity: 0; transform: scale(0); transform-origin: center; transition: opacity 0.3s ease 1.5s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.5s; }
+    .evidencia-right.visible .dash-chart circle { opacity: 1; transform: scale(1); }
+    @media (prefers-reduced-motion: reduce) {
+      .w-bar span, .dash-chart polyline, .dash-chart polygon, .dash-chart circle { transition: none; }
+      .w-bar span { transform: scaleX(1); }
+      .dash-chart polyline { stroke-dashoffset: 0; }
+      .dash-chart polygon, .dash-chart circle { opacity: 1; transform: none; }
+    }
+
+    footer { background: #1A3C4D; padding: 64px 0 0; font-family: 'Montserrat', sans-serif; }
+    .footer-inner {
+      max-width: var(--max); margin: 0 auto;
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 48px; padding: 0 28px 56px;
+      color: white;
+    }
+    .footer-col-brand .footer-logo { font-size: 24px; font-weight: 800; color: white; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .footer-col-brand p { font-size: 14px; line-height: 1.6; color: white; max-width: 320px; margin-bottom: 20px; }
+    .footer-social a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.5);
+      color: white; transition: color 0.2s, border-color 0.2s;
+    }
+    .footer-social a:hover { color: #ffd6df; border-color: #ffd6df; }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-col h3 {
+      font-size: 15px; font-weight: 700; color: white;
+      margin-bottom: 18px; letter-spacing: 0.01em;
+    }
+    .footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .footer-col a { font-size: 14px; color: white; transition: color 0.2s; }
+    .footer-col a:hover { color: #ffd6df; }
+    .footer-bottom {
+      background: #0f2330; padding: 20px 28px; text-align: center;
+    }
+    .footer-bottom p { font-size: 13px; color: white; margin: 0; }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .evidencia-inner { grid-template-columns: 1fr; gap: 44px; }
+      .proceso-inner { grid-template-columns: 1fr; gap: 36px; }
+      .areas-inner { grid-template-columns: 1fr; gap: 36px; }
+      .testi-card { flex-basis: calc((100% - 18px) / 2); }
+      .faq-inner { grid-template-columns: 1fr; gap: 36px; }
+      .faq-left { position: static; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 48px 20px 100px; }
+      .evidencia-tags { flex-wrap: wrap; }
+      .dash-grid { grid-template-columns: 1fr; }
+      .hero-photo { height: 380px; }
+      .hero-social { flex-wrap: wrap; }
+      .proceso-quote { padding: 22px 20px 22px 44px; }
+      .proceso-quote .pq-mark { font-size: 64px; left: 12px; }
+      .fake-form { flex-wrap: wrap; }
+      .fake-form-text { flex-basis: 100%; }
+      .fake-form-btn { width: 100%; }
+      .form-row { grid-template-columns: 1fr; }
+      .testi-card { flex-basis: 100%; margin-right: 0; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+
+    /* Botón flotante de WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: wa-pulse 2s ease-in-out infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: #fff;
+    }
+    @keyframes wa-pulse {
+      0%   { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0.5); }
+      70%  { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 14px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        bottom: 20px;
+        right: 20px;
+      }
+      .whatsapp-float svg {
+        width: 34px;
+        height: 34px;
+      }
+
+      /* 1. STATS: ocultar la tercera stat (+30 Industrias) en móvil */
+      .hero-stats-row .hero-stat:nth-child(3) { display: none; }
+
+      /* 2. 5 RAZONES: círculos de pasos más pequeños y centro reducido
+         para que no se empalmen con el círculo central */
+      .cycle { max-width: 320px; }
+      .cycle-center { width: 54%; height: 54%; padding: 16px; }
+      .cycle-num { font-size: 24px; }
+      .cycle-title { font-size: 12px; margin: 6px 0 4px; }
+      .cycle-desc { font-size: 10px; line-height: 1.4; }
+      .cycle-node { width: 48px; height: 48px; }
+      .cycle-node svg { width: 22px; height: 22px; }
+
+      /* 3. ESPACIADO: padding vertical uniforme de 48px en todas las secciones */
+      .hero { padding: 48px 20px; }
+      .evidencia,
+      .proceso,
+      .areas,
+      .testimonials,
+      .faq,
+      .final-cta { padding: 48px 20px; }
+      .hero-stats-row { margin-top: 28px; }
+      .logos { margin-top: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .whatsapp-float { animation: none; }
+    }
+
+    /* Modal de pre-registro WhatsApp */
+    .wa-modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(17, 24, 39, 0.6);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .wa-modal-overlay.open { display: flex; opacity: 1; }
+    .wa-modal {
+      width: 100%;
+      max-width: 380px;
+      background: var(--white);
+      border-radius: 0;
+      border-top: 4px solid var(--red);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      transform: translateY(12px);
+      transition: transform 0.25s ease;
+    }
+    .wa-modal-overlay.open .wa-modal { transform: translateY(0); }
+    .wa-modal-head {
+      position: relative;
+      padding: 26px 28px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+    .wa-modal-head h3 {
+      font-family: var(--font);
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .wa-modal-head p {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .wa-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .wa-modal-close:hover { color: var(--navy); }
+    .wa-modal-body { padding: 22px 28px 28px; }
+    .wa-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .wa-form-group label {
+      font-family: var(--font);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-2);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .wa-form-group input {
+      font-family: var(--font);
+      border: 1.5px solid var(--border);
+      border-radius: 0;
+      padding: 11px 12px;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--white);
+      outline: none;
+      width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .wa-form-group input:focus {
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(26, 60, 77, 0.08);
+    }
+    .wa-submit {
+      width: 100%;
+      background: #25D366;
+      color: var(--white);
+      border: none;
+      border-radius: 0;
+      padding: 15px;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .wa-submit:hover { background: #1ebe5a; }
+    .wa-submit:active { transform: scale(0.99); }
+
+    /* Botón volver al inicio — discreto, lado izquierdo, aparece al hacer scroll */
+    .back-to-top {
+      position: fixed;
+      left: 20px;
+      bottom: 24px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      color: var(--navy);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease, background 0.2s;
+      z-index: 900;
+    }
+    .back-to-top.is-visible {
+      opacity: 0.55;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover { opacity: 1; background: var(--white); }
+    .back-to-top svg { width: 18px; height: 18px; }
+    @media (max-width: 600px) {
+      .back-to-top { left: 14px; bottom: 18px; width: 36px; height: 36px; }
+    }
+  </style>
+
+  <!-- Schema markup: Organization + servicio educativo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Organization", "EducationalOrganization"],
+        "@id": "https://s-peak.com/#organization",
+        "name": "S-Peak",
+        "url": "https://s-peak.com",
+        "logo": "https://s-peak.com/img/favicon.png",
+        "description": "S-Peak diseña programas de inglés para empresas en México, personalizados por puesto, con avance medible y evidencia verificable para la Dirección.",
+        "sameAs": [
+          "https://linkedin.com/company/s-peak"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "areaServed": "MX",
+          "availableLanguage": ["es", "en"]
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://s-peak.com/#localbusiness",
+        "name": "S-Peak",
+        "image": "https://s-peak.com/img/ejecutiva-hero.webp",
+        "url": "https://s-peak.com/landing/ingles-para-empresas",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "MX",
+          "addressRegion": "Ciudad de México"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "México"
+        },
+        "parentOrganization": { "@id": "https://s-peak.com/#organization" }
+      },
+      {
+        "@type": "Service",
+        "name": "Inglés para empresas",
+        "serviceType": "Capacitación corporativa de inglés",
+        "provider": { "@id": "https://s-peak.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "México" },
+        "description": "Cursos de inglés para empresas diseñados por puesto y nivel, con diagnóstico inicial, seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador."
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://s-peak.com/landing/ingles-para-empresas",
+        "url": "https://s-peak.com/landing/ingles-para-empresas",
+        "name": "Inglés para Empresas en México – Programas Medibles | S-Peak",
+        "inLanguage": "es-MX",
+        "isPartOf": { "@id": "https://s-peak.com/#organization" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Schema markup: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una Tarjeta de Resultados que usted presenta a Dirección. Su equipo avanza por dominio comprobado, no por horas cursadas. Solicite una propuesta y le mostramos un ejemplo de Tarjeta."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En cuánto tiempo veo un cambio real?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un dominio al siguiente (de B1 a B2) toma alrededor de 9 meses con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. Cotice y le estimamos el plan."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Adaptan el inglés a mi industria y manejan equipos en varios países?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Anclamos cada Sprint al lenguaje de su sector y a la función de cada equipo: comercial, operaciones, finanzas, atención a clientes, coordinación con casa matriz, con foco en que comuniquen y reporten en inglés en situaciones reales. Para multinacionales capacitamos México y filiales en simultáneo, con gestión central y resultados consolidados. Indíquenos su industria y el alcance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Quién imparte y qué respaldo tienen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, lo cambiamos. La calidad no se deja al azar. Pregúntenos por el perfil de quienes trabajarían con su equipo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, sin perder lo invertido. Lo dejamos definido en la propuesta desde el inicio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cómo encaja el programa sin frenar la operación?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las sesiones se agendan en los horarios que le convengan a su equipo, en la modalidad que elija: en sus instalaciones, en línea en vivo o híbrida. Y como la operación trae imprevistos, manejamos reposición ágil: si se atraviesa una junta o una urgencia, la sesión se repone sin trámites, para que el avance no se detenga. Cuéntenos cómo opera su equipo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta y cómo se cobra?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Se cotiza por grupo completo, no por persona, de 1 a 10 colaboradores: a más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones es avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. Solicite su cotización y le damos el número para su caso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Tiene registro ante la STPS y es deducible de impuestos?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí a ambas. El programa cuenta con registro oficial ante la STPS y emitimos la constancia de capacitación de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. Solicite la información para su expediente."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QG29W7R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <a href="https://s-peak.com" aria-label="S-Peak — inicio">
+        <img src="img/logo_white.svg" alt="S-Peak, cursos de inglés para empresas" width="1776" height="492" loading="eager">
+      </a>
+    </div>
+    <div class="nav-links">
+      <a href="#enfoque">Nuestro Enfoque</a>
+      <a href="#metodo">El Método</a>
+      <a href="#resultados">Resultados</a>
+      <a href="#faq">Preguntas Frecuentes</a>
+    </div>
+    <button class="nav-cta" onclick="openModal()">Solicite Información</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="deco deco-hero" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
+  <div class="hero-inner">
+    <!-- COLUMNA IZQUIERDA (60%) -->
+    <div class="hero-content reveal">
+      <div class="hero-tag">Inglés corporativo · México</div>
+      <h1><strong>Cursos de inglés para empresas</strong> que transforman la operación de su equipo.</h1>
+      <p class="hero-sub">Sus colaboradores necesitan comunicarse con seguridad en inglés: <strong>hablar, presentar, negociar y colaborar</strong> en situaciones reales de trabajo. En <strong>S-Peak</strong> diseñamos programas de inglés para empresas por puesto, con seguimiento continuo, reportes claros y evidencia verificable del avance de cada colaborador.</p>
+      <div class="fake-form" onclick="openModal()" role="button" tabindex="0">
+        <span class="fake-form-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </span>
+        <span class="fake-form-text">¿Cuántos colaboradores necesitan capacitación?</span>
+        <button class="fake-form-btn" type="button">Solicite Información</button>
+      </div>
+      <div class="hero-social">
+        <div class="hero-avatars">
+          <span class="hero-avatar">MG</span>
+          <span class="hero-avatar">FH</span>
+          <span class="hero-avatar">AV</span>
+          <span class="hero-avatar">RC</span>
+        </div>
+        <div class="hero-social-text">
+          <div class="stars">★★★★★</div>
+          <p>Más de <strong>500 empresas</strong> capacitan a sus equipos con <strong>S-Peak</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA (40%) -->
+    <div class="hero-visual reveal">
+      <div class="hero-circle" aria-hidden="true"></div>
+      <div class="hero-photo">
+        <img src="img/ejecutiva-hero.webp" alt="Ejecutiva en un curso de inglés para empresas de S-Peak" width="1300" height="1898" loading="eager" fetchpriority="high">
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <span class="float-icon">🎓</span>
+          <span class="float-num">+40K</span>
+          <span class="float-label">Profesionales formados</span>
+        </div>
+        <div class="hero-stat">
+          <span class="float-icon">🏢</span>
+          <span class="float-num">+500</span>
+          <span class="float-label">Empresas atendidas</span>
+        </div>
+        <div class="hero-stat">
+          <span class="float-icon">🌐</span>
+          <span class="float-num">+30</span>
+          <span class="float-label">Industrias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<div class="logos">
+  <img class="deco deco-logos" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
+  <div class="logos-card">
+    <p class="logos-label">Más de 500 empresas confían en <strong>S-Peak</strong></p>
+    <div class="logos-track-wrap">
+      <div class="logos-track">
+      <!-- Set 1 -->
+      <img src="img/logos/axa.webp" alt="Logo de AXA" width="600" height="300" loading="lazy">
+      <img src="img/logos/club%20med.webp" alt="Logo de Club Med" width="600" height="300" loading="lazy">
+      <img src="img/logos/gbm.webp" alt="Logo de GBM" width="600" height="300" loading="lazy">
+      <img src="img/logos/kio.webp" alt="Logo de KIO" width="600" height="300" loading="lazy">
+      <img src="img/logos/loreal.webp" alt="Logo de L'Oréal" width="600" height="300" loading="lazy">
+      <img src="img/logos/naturgy.webp" alt="Logo de Naturgy" width="600" height="300" loading="lazy">
+      <img src="img/logos/paramount.webp" alt="Logo de Paramount" width="600" height="300" loading="lazy">
+      <img src="img/logos/pepsico.webp" alt="Logo de PepsiCo" width="600" height="300" loading="lazy">
+      <img src="img/logos/reanult.webp" alt="Logo de Renault" width="600" height="300" loading="lazy">
+      <img src="img/logos/santander.webp" alt="Logo de Santander" width="600" height="300" loading="lazy">
+      <img src="img/logos/walmart.webp" alt="Logo de Walmart" width="600" height="300" loading="lazy">
+      <!-- Set 2 (duplicado para loop infinito) -->
+      <img src="img/logos/axa.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/club%20med.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/gbm.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/kio.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/loreal.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/naturgy.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/paramount.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/pepsico.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/reanult.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/santander.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      <img src="img/logos/walmart.webp" alt="" aria-hidden="true" width="600" height="300" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ÁREAS -->
+<section class="areas">
+  <div class="areas-inner">
+    <div class="areas-right reveal">
+      <div class="areas-media">
+        <img src="img/imagen-ejecutivo.webp" alt="Ejecutivo en un programa de inglés para empresas de S-Peak" width="1024" height="768" loading="lazy">
+      </div>
+    </div>
+    <div class="areas-left reveal">
+      <div class="eyebrow">Inglés de negocios</div>
+      <h2>Prepare a su talento con un programa de inglés para el mercado global</h2>
+      <p>Cada departamento enfrenta retos distintos en inglés: ventas negocia, finanzas reporta a casa matriz, operaciones coordina con proveedores. Por eso cada programa de inglés empresarial <strong>se adapta al rol y al contexto real del puesto</strong>. Medimos el avance con <strong>indicadores verificables</strong> y entregamos reportes que le permiten <strong>decidir sobre su inversión</strong>.</p>
+      <button class="btn-red" onclick="openModal()">Solicite Información</button>
+    </div>
+  </div>
+</section>
+
+<!-- EVIDENCIA -->
+<section class="evidencia" id="enfoque">
+  <div class="evidencia-inner">
+    <div class="evidencia-left reveal">
+      <div class="eyebrow">Nuestro enfoque</div>
+      <h2>No le entregamos listas de asistencia.<br><em>Le entregamos evidencia.</em></h2>
+      <p>A la dirección de <strong>Recursos Humanos</strong> le entregamos <strong>tableros</strong> que detallan el <strong>avance, la adopción y el impacto real</strong> del programa, para una <strong>decisión basada en datos</strong> y la optimización de su presupuesto.</p>
+      <div class="evidencia-tags">
+        <span class="evidencia-tag">Evidencias demostrables</span>
+        <span class="evidencia-tag">Métricas de avance y asistencia</span>
+        <span class="evidencia-tag">Reportes de desempeño</span>
+      </div>
+      <button class="btn-red" onclick="openModal()">Solicite Información</button>
+    </div>
+    <div class="evidencia-right reveal">
+      <div class="dash" role="img" aria-label="Panel de progreso del equipo en el programa de inglés para empresas de S-Peak">
+        <div class="dash-topbar">
+          <div class="dash-topbar-title">
+            <span class="dash-dots"><i></i><i></i><i></i></span>
+            Panel de Progreso del Equipo
+          </div>
+          <span class="dash-topbar-tag">S-Peak Analytics</span>
+        </div>
+        <div class="dash-content">
+          <div class="dash-chips">
+            <span class="dash-chip"><b>+18%</b> mejora</span>
+            <span class="dash-chip"><b>12</b> colaboradores activos</span>
+            <span class="dash-chip"><b>26</b> sesiones</span>
+          </div>
+          <div class="dash-grid">
+            <!-- Métrica destacada -->
+            <div class="dash-widget dash-metric">
+              <div class="w-metric">92<span>%</span></div>
+              <div class="w-metric-label">Evidencias aprobadas con rúbrica</div>
+              <div class="w-metric-sub">↑ 4 pts vs. trimestre anterior</div>
+            </div>
+            <!-- Gráfica de línea -->
+            <div class="dash-widget dash-chart">
+              <div class="w-title">Progreso del equipo · Trimestre</div>
+              <svg viewBox="0 0 300 86" preserveAspectRatio="none" aria-hidden="true">
+                <polygon fill="#B51E40" fill-opacity="0.08" points="0,68 50,60 100,63 150,46 200,40 250,28 300,18 300,86 0,86"/>
+                <polyline fill="none" stroke="#B51E40" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1" points="0,68 50,60 100,63 150,46 200,40 250,28 300,18"/>
+                <circle cx="300" cy="18" r="4" fill="#B51E40"/>
+              </svg>
+              <div class="dash-chart-x"><span>Mes 1</span><span>Mes 2</span><span>Mes 3</span></div>
+            </div>
+            <!-- Competencias del equipo -->
+            <div class="dash-widget dash-skills">
+              <div class="w-title">Competencias del equipo</div>
+              <div class="w-skill">
+                <div class="w-skill-top"><span>Comunicación oral</span><span class="w-skill-pct">76%</span></div>
+                <div class="w-bar"><span style="width:76%"></span></div>
+              </div>
+              <div class="w-skill">
+                <div class="w-skill-top"><span>Comprensión auditiva</span><span class="w-skill-pct">81%</span></div>
+                <div class="w-bar"><span style="width:81%"></span></div>
+              </div>
+              <div class="w-skill">
+                <div class="w-skill-top"><span>Redacción corporativa</span><span class="w-skill-pct">69%</span></div>
+                <div class="w-bar"><span style="width:69%"></span></div>
+              </div>
+              <div class="w-skill">
+                <div class="w-skill-top"><span>Negociación</span><span class="w-skill-pct">73%</span></div>
+                <div class="w-bar"><span style="width:73%"></span></div>
+              </div>
+            </div>
+            <!-- Lista de colaboradores -->
+            <div class="dash-widget dash-people">
+              <div class="w-title">Colaboradores</div>
+              <div class="w-person">
+                <span class="w-person-av">CM</span>
+                <span class="w-person-name">Carlos Mendoza</span>
+                <span class="w-person-lvl">B1</span>
+                <span class="w-person-pct">78%</span>
+              </div>
+              <div class="w-person">
+                <span class="w-person-av">AT</span>
+                <span class="w-person-name">Ana Torres</span>
+                <span class="w-person-lvl">B2</span>
+                <span class="w-person-pct">85%</span>
+              </div>
+              <div class="w-person">
+                <span class="w-person-av">LR</span>
+                <span class="w-person-name">Luis Ramírez</span>
+                <span class="w-person-lvl">A2</span>
+                <span class="w-person-pct">64%</span>
+              </div>
+              <div class="w-person">
+                <span class="w-person-av">MG</span>
+                <span class="w-person-name">María Gómez</span>
+                <span class="w-person-lvl">B1</span>
+                <span class="w-person-pct">72%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO INFOGRAFÍA -->
+<section class="proceso" id="metodo">
+  <img class="deco deco-proceso" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
+  <div class="proceso-inner">
+    <div class="proceso-left reveal">
+      <div class="eyebrow">El método S‑Peak</div>
+      <h2>5 razones por las que las empresas líderes en México eligen S‑Peak</h2>
+      <p class="proceso-intro">México ocupa el puesto 87 de 116 en dominio del inglés. Esta brecha lingüística representa hoy la mayor desventaja competitiva nacional. Así es como <strong>S-Peak</strong> la cierra.</p>
+    </div>
+    <div class="proceso-right reveal">
+      <div class="cycle">
+        <div class="cycle-center">
+          <div class="cycle-num" id="cycle-num">01</div>
+          <div class="cycle-title" id="cycle-title">Diagnóstico antes de proponer nada.</div>
+          <div class="cycle-desc" id="cycle-desc">Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés en su puesto. No asumimos, medimos.</div>
+        </div>
+        <button class="cycle-node" aria-label="Diagnóstico antes de proponer nada" style="left:13.9%; top:61.7%;" data-num="01" data-title="Diagnóstico antes de proponer nada." data-desc="Evaluamos el nivel real de cada colaborador y las situaciones concretas en que usa el inglés en su puesto. No asumimos, medimos.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/></svg>
+        </button>
+        <button class="cycle-node" aria-label="Programa por rol y por nivel" style="left:50%; top:88%;" data-num="02" data-title="Programa por rol y por nivel." data-desc="Un director financiero no aprende lo mismo que un ejecutivo de ventas, ni al mismo ritmo. Cada programa se diseña según el puesto, el nivel actual y los retos reales del día a día.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><path d="M3.5 20a6.5 6.5 0 0 1 10-5.4"/><circle cx="17.5" cy="16.5" r="2.5"/><path d="M17.5 12.9v-1.4M17.5 21.5v-1.4M21.3 16.5h-1.4M15.1 16.5h-1.4"/></svg>
+        </button>
+        <button class="cycle-node" aria-label="Inglés aplicado, no inglés teórico" style="left:86.1%; top:61.7%;" data-num="03" data-title="Inglés aplicado, no inglés teórico." data-desc="Cada sesión replica situaciones reales: una junta con casa matriz, un correo de negociación, una presentación ante inversores. Sus colaboradores practican lo que van a usar al día siguiente.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.4 8.4 0 0 1 12.5 3h.5a8.5 8.5 0 0 1 8 8z"/></svg>
+        </button>
+        <button class="cycle-node" aria-label="Evidencia para tomar decisiones" style="left:72.3%; top:19.3%;" data-num="04" data-title="Evidencia para tomar decisiones." data-desc="Entregamos reportes de asistencia, progreso y nivel a la Dirección de RH. Usted sabe exactamente en qué está invirtiendo y qué resultados está obteniendo.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </button>
+        <button class="cycle-node" aria-label="Flexibilidad que respeta la operación" style="left:27.7%; top:19.3%;" data-num="05" data-title="Flexibilidad que respeta la operación." data-desc="Nos adaptamos a la agenda de su equipo. Cancelaciones, reposiciones y material compartido después de cada sesión. Sin fricciones, sin excusas.">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="0"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="proceso-quote reveal">
+    <span class="pq-mark" aria-hidden="true">&ldquo;</span>
+    <p>La asistencia se cuida sola cuando el colaborador entiende que lo que aprende hoy lo ocupa mañana.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials" id="resultados">
+  <div class="testi-top reveal">
+    <div class="eyebrow" style="color:rgba(255,255,255,0.4);justify-content:center;">Casos de éxito</div>
+    <h2>Resultados reales en equipos nacionales e internacionales</h2>
+    <p>En <strong>S-Peak</strong>, el éxito no se supone: se mide en números.</p>
+  </div>
+  <div class="testi-carousel reveal">
+    <div class="testi-track">
+      <!-- Set 1 -->
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"El equipo de <strong>S-Peak</strong> tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
+        <div class="testi-author">
+          <div class="avatar">BI</div>
+          <div>
+            <div class="author-name">Braskem Idesa</div>
+            <div class="author-role">Área de RRHH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card accent">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
+        <div class="testi-author">
+          <div class="avatar">FD</div>
+          <div>
+            <div class="author-name">Fernanda D.</div>
+            <div class="author-role">Alumna · Chedraui</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"<strong>S-Peak</strong> ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos."</p>
+        <div class="testi-author">
+          <div class="avatar">AP</div>
+          <div>
+            <div class="author-name">Anabel P.</div>
+            <div class="author-role">Analista de Planeación y Desarrollo de RH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."</p>
+        <div class="testi-author">
+          <div class="avatar">EC</div>
+          <div>
+            <div class="author-name">Erika C.</div>
+            <div class="author-role">People Development, Culture &amp; D&amp;I Expert</div>
+          </div>
+        </div>
+      </div>
+      <!-- Set 2 (duplicado para loop infinito) -->
+      <div class="testi-card" aria-hidden="true">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"El equipo de <strong>S-Peak</strong> tiene una gran actitud de servicio, sus cursos de idiomas son excelentes para nuestros equipos, se adaptan a las necesidades de sus perfiles de puesto."</p>
+        <div class="testi-author">
+          <div class="avatar">BI</div>
+          <div>
+            <div class="author-name">Braskem Idesa</div>
+            <div class="author-role">Área de RRHH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card accent" aria-hidden="true">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"<strong>S-Peak</strong> es una organización sumamente dinámica. Su capacidad para entender nuestras necesidades específicas y adaptar sus mejores recursos a nuestros objetivos de negocio es su gran diferencial."</p>
+        <div class="testi-author">
+          <div class="avatar">FD</div>
+          <div>
+            <div class="author-name">Fernanda D.</div>
+            <div class="author-role">Alumna · Chedraui</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"<strong>S-Peak</strong> ha sido un gran aliado para nosotros, ya que se adapta a nuestras necesidades y cuenta con un sistema robusto de seguimiento en asistencias. Valoramos también que siempre nos brinda una buena atención tanto a la empresa como a los alumnos."</p>
+        <div class="testi-author">
+          <div class="avatar">AP</div>
+          <div>
+            <div class="author-name">Anabel P.</div>
+            <div class="author-role">Analista de Planeación y Desarrollo de RH</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card" aria-hidden="true">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Valoramos el seguimiento que <strong>S-Peak</strong> nos brinda, el feedback que piden a través de citas regulares y encuestas, así como reaccionan a lo que pedimos como cliente. Además, los profesores están muy bien preparados para asegurar el aprendizaje, y los precios son justos."</p>
+        <div class="testi-author">
+          <div class="avatar">EC</div>
+          <div>
+            <div class="author-name">Erika C.</div>
+            <div class="author-role">People Development, Culture &amp; D&amp;I Expert</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-left reveal">
+      <div class="eyebrow">Preguntas frecuentes</div>
+      <h2>Resolvamos sus dudas</h2>
+      <p>Hemos recopilado las dudas más comunes de nuestros clientes para brindarle claridad desde el primer momento.</p>
+      <div class="faq-cta-card">
+        <p>¿Tiene una pregunta que no está aquí?</p>
+        <button class="btn-red" onclick="openModal()">Solicite Información</button>
+      </div>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          1. ¿Cómo sé que de verdad funciona? ¿Qué recibe Recursos Humanos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Cada programa avanza por Sprints, 26 horas enfocadas en un dominio del puesto, que cierran con evidencia real (una simulación, un correo, una presentación), evaluada con rúbrica y documentada en una <strong>Tarjeta de Resultados</strong> que usted presenta a Dirección. Su equipo avanza por dominio comprobado, no por horas cursadas. <em>Solicite una propuesta y le mostramos un ejemplo de Tarjeta.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          2. ¿En cuánto tiempo veo un cambio real?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Depende del punto de partida y la constancia del equipo. Como referencia, pasar de un dominio al siguiente (de B1 a B2) toma <strong>alrededor de 9 meses</strong> con dos sesiones semanales de hora y media. En el diagnóstico inicial le damos una proyección realista para su caso. <em>Cotice y le estimamos el plan.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          3. ¿Adaptan el inglés a mi industria y manejan equipos en varios países?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Sí. Anclamos cada Sprint al lenguaje de su sector y a la función de cada equipo: comercial, operaciones, finanzas, atención a clientes, coordinación con casa matriz, con foco en que comuniquen y reporten en inglés en situaciones reales. Para multinacionales capacitamos <strong>México y filiales en simultáneo</strong>, con gestión central y resultados consolidados. <em>Indíquenos su industria y el alcance.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          4. ¿Quién imparte y qué respaldo tienen?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Instructores certificados con experiencia en entornos corporativos, no profesores de escuela. Cada uno se asigna según el dominio y el puesto de su equipo, y si alguno no resulta el adecuado, <strong>lo cambiamos.</strong> La calidad no se deja al azar. <em>Pregúntenos por el perfil de quienes trabajarían con su equipo.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          5. ¿Qué pasa si un colaborador falta, se rezaga o deja la empresa?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Cubierto en los tres casos. Si falta, le enviamos la grabación y los temas para que no pierda el ritmo. Si se rezaga, lo detectamos a tiempo y ajustamos. Y si deja la empresa, reasignamos su lugar a otro colaborador del mismo dominio, <strong>sin perder lo invertido</strong>. <em>Lo dejamos definido en la propuesta desde el inicio.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          6. ¿Cómo encaja el programa sin frenar la operación?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Las sesiones se agendan en los horarios que le convengan a su equipo, en la modalidad que elija: en sus instalaciones, en línea en vivo o híbrida. Y como la operación trae imprevistos, manejamos reposición ágil: si se atraviesa una junta o una urgencia, <strong>la sesión se repone sin trámites</strong>, para que el avance no se detenga. <em>Cuéntenos cómo opera su equipo.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          7. ¿Cuánto cuesta y cómo se cobra?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Se cotiza <strong>por grupo completo, no por persona</strong>, de 1 a 10 colaboradores: a más participantes, menor el costo por colaborador. La frecuencia (sesiones por semana) define el ritmo de avance y la inversión mensual; más sesiones es avanzar más rápido, no pagar más caro por hora. Por eso no manejamos precio de lista: armamos la propuesta según cómo opere su empresa. <em>Solicite su cotización y le damos el número para su caso.</em></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          8. ¿Tiene registro ante la STPS y es deducible de impuestos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><strong>Sí a ambas.</strong> El programa cuenta con registro oficial ante la STPS y emitimos la constancia de capacitación de cada colaborador. Además es deducible, y según el decreto del Plan México (DOF) pueden existir estímulos adicionales para la formación de personal; le entregamos la documentación de soporte y le recomendamos confirmar la aplicación a su caso con su área contable. <em>Solicite la información para su expediente.</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <img class="deco deco-cta" src="img/isotype.svg" alt="" aria-hidden="true" width="1587" height="907" loading="lazy">
+  <h2>Lleve a su equipo al nivel que<br>su operación necesita</h2>
+  <p>Permítanos diseñar un programa de inglés que su equipo sí termine, con avance medible y evidencia para Dirección.</p>
+  <button class="btn-white" onclick="openModal()">Solicite Información</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col footer-col-brand">
+      <div class="footer-logo">s<span>·</span>peak</div>
+      <p>Formación de idiomas para empresas. Capacitación corporativa diseñada para equipos que necesitan resultados&nbsp;medibles.</p>
+      <div class="footer-social">
+        <a href="https://linkedin.com/company/s-peak" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="https://s-peak.com/aviso-de-privacidad">Aviso de privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p><strong>S-Peak</strong> 2026 | Copyright Todos los Derechos Reservados</p>
+  </div>
+</footer>
+
+<!-- MODAL FORMULARIO -->
+<div class="modal-overlay" id="lead-modal" onclick="overlayClose(event)">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-header">
+      <div id="leadModalHead">
+        <h2 id="modal-title">Hable con un Experto</h2>
+        <p>Un asesor se pondrá en contacto en menos de 24 horas.</p>
+      </div>
+      <button class="modal-close" type="button" onclick="closeModal()" aria-label="Cerrar">&times;</button>
+    </div>
+    <div class="lead-success" id="leadSuccess" role="status" aria-live="polite" hidden>
+      <svg class="lead-success-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="11"></circle>
+        <path d="M7 12.5l3.5 3.5L17 9"></path>
+      </svg>
+      <h3>¡Solicitud enviada!</h3>
+      <p>Nuestro equipo está atendiendo su solicitud. Le contactaremos muy pronto.</p>
+    </div>
+    <form class="form-body" id="leadForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadNombre">Nombre y Apellido *</label>
+          <input type="text" id="leadNombre" name="nombre" autocomplete="name" placeholder="María González" required>
+        </div>
+        <div class="form-group">
+          <label for="leadEmpresa">Empresa *</label>
+          <input type="text" id="leadEmpresa" name="empresa" autocomplete="organization" placeholder="Grupo Industrial SA" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="leadCorreo">Correo Electrónico *</label>
+          <input type="email" id="leadCorreo" name="correo" autocomplete="email" placeholder="maria@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label for="leadTelefono">Teléfono</label>
+          <input type="tel" id="leadTelefono" name="telefono" autocomplete="tel" placeholder="+52 55 0000 0000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="leadPuesto">Puesto que desempeña</label>
+        <input type="text" id="leadPuesto" name="puesto" autocomplete="organization-title" placeholder="Ej. Directora de Recursos Humanos">
+      </div>
+      <div class="form-group">
+        <label for="leadMensaje">Cuéntenos su necesidad</label>
+        <textarea id="leadMensaje" name="mensaje" placeholder="Número de colaboradores, área, nivel actual de inglés…"></textarea>
+      </div>
+      <button class="form-submit" type="submit" id="leadSubmit">Solicite Información</button>
+      <p class="form-status" id="leadStatus" role="status" aria-live="polite" hidden></p>
+      <p class="form-note">Al enviar acepto recibir comunicaciones de <strong>S-Peak</strong>. Consulte nuestro <a href="https://s-peak.com/aviso-de-privacidad/" target="_blank" rel="noopener noreferrer" style="color: var(--muted); text-decoration: underline;">Aviso de privacidad</a>.</p>
+    </form>
+  </div>
+</div>
+
+<script src="js/lenis-1.1.13.min.js"></script>
+<script>
+  // Smooth scroll (Lenis)
+  (function () {
+    if (typeof Lenis === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const lenis = new Lenis({
+      lerp: 0.12,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    // Mantener funcionando los anchors de scroll internos (#)
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+      const id = a.getAttribute('href');
+      if (id.length <= 1) return;
+      a.addEventListener('click', (e) => {
+        const target = document.querySelector(id);
+        if (!target) return;
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -80 });
+      });
+    });
+    window.__lenis = lenis;
+  })();
+
+  // Modal
+  function openModal() {
+    // Restablece el estado inicial (formulario visible, confirmación oculta) por si se reabre.
+    const form = document.getElementById('leadForm');
+    const success = document.getElementById('leadSuccess');
+    const head = document.getElementById('leadModalHead');
+    const status = document.getElementById('leadStatus');
+    if (form) form.hidden = false;
+    if (head) head.hidden = false;
+    if (success) success.hidden = true;
+    if (status) { status.hidden = true; status.textContent = ''; status.classList.remove('is-success', 'is-error'); }
+    document.getElementById('lead-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (window.__lenis) window.__lenis.stop();
+  }
+  function closeModal() {
+    document.getElementById('lead-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    if (window.__lenis) window.__lenis.start();
+  }
+  function overlayClose(e) {
+    if (e.target === e.currentTarget) closeModal();
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ---- Envío de leads vía función serverless (Resend) ----
+  // Endpoint de la función. Si el sitio y la función viven en el mismo dominio de Vercel,
+  // déjalo relativo ('/api/lead'). Si la función está en otro dominio, pon la URL absoluta aquí.
+  window.LEAD_ENDPOINT = 'https://s-peak-landings.vercel.app/api/lead';
+
+  // Etiquetas internas comunes a ambos formularios: UTMs de la URL + idioma fijo de la landing.
+  window.collectLeadTags = function () {
+    let params;
+    try { params = new URLSearchParams(window.location.search); } catch (_) { params = null; }
+    let stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem('speak_attribution') || '{}') || {}; } catch (_) { stored = {}; }
+    // Prioridad por campo: 1) query actual en la URL, 2) valor persistido en la sesión, 3) vacío.
+    const raw = function (key) {
+      const live = params ? (params.get(key) || '').trim() : '';
+      if (live) return live;
+      return (stored[key] || '').toString().trim();
+    };
+    let utmSource = raw('utm_source');
+    let utmMedium = raw('utm_medium');
+    let utmCampaign = raw('utm_campaign');
+    let utmContent = raw('utm_content');
+    const gclid = raw('gclid');
+    // Respaldo Google Ads: si NO hubo utm_source (ni en URL ni persistido) pero sí hay gclid,
+    // marcamos origen google/cpc y guardamos el gclid en utm_content para no perder el rastro.
+    // Si los UTM sí vienen, mandan ellos; el gclid es solo respaldo.
+    if (!utmSource && gclid) {
+      utmSource = 'google';
+      if (!utmMedium) utmMedium = 'cpc';
+      if (!utmContent) utmContent = 'gclid:' + gclid;
+    }
+    const NA = 'No especificado';
+    return {
+      utm_source: utmSource || NA,
+      utm_medium: utmMedium || NA,
+      utm_campaign: utmCampaign || NA,
+      utm_content: utmContent || NA,
+      idioma: 'Inglés',
+      // Dirección completa de la página desde la que se envió el formulario.
+      pagina: (function () { try { return window.location.href; } catch (_) { return ''; } })(),
+    };
+  };
+
+  // Devuelve una promesa. Lanza si la respuesta no es ok.
+  window.sendLead = function (payload) {
+    return fetch(window.LEAD_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json().catch(function () { return {}; });
+    });
+  };
+
+  // Formulario principal "Solicite Información": POST + estado en el modal, sin redirección.
+  (function () {
+    const form = document.getElementById('leadForm');
+    if (!form) return;
+    const btn = document.getElementById('leadSubmit');
+    const status = document.getElementById('leadStatus');
+
+    function setStatus(text, kind) {
+      status.textContent = text;
+      status.classList.remove('is-success', 'is-error');
+      if (kind) status.classList.add(kind);
+      status.hidden = false;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const payload = Object.assign({
+        nombre: form.nombre.value.trim(),
+        empresa: form.empresa.value.trim(),
+        correo: form.correo.value.trim(),
+        telefono: form.telefono.value.trim(),
+        puesto: form.puesto.value.trim(),
+        mensaje: form.mensaje.value.trim(),
+        origen: 'Formulario principal',
+      }, window.collectLeadTags());
+
+      const originalLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      setStatus('Enviando su solicitud…', null);
+
+      window.sendLead(payload)
+        .then(function () {
+          // Éxito: reemplaza el contenido del modal por el estado de confirmación.
+          form.reset();
+          form.hidden = true;
+          const head = document.getElementById('leadModalHead');
+          if (head) head.hidden = true;
+          const success = document.getElementById('leadSuccess');
+          if (success) success.hidden = false;
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'lead_formulario_principal' });
+        })
+        .catch(function () {
+          setStatus('No pudimos enviar su solicitud. Inténtelo de nuevo o escríbanos por WhatsApp.', 'is-error');
+          btn.disabled = false;
+          btn.textContent = originalLabel;
+        });
+    });
+  })();
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Ciclo radial del método (centro muestra el paso activo, auto-rota)
+  (function () {
+    const nodes = document.querySelectorAll('.cycle-node');
+    const numEl = document.getElementById('cycle-num');
+    const titleEl = document.getElementById('cycle-title');
+    const descEl = document.getElementById('cycle-desc');
+    if (!nodes.length || !numEl) return;
+    let active = 0, timer = null;
+    function show(i) {
+      active = i;
+      nodes.forEach((n, j) => n.classList.toggle('active', j === i));
+      const n = nodes[i];
+      numEl.textContent = n.dataset.num;
+      titleEl.textContent = n.dataset.title;
+      descEl.textContent = n.dataset.desc;
+    }
+    function start() { stop(); timer = setInterval(() => show((active + 1) % nodes.length), 2000); }
+    function stop() { clearInterval(timer); }
+    nodes.forEach((n, i) => {
+      n.addEventListener('mouseenter', () => { stop(); show(i); });
+      n.addEventListener('click', () => { stop(); show(i); });
+    });
+    // Pausa al pasar el mouse por el círculo del método; reanuda al salir
+    const cycle = document.querySelector('.cycle');
+    if (cycle) {
+      cycle.addEventListener('mouseenter', stop);
+      cycle.addEventListener('mouseleave', start);
+    }
+    show(0);
+    start();
+  })();
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Carrusel testimonios: avance automático tarjeta por tarjeta
+  (function () {
+    const track = document.querySelector('.testi-track');
+    if (!track) return;
+    const TOTAL = 4;          // tarjetas originales (sin el set duplicado)
+    let idx = 0;
+    function cardStep() {
+      const card = track.children[0];
+      const style = getComputedStyle(card);
+      return card.offsetWidth + parseFloat(style.marginRight || 0);
+    }
+    function advance() {
+      idx++;
+      track.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+      track.style.transform = 'translateX(' + (-idx * cardStep()) + 'px)';
+      if (idx >= TOTAL) {
+        setTimeout(function () {
+          track.style.transition = 'none';
+          idx = 0;
+          track.style.transform = 'translateX(0)';
+        }, 650);
+      }
+    }
+    setInterval(advance, 3500);
+  })();
+</script>
+
+<!-- Botón flotante de WhatsApp -->
+<a href="https://wa.me/525585265520"
+   class="whatsapp-float"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Escríbenos por WhatsApp"
+   aria-haspopup="dialog"
+   onclick="openWaModal(event)">
+  <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Modal de pre-registro WhatsApp -->
+<div class="wa-modal-overlay" id="waModal" role="dialog" aria-modal="true" aria-labelledby="waModalTitle" onclick="closeWaModalOnOverlay(event)">
+  <div class="wa-modal">
+    <div class="wa-modal-head">
+      <button type="button" class="wa-modal-close" aria-label="Cerrar" onclick="closeWaModal()">&times;</button>
+      <h3 id="waModalTitle">Un paso antes de conectar</h3>
+      <p>Le atenderemos de inmediato</p>
+    </div>
+    <div class="wa-modal-body">
+      <form id="waForm" onsubmit="return submitWaForm(event)">
+        <div class="wa-form-group">
+          <label for="waNombre">Nombre *</label>
+          <input type="text" id="waNombre" name="nombre" autocomplete="name" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waCorreo">Correo electrónico *</label>
+          <input type="email" id="waCorreo" name="correo" autocomplete="email" required>
+        </div>
+        <div class="wa-form-group">
+          <label for="waTelefono">Teléfono *</label>
+          <input type="tel" id="waTelefono" name="telefono" autocomplete="tel" required>
+        </div>
+        <button type="submit" class="wa-submit">Continuar a WhatsApp &rarr;</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const overlay = document.getElementById('waModal');
+
+    window.openWaModal = function (e) {
+      if (e) e.preventDefault();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      const first = document.getElementById('waNombre');
+      if (first) setTimeout(function () { first.focus(); }, 50);
+    };
+
+    window.closeWaModal = function () {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    window.closeWaModalOnOverlay = function (e) {
+      if (e.target === overlay) window.closeWaModal();
+    };
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) window.closeWaModal();
+    });
+
+    window.submitWaForm = function (e) {
+      e.preventDefault();
+      const nombre = document.getElementById('waNombre').value.trim();
+      const correo = document.getElementById('waCorreo').value.trim();
+      const telefono = document.getElementById('waTelefono').value.trim();
+
+      const msg = 'Hola, soy ' + nombre + ' (' + telefono + '). Me interesa conocer más sobre los programas de inglés para empresas de S-Peak. Mi correo es ' + correo + '.';
+      const url = 'https://wa.me/525585265520?text=' + encodeURIComponent(msg);
+
+      // Registro del lead por correo (fire-and-forget): NO se espera para no retrasar WhatsApp.
+      try {
+        const payload = Object.assign({
+          nombre: nombre,
+          empresa: '',
+          correo: correo,
+          telefono: telefono,
+          puesto: '',
+          mensaje: '',
+          origen: 'WhatsApp',
+        }, window.collectLeadTags());
+        window.sendLead(payload).catch(function () {});
+      } catch (_) {}
+
+      // Conversión de WhatsApp → la recoge GTM (trigger: Custom Event "conversion_whatsapp")
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'conversion_whatsapp' });
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+
+      window.closeWaModal();
+      document.getElementById('waForm').reset();
+      return false;
+    };
+  })();
+</script>
+
+<!-- Botón volver al inicio -->
+<button type="button" class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+<script>
+  (function () {
+    var btn = document.getElementById('backToTop');
+    if (!btn) return;
+    function onScroll() {
+      if (window.pageYOffset > 400) btn.classList.add('is-visible');
+      else btn.classList.remove('is-visible');
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener('click', function () {
+      if (window.__lenis) window.__lenis.scrollTo(0);
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+
+</body>
+</html>
